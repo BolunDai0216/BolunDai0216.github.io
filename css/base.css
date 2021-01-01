@@ -8,6 +8,8 @@ body{
     height: 96%;
     margin: 2% 2% 2% 2%;
     background-color: #b33737;
+    position: relative; 
+    padding-bottom: 50px;
 }
 
 .header-brand{
@@ -30,4 +32,21 @@ body{
 
 .nav-div{
     margin: 0% 2% 0% 0%;
+}
+
+.footer { 
+    position: absolute; 
+    left: 0 ; right: 0; bottom: 0; 
+    height: 50px;
+}
+
+.footer-p{
+    color: #ffffff;
+    font-weight: bold;
+    font-family: Avenir;
+}
+
+.foot-icon{
+    display: inline-block;
+    margin: 0% 1% 0% 1%;
 }

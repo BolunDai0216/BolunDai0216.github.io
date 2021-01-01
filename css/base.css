@@ -1,0 +1,37 @@
+html{
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+body{
+    height: 96%;
+    margin: 2% 2% 2% 2%;
+    background-color: #b33737;
+}
+
+.header-brand{
+    font-family: Avenir;
+    text-decoration: none;
+    font-size: 300%;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 1% 1% 1% 1%;
+}
+
+.nav-link-bolun{
+    font-family: Avenir;
+    text-decoration: none;
+    color: #ffffff !important;
+    font-size: 200%;
+    font-weight: bold;
+    margin: 1% 1% 1% 1%;
+}
+
+.nav-div{
+    margin: 0% 2% 0% 0%;
+}
+
+.custom-toggler.navbar-toggler{ 
+    border-color: #b33737; 
+}

@@ -5,11 +5,11 @@ html{
 }
 
 body{
-    height: 96%;
+    min-height: 96%;
     margin: 2% 2% 2% 2%;
     background-color: #b33737;
     position: relative; 
-    padding-bottom: 50px;
+    padding-bottom: 150px;
 }
 
 .header-brand{

@@ -39,3 +39,9 @@ h1{
 .edu-title{
     font-family: Garamond;
 }
+
+.edu-content{
+    font-family: Garamond;
+    color: #ffffff !important;
+    font-size: 125%;
+}

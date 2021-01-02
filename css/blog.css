@@ -34,3 +34,30 @@ body{
 .side-a{
     text-decoration: none;
 }
+
+.card-title a{
+    font-family: Georgia;
+    color: white;
+    text-decoration: none;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.card-text{
+    font-family: Avenir;
+    color: #b3b149;
+    font-weight: bold;
+}
+
+.control-theory{
+    height: 300px;
+}
+
+.convex-opt{
+    height: 300px;
+}
+
+.card{
+    background-color: darkolivegreen;
+    height: 300px;
+}

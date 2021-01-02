@@ -56,3 +56,7 @@ body{
 .sticky-top{
     top: 30px;
 }
+
+.link{
+    text-underline-offset: 10px;
+}

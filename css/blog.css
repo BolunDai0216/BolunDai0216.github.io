@@ -1,3 +1,36 @@
 body{
     background-color: #b3b149;
 }
+
+.cv-block{
+    margin-top: 2%;
+}
+
+.list-group-item{
+    background-color: transparent;
+    font-family: Avenir;
+    color: darkolivegreen;
+    font-size: 200%;
+    border-top: 0;
+    border-left: 0;
+    border-bottom: 0;
+    border-right: 0;
+    font-weight: bold;
+    /* border-right-width: 3px;
+    border-right-color: white; */
+    margin-right: 10%;
+}
+
+.list-group a:hover{
+    background-color: transparent;
+    color: white;
+    font-weight: bolder;
+}
+
+.list-group{
+    border-radius: 0;
+}
+
+.side-a{
+    text-decoration: none;
+}

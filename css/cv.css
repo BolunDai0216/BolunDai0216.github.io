@@ -70,6 +70,11 @@ h2{
     border-radius: 0;
 }
 
+.list-group a:hover{
+    color: white;
+    font-weight: bolder;
+}
+
 #pro-research, #skills{
     margin-top: 2%;
 }

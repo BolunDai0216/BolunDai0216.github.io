@@ -69,3 +69,7 @@ h2{
 .list-group{
     border-radius: 0;
 }
+
+#pro-research, #skills{
+    margin-top: 2%;
+}

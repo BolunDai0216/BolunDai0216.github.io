@@ -52,3 +52,7 @@ body{
     display: inline-block;
     margin: 0% 1% 0% 1%;
 }
+
+.sticky-top{
+    top: 30px;
+}

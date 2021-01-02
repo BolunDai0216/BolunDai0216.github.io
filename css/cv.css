@@ -2,7 +2,7 @@ body{
     background-color: #257cb3;
 }
 
-h1{
+h2{
     color: seashell;
     font-weight: bold;
     font-family: Avenir;
@@ -44,4 +44,28 @@ h1{
     font-family: Garamond;
     color: #ffffff !important;
     font-size: 125%;
+}
+
+.list-group-item{
+    background-color: transparent;
+    font-family: Avenir;
+    color: lightblue;
+    font-size: 125%;
+    border-top: 0;
+    border-left: 0;
+    border-bottom: 0;
+    border-right-width: 3px;
+    border-right-color: white;
+    margin-right: 10%;
+}
+
+.list-group-item.active{
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    border-right-color: white;
+}
+
+.list-group{
+    border-radius: 0;
 }

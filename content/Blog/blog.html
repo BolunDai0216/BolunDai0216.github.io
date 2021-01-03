@@ -49,8 +49,12 @@
                     <a class="list-group-item" href="#"
                         onclick="onlyShowCardsByClass('convex-opt', ['control-theory', 'deep-learning', 'random'])">Convex
                         Optimization</a>
-                    <a class="list-group-item" href="#">Deep Learning</a>
-                    <a class="list-group-item" href="#">Random Stuff</a>
+                    <a class="list-group-item" href="#"
+                        onclick="onlyShowCardsByClass('deep-learning', ['control-theory', 'convex-opt', 'random'])">Deep
+                        Learning</a>
+                    <a class="list-group-item" href="#"
+                        onclick="onlyShowCardsByClass('random', ['control-theory', 'convex-opt', 'deep-learning'])">Random
+                        Stuff</a>
                     <a class="list-group-item" href="#"
                         onclick="showAllCards(['convex-opt', 'control-theory', 'deep-learning', 'random'])">Show
                         All</a>
@@ -70,11 +74,20 @@
                         </div>
                     </div>
 
-                    <div class="col convex-opt">
+                    <!-- <div class="col convex-opt">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title"><a href="control_theory/lti.html">Cones</a></h5>
                                 <p class="card-text">Some examples of a cone.</p>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="col random">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="random/why.html">Why I started this?</a></h5>
+                                <p class="card-text">As topic.</p>
                             </div>
                         </div>
                     </div>
@@ -89,7 +102,7 @@
             <div class="row">
                 <p class="footer-p col-6">&copy Bolun Dai 2021</p>
                 <p class="col-6 text-end">
-                    <a href="mailto:bd1555@nyu.edu" style="padding: 0px 0px 0px 2%;">
+                    <a href="mailto:bd1555@nyu.edu" style="padding: 0px 0px 0px 2%; text-decoration: none;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white"
                             class="bi bi-envelope" viewBox="0 0 16 16">
                             <path

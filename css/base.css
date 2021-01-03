@@ -60,3 +60,7 @@ body{
 .link{
     text-underline-offset: 10px;
 }
+
+.footer a{
+    text-decoration: none;
+}

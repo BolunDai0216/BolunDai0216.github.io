@@ -59,7 +59,35 @@ body{
     margin-bottom: 10%;
 }
 
+.deep-learning{
+    height: 300px;
+    margin-bottom: 10%;
+}
+
+.random{
+    height: 300px;
+    margin-bottom: 10%;
+}
+
 .card{
     background-color: darkolivegreen;
     height: 300px;
+}
+
+.blog-title{
+    font-family: Georgia;
+    color: #FFFEB5;
+    font-weight: bold;
+}
+
+.blog-content{
+    font-family: Avenir;
+    color: white;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.full-page-blog{
+    padding-left: 10%;
+    padding-right: 10%;
 }

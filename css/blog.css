@@ -36,7 +36,7 @@ body{
 }
 
 .card-title a{
-    font-family: Georgia;
+    font-family: Charter, Georgia;
     color: white;
     text-decoration: none;
     font-size: larger;
@@ -44,7 +44,7 @@ body{
 }
 
 .card-text{
-    font-family: Avenir;
+    font-family: Roboto, Avenir;
     color: #b3b149;
     font-weight: bold;
 }
@@ -75,16 +75,15 @@ body{
 }
 
 .blog-title{
-    font-family: Georgia;
+    font-family: Colfax, Roboto, Avenir, Georgia;
     color: #FFFEB5;
-    font-weight: bold;
+    font-weight: bolder;
 }
 
 .blog-content{
-    font-family: Avenir;
+    font-family: Charter, Avenir;
     color: white;
     font-size: 150%;
-    font-weight: bold;
 }
 
 .full-page-blog{

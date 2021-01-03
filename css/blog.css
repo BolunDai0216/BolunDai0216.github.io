@@ -51,10 +51,12 @@ body{
 
 .control-theory{
     height: 300px;
+    margin-bottom: 10%;
 }
 
 .convex-opt{
     height: 300px;
+    margin-bottom: 10%;
 }
 
 .card{

@@ -75,15 +75,23 @@ body{
 }
 
 .blog-title{
-    font-family: Colfax, Roboto, Avenir, Georgia;
+    font-family: Colfax, Avenir, Georgia;
     color: #FFFEB5;
     font-weight: bolder;
+    padding-left: 10%;
 }
 
 .blog-content{
     font-family: Charter, Avenir;
     color: white;
     font-size: 150%;
+}
+
+.blog-date{
+    font-family: Avenir;
+    font-weight: bold;
+    padding-left: 10%;
+    color: #FFFEB5;
 }
 
 .full-page-blog{

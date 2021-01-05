@@ -108,3 +108,14 @@ p a:hover{
     text-decoration: underline;
     color: white;
 }
+
+pre, line-numbers{
+    margin-left: 10% !important;
+    /* margin-right: 10% !important; */
+}
+
+.citation{
+    color: beige;
+    font-family: Avenir;
+    font-size: 100%;
+}

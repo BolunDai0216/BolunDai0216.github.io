@@ -4,16 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Bolun's Site</title>
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
+
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Prism.js -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script> -->
+
+    <!-- Own Design -->
     <link rel="stylesheet" href="../../../css/base.css" />
     <link rel="stylesheet" href="../../../css/blog.css" />
     <script src="../../../js/utils.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -76,6 +85,35 @@
                 going clockwise then it is from \(0^\circ\) to \(-180^\circ\) in <cite><a
                         href="https://github.com/TeaganLi/HouseExpo">HouseExpo</a></cite>.
             </p>
+
+            <p class="text-left blog-content full-page-blog">
+                The following can be dissected into two steps: centering the agent and rotating the map. To do this we
+                need to know the size of the background canvas \((h, w)\), the position of the agent in the global
+                map \((p_x, p_y)\) and the size of the global map \((g_x, g_y)\). The we can assign the corresponding
+                cells in the canvas to have equal values as in the global map.
+            </p>
+
+            <p class="text-left blog-content full-page-blog">
+                The next step is to rotate the canvas, if the current orientation of the robot is \(+\theta\), then we
+                would need to rotate the canvas \(-\theta\). After this we have the rotated image where the robot is
+                heading right, if we want the robot to face up, we would need to rotate the canvas \(90^\circ\). We use
+                the following image to illustrate this process.
+            </p>
+
+            <hr style="height:4px; border-width:0; color:white; background-color:white">
+            <p class="text-left blog-content full-page-blog citation">
+                [1] Chen, T., Gupta, S., & Gupta, A. (2019). Learning Exploration Policies for Navigation. ArXiv,
+                abs/1903.01959.<br>
+                [2] Li, T., Ho, D., Li, C., Zhu, D., Wang, C., & Meng, M. (2019). HouseExpo: A Large-scale 2D Indoor
+                Layout Dataset for Learning-based Algorithms on Mobile Robots. ArXiv, abs/1903.09845.<br>
+                <br>
+
+                Powered by <a href="https://www.mathjax.org">
+                    <img title="Powered by MathJax" src="https://www.mathjax.org/badge/mj_logo.png" style="border:0;"
+                        alt="Powered by MathJax" />
+                </a>
+            </p>
+
         </div>
 
     </div>

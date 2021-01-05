@@ -98,3 +98,13 @@ body{
     padding-left: 10%;
     padding-right: 10%;
 }
+
+p a{
+    color:white;
+    text-decoration: none;
+}
+
+p a:hover{
+    text-decoration: underline;
+    color: white;
+}

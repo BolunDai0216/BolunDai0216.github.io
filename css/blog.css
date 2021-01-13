@@ -51,22 +51,22 @@ body{
 
 .control-theory{
     height: 300px;
-    margin-bottom: 10%;
+    margin-bottom: 2.5%;
 }
 
 .convex-opt{
     height: 300px;
-    margin-bottom: 10%;
+    margin-bottom: 2.5%;
 }
 
 .deep-learning{
     height: 300px;
-    margin-bottom: 10%;
+    margin-bottom: 2.5%;
 }
 
 .random{
     height: 300px;
-    margin-bottom: 10%;
+    margin-bottom: 2.5%;
 }
 
 .card{
@@ -118,4 +118,8 @@ pre, line-numbers{
     color: beige;
     font-family: Avenir;
     font-size: 100%;
+}
+
+.cards {
+    margin-right: 10%;
 }

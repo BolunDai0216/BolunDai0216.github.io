@@ -13,7 +13,7 @@ body{
 }
 
 .header-brand{
-    font-family: Avenir;
+    font-family: Avenir, Helvetica;
     text-decoration: none;
     font-size: 300%;
     color: #ffffff;
@@ -22,7 +22,7 @@ body{
 }
 
 .nav-link-bolun{
-    font-family: Avenir;
+    font-family: Avenir, Helvetica;
     text-decoration: none;
     color: #ffffff !important;
     font-size: 200%;
@@ -45,7 +45,7 @@ body{
 .footer-p{
     color: #ffffff;
     font-weight: bold;
-    font-family: Avenir;
+    font-family: Avenir, Helvetica;
 }
 
 .foot-icon{

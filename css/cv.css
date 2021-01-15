@@ -9,7 +9,7 @@ h2{
 }
 
 .edu-links{
-    font-family: Avenir, Garamond;
+    font-family: Avenir, Helvetica, Garamond;
     display: inline-block;
     text-decoration: none;
     color: #ffffff !important;
@@ -22,14 +22,14 @@ h2{
 }
 
 .edu_years{
-    font-family: Avenir, Garamond;
+    font-family: Avenir, Helvetica, Garamond;
     display: inline-block;
     color: #ffffff !important;
     font-size: 150%;
 }
 
 .edu-major{
-    font-family: Avenir, Garamond;
+    font-family: Avenir, Helvetica, Garamond;
     display: block;
     color: #ffffff !important;
     font-size: 125%;
@@ -37,18 +37,18 @@ h2{
 }
 
 .edu-title{
-    font-family: Avenir, Garamond;
+    font-family: Avenir, Helvetica, Garamond;
 }
 
 .edu-content{
-    font-family: Avenir, Garamond;
+    font-family: Avenir, Helvetica, Garamond;
     color: #ffffff !important;
     font-size: 125%;
 }
 
 .list-group-item{
     background-color: transparent;
-    font-family: Avenir;
+    font-family: Avenir, Helvetica;
     color: lightblue;
     font-size: 125%;
     border-top: 0;

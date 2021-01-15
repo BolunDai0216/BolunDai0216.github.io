@@ -44,7 +44,7 @@ body{
 }
 
 .card-text{
-    font-family: Roboto, Avenir;
+    font-family: Roboto, Avenir, Helvetica;
     color: #b3b149;
     font-weight: bold;
 }
@@ -75,20 +75,20 @@ body{
 }
 
 .blog-title{
-    font-family: Colfax, Avenir, Georgia;
+    font-family: Colfax, Avenir, Helvetica, Georgia;
     color: #FFFEB5;
     font-weight: bolder;
     padding-left: 10%;
 }
 
 .blog-content{
-    font-family: Charter, Avenir;
+    font-family: Charter, Avenir, Helvetica;
     color: white;
     font-size: 150%;
 }
 
 .blog-date{
-    font-family: Avenir;
+    font-family: Avenir, Helvetica;
     font-weight: bold;
     padding-left: 10%;
     color: #FFFEB5;
@@ -116,10 +116,27 @@ pre, line-numbers{
 
 .citation{
     color: beige;
-    font-family: Avenir;
+    font-family: Avenir, Helvetica;
     font-size: 100%;
 }
 
 .cards {
     margin-right: 10%;
+}
+
+.table{
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 70%;
+    font-family: Avenir, Helvetica;
+    color: white;
+}
+
+.table-head-style{
+    font-weight: bold;
+    font-size: large;
+}
+
+.table-body-style{
+    font-size: large;
 }

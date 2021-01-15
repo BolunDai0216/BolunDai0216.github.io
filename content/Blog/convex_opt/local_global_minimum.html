@@ -40,21 +40,33 @@
                     \mathrm{s.t.}&\ g_i(x) \leq 0\\
                     &\ h_i(x) = 0,
                     \end{align*}$$
-                    a local minimum, i.e. for \(\|x - y\|_2\leq\rho\) we have \(f(x) < f(y)\), is also a global minimum,
-                        i.e. for \(y\in\mathbb{R}^n\) we have \(f(y)> f(x)\).
+                    a local minimum is also a global minimum. If a
+                    point \(x\) is a local minimum, then in a small local region, any other point \(y\) will make the
+                    objective function output a larger value, i.e. \(f(x) < f(y)\). In mathematical terms, no matter how
+                        weirdly shaped the local region is we can always find a circle that inscribes the edges.
+                        Therefore we can denote the local region where \(x\) is the local minimum as \(\|x -
+                        y\|_2\leq\rho\). For the global minimum, then any point \(y\) in the domain \(\mathcal{D}\) will
+                        make the objective function output a larger value, i.e. \(f(y)> f(x)\).
                 </p>
 
                 <p class="text-left blog-content full-page-blog">
-                    We can prove this by contradiction. First we assume a point \(z\in\mathcal{D}\), such that
-                    \(f(x) > f(z)\). In other words, \(x\) is assumed to not be the global minimum. Also, since \(x\) is
-                    a local minimum, having \(f(x)> f(z)\) is saying that \(\|x - z\|_2> \rho\).
-                    We define a point \(m\) such that \(m=tx + (1-t)z\), where \(0\leq t\leq1\). First, we
-                    can say that \(y\in\mathcal{D}\), because \(\mathcal{D}\) is a convex set. Second, we
-                    can say that \(m\) is feasible, in other words \(g_i(m) \leq 0\) and \(h_i(m) = 0\),
-                    let's prove this.
+                    We can prove this by contradiction. The statement is
+                    $$\mathrm{x\ is\ a\ local\ minimum}\rightarrow\mathrm{x\ is\ the\ global\ minimum},$$
+                    to contradict it we simply need to assume \(x\) is not the global minimum. If \(x\) is not the
+                    global minimum than we can find a point \(z\in\mathcal{D}\), such that
+                    \(f(x) > f(z)\). Since \(x\) is still a local minimum, having \(f(x)> f(z)\) is saying that \(\|x -
+                    z\|_2> \rho\). We define a point \(m\) such that \(m=tx + (1-t)z\), where \(0\leq t\leq1\).
                 </p>
 
-                <p class="text-left blog-content full-page-blog"> For a problem to be a convex optimization
+                <p class="text-left blog-content full-page-blog">
+                    First, we can say that \(y\in\mathcal{D}\), because \(\mathcal{D}\) is a convex set. This comes from
+                    the definition of convex sets: for a convex set \(C\), if \(x, y\in C\) then for \(0\leq t\leq1\) we
+                    have \(tx + (1-t)y\in C\).
+                </p>
+
+                <p class="text-left blog-content full-page-blog"> Second, we
+                    can say that \(m\) is feasible, in other words \(g_i(m) \leq 0\) and \(h_i(m) = 0\),
+                    let's prove this. For a problem to be a convex optimization
                     problem we need the objective function \(f(\cdot)\) and inequality constraints
                     \(g_i(\cdot)\) to be convex functions. Since \(g_i(\cdot)\) is a convex function we have
                     $$\begin{align*}
@@ -87,9 +99,9 @@
                     conclude that if \(x\) is a local minimum then it is also a global minimum.
                 </p>
 
-                <hr style="height:4px; border-width:0; color:white; background-color:white">
+                <hr style="height:4px; border-width:0; margin-top: 2%; color:white; background-color:white">
                 <p class="text-left blog-content full-page-blog citation">
-                    Powered by <a href="https://www.mathjax.org">
+                    Credit to Ryan Tibshirani, powered by <a href="https://www.mathjax.org">
                         <img title="Powered by MathJax" src="https://www.mathjax.org/badge/mj_logo.png"
                             style="border:0;" alt="Powered by MathJax" />
                     </a>

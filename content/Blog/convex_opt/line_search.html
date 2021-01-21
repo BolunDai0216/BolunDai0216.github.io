@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Line Search</title>
+    <title>Gradient Descent &amp Line Search</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -27,13 +27,55 @@
 
         <div class="container">
             <div class="row">
-                <h1 class="text-left blog-title">Line Search</h1>
+                <h1 class="text-left blog-title">Gradient Descent &amp Line Search</h1>
                 <p class="blog-date">By Bolun Dai | Jan 21st, 2021</p>
             </div>
 
             <div class="row" style="margin-top: 4%;">
                 <p class="text-left blog-content full-page-blog">
-                    Line search is a method to get the step size in gradient descent.
+                    Gradient descent is a method for unconstrained, smooth convex optimization problems, such as
+                    $$\min_{x}\ \ f(x).$$
+                    Following the definition of a convex optimiztion problem: the objective has to be a convex function
+                    over a convex domain. Along with the smooth assumption, we can say that \(f(x)\) is a convex and
+                    differentiable function over \(\mathrm{dom}(f) = \mathbb{R}^n\). Starting from an initial state
+                    \(x^{(0)}\in\mathbb{R}^n\), at each step the gradient descent algorithm performs an update
+                    $$x^{(k)} = x^{(k-1)} - t_k\nabla f(x^{(k-1)}),\ k=1, 2, 3, \cdots,$$
+                    here \(t_k\) is the \(k\)-th step size, \(\nabla f(x^{(k-1)})\) is the gradient of \(f(x)\)
+                    evaluated at \(x^{(k-1)}\) and \(x^{(k)}\) is the estimation of the solution after the \(k\)-th
+                    update. We perform the update iteratively until it converges to a solution \(x^*\), which
+                    approximately minimizes \(f(x)\).
+                </p>
+
+                <p class="text-left blog-content full-page-blog">
+                    For those coming from a machine learning background we know the term gradient descent from
+                    stochastic gradient descent (SGD), and the intuition behind SGD is simply going in the direction of
+                    the negative gradient. This is correct. However, this is a processed version, the original intuition
+                    behind gradient descent is different.
+                </p>
+
+                <p class="text-left blog-content full-page-blog">
+                    For the original flavor, we are approximating the function \(f(x)\) at \(x^{(k)}\) using a quadratic
+                    function, then we can find \(\tilde{x}\) such that it gives the minimal value to the quadratic
+                    function. Afterwards, we simply update the current estimation of the solution to be \(\tilde{x}\).
+                    Now the next problem becomes which quadratic approximation should we use? If we write the
+                    second-order Taylor's expansion of \(f(x)\) at \(x^{(k)}\) we have
+                    $$f(y)\approx f(x^{(k)}) + \nabla f^T(x^{(k)})(y - x^{(k)}) + \frac{1}{2}(y -
+                    x^{(k)})^T\nabla^2f^T(x^{(k)})(y - x^{(k)}).$$
+                    Then by estimating the Hessian \(\nabla^2f^T(x^{(k)})\) with \(\frac{1}{t_k}I\) we have
+                    $$f(y)\approx f(x^{(k)}) + \nabla f^T(x^{(k)})(y - x^{(k)}) + \frac{1}{2t_k}\|y -
+                    x^{(k)}\|_2^2.$$
+                    Since the approximated quadratic function has the same gradient as \(f(x)\) at \(x^{(k)}\), we can
+                    use the gradient of \(f(x)\) at \(x^{(k)}\) to find the minimum value of the approximated quadratic
+                    function. If we take the derivative of the approximated quadratic function we have
+                    $$\frac{\partial f(y)}{\partial y} = \nabla{f(x^{(k)})} + \frac{1}{t_k}(y - x^{(k)}).$$
+                    By setting it to 0 we have \(y^* = x^{(k)} = x^{(k-1)} - t_k\nabla f(x^{(k-1)})\). Although the
+                    result is that same as going in the negative gradient direction, the intuition behind is not the
+                    same. The next problem that we face is how to define the step size \(t_k\). One thing to note is
+                    that with different step sizes the approximated quadratic function will also be different.
+                </p>
+
+                <p class="text-left blog-content full-page-blog">
+                    Line search is a method to get the step size \(t_k\) in gradient descent.
                 </p>
 
                 <hr style="height:4px; border-width:0; margin-top: 2%; color:white; background-color:white">

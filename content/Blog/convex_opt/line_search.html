@@ -75,7 +75,33 @@
                 </p>
 
                 <p class="text-left blog-content full-page-blog">
-                    Line search is a method to get the step size \(t_k\) in gradient descent.
+                    Line search is a method to get the step size \(t_k\) in gradient descent. A nice step size would
+                    make the next update \(x^+\) satisfy \(f(x^+)\) being less than \(f(x)\). Before we go into the
+                    details of line search, I want to show how we can change the units \(\Delta{x}\) when describing a
+                    function. By default, the unit we use in the coordinate system is 1. When we say \(x + t\) we are
+                    actually saying \(x + t\cdot\Delta{x}\), where \(\Delta{x}=1\). We can also set \(\Delta{x}\) to be
+                    other values. For example, let \(f(x) = (x-2)^2+1\), which we can rewrite as \(f(x_0 + t\Delta{x}) =
+                    (t\Delta{x}-2)^2 + 1\) if \(x_0 = 0\). And for different \(\Delta{x}\) values we can have the
+                    following plot:
+                    <img src="../../../img/blog-materials/unitLineSearchPlots.png" class="img-fluid"
+                        alt="Example of how using different units effect the function plot">
+                    We can change the unit to be anything we want, such as \(-\nabla{f(x_0)}\) which is exactly what it
+                    is for backtracing line search. For a function \(f(x_0 + t\Delta{x})\), its tangent line at \(x_0\)
+                    can be described by \(f(x_0) + t\nabla_t{f(x_0)}^T\Delta{x}\). If we add a parameter \(\alpha\in(0,
+                    0.5]\) and have the line \(f(x_0) + \alpha t\nabla_t{f(x_0)}^T\Delta{x}\), we can see that it
+                    decreases as \(t\) gets larger.
+                    <img src="../../../img/blog-materials/goalLineSearchPlots.png" class="img-fluid"
+                        alt="Demonstration of the goal of line search">
+                </p>
+
+                <p class="text-left blog-content full-page-blog">
+                    For backtracing line search we do not hope that the step size gives us something that can directly
+                    generate the solution. What we do hope is that after the update the new temporary solution is better
+                    than a very loose upper bound of the solution, i.e. it is decreasing. A nice and simple goal is that
+                    $$f(x_0 + t\Delta{x}) \leq f(x_0) + \alpha t\nabla_t{f(x_0)}^T\Delta{x}.$$
+                    To achieve this we can utilize another parameter \(\beta\in(0, 1)\) and set \(t_\mathrm{init}\) to
+                    some value, and iteratively decrease \(t\) by setting it to \(\beta t\) as long as the above
+                    criterion is not satisfied.
                 </p>
 
                 <hr style="height:4px; border-width:0; margin-top: 2%; color:white; background-color:white">

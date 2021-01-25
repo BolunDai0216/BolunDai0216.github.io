@@ -104,6 +104,21 @@
                     criterion is not satisfied.
                 </p>
 
+                <p class="text-left blog-content full-page-blog">
+                    For exact line search we find the step size that gives the minimum value along the gradient
+                    direction. However, this is not always plausible given that it may take many iterations to be within
+                    a tolerable range. Which makes exact line search actually slower than backtracking. One question
+                    that I had before was: since exact line search gives the minimum value why does it take more than
+                    one step to reach the solution. The answer to this question is: exact line search only gives the
+                    minimum value along the gradient direction at the current point, where the solution might not be on
+                    that line.
+                </p>
+
+                <p class="text-left blog-content full-page-blog">
+                    That is all I want to say about gradient descent and line search. I will try to update the blog to
+                    make my explanation more understandable.
+                </p>
+
                 <hr style="height:4px; border-width:0; margin-top: 2%; color:white; background-color:white">
                 <p class="text-left blog-content full-page-blog citation">
                     Credit to Ryan Tibshirani, powered by <a href="https://www.mathjax.org">

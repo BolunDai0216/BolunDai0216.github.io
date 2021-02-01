@@ -36,17 +36,18 @@ body{
 }
 
 .card-title a{
-    font-family: Charter, Georgia;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     color: white;
     text-decoration: none;
-    font-size: larger;
+    font-size: 24px;
     font-weight: bold;
 }
 
 .card-text{
-    font-family: Roboto, Avenir, Helvetica;
+    font-family: Avenir, Helvetica;
     color: #b3b149;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 16px;
 }
 
 .control-theory{
@@ -72,26 +73,33 @@ body{
 .card{
     background-color: darkolivegreen;
     height: 300px;
+    border: none;
+    box-shadow: 1px 1px 15px 2px rgba(0,0,0,0.2);
+}
+
+.card:hover{
+    box-shadow: 4px 4px 15px 6px rgba(0,0,0,0.2);
 }
 
 .blog-title{
-    font-family: Colfax, Avenir, Helvetica, Georgia;
-    color: #FFFEB5;
+    font-family: Avenir, Helvetica, Georgia;
+    color: darkolivegreen;
     font-weight: bolder;
     padding-left: 10%;
 }
 
 .blog-content{
-    font-family: Charter, Avenir, Helvetica;
+    font-family: Georgia, 'Times New Roman', Times, serif, Avenir, Helvetica;
     color: white;
-    font-size: 150%;
+    font-size: 20px;
 }
 
 .blog-date{
     font-family: Avenir, Helvetica;
     font-weight: bold;
+    font-size: 16px;
     padding-left: 10%;
-    color: #FFFEB5;
+    color:darkolivegreen;
 }
 
 .full-page-blog{

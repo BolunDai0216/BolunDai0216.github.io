@@ -70,12 +70,23 @@
                     We can set \(x^{(k)}\) to be where the minimum value of the approximated quadratic
                     function is. To do this, we take the derivative of the approximated quadratic function
                     $$\frac{\partial f(y)}{\partial y} = \nabla{f(x^{(k)})} + \frac{1}{t_k}(y - x^{(k)}).$$
-                    By setting it to 0 we have \(y^* = x^{(k)} = x^{(k-1)} - t_k\nabla f(x^{(k-1)})\). Although the
-                    result is that same as going in the negative gradient direction, the thought process is not
-                    the same. The next problem that we face is how to define the step size \(t_k\). One thing to note is
-                    that with different step sizes the approximated quadratic function will also be different.
+                    By setting it to 0 we have \(y^* = x^{(k)} = x^{(k-1)} - t_k\nabla f(x^{(k-1)})\). This process is
+                    shown in the image below. Assume we are at the light blue point \((4, e^4)\) on the blue curve
+                    \(e^x\). We do a quadratic approximation at \((4, e^4)\) with \(t=0.01\), which gives us the red
+                    curve. We find the argmin of the red curve and find its projection on the blue curve, which gives us
+                    the red dot. Although the result is that same as going in the negative gradient
+                    direction, the thought process is not the same. The next problem that we face is how to define the
+                    step size \(t_k\). One thing to note is that with different step sizes the approximated quadratic
+                    function will also be different.
                 </p>
+            </div>
 
+            <div>
+                <img src="../../../img/blog-materials/lineSearchIntuition.png" class="img-fluid full-page-blog"
+                    alt="Illustration of intuition behind gradient descent">
+            </div>
+
+            <div class="row">
                 <p class="text-left blog-content full-page-blog">
                     Line search is a method to get the step size \(t_k\) in gradient descent. A nice step size would
                     make the next update \(x^+\) satisfy \(f(x^+)\) being less than \(f(x)\). Before we go into the

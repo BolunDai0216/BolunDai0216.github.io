@@ -94,6 +94,10 @@ body{
     font-size: 20px;
 }
 
+.theorem{
+    font-weight: 400;
+}
+
 .blog-date{
     font-family: Avenir, Helvetica;
     font-weight: bold;

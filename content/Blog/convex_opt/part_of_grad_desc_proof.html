@@ -36,8 +36,80 @@
 
             <div class="row" style="margin-top: 4%;">
                 <p class="text-left blog-content full-page-blog">
-                    This blog post proves a crucial statement in the gradient descent convergence analysis.
-                <p>
+                    This blog post proves a crucial statement in the gradient descent convergence analysis: from the
+                    assumption \(f\) is convex, twice differentiable function and \(\nabla{f}\) is Lipschitz continuous
+                    with constant \(L>0\) we have
+                    $$f(y) \leq f(x) + \nabla{f}(x)^T(y - x) + \frac{L}{2}\|y-x\|_2^2.$$
+                    Here we list four statements:
+                </p>
+
+                <ol class="text-left blog-content full-page-blog">
+                    <li>\(\nabla{f}\) is Lipschitz continuous with constant \(L>0\)</li>
+                    <li>\((\nabla{f}(x)-\nabla{f}(x))^T(x-y)\leq L\|x-y\|_2^2\)</li>
+                    <li>\(\nabla^2{f}(x)\preceq LI\)</li>
+                    <li>\(f(y) \leq f(x) + \nabla{f}(x)^T(y - x) + \frac{L}{2}\|y-x\|_2^2\)</li>
+                </ol>
+
+                <p class="text-left blog-content full-page-blog">
+                    The outline of the proof is \(\mathrm{i}\rightarrow \mathrm{ii}\rightarrow \mathrm{iii} \rightarrow
+                    \mathrm{iv}\).
+                </p>
+
+                <p class="h1 text-left full-page-blog">
+                    i &rarr; ii
+                </p>
+
+                <p class="text-left blog-content full-page-blog">
+                    From \(\nabla{f}\) is Lipschitz continuous with constant \(L>0\) we know \(\|\nabla{f}(x) -
+                    \nabla{f}(y)\|_2\leq L\|x-y\|_2\). From the Cauchy-Schwartz inequality we have
+                    $$|\langle u, v\rangle| \leq \|u\|_2\|v\|_2.$$
+                    Setting \(u = \nabla{f}(x) - \nabla{f}(y)\) and \(v = x - y\) we have
+                    $$\begin{align*}
+                    |(\nabla{f}(x) - \nabla{f}(y))^T(x - y)| &\leq \|\nabla{f}(x) - \nabla{f}(y)\|_2\|x - y\|_2\\
+                    &\leq L\|x-y\|_2\|x - y\|_2 & \mathrm{Lipschitz\ condition}\\
+                    &\leq L\|x-y\|_2^2.
+                    \end{align*}$$
+                    Since we have the absolute value of \((\nabla{f}(x) - \nabla{f}(y))^T(x - y)\) less than or equal to
+                    \(L\|x-y\|_2^2\), we definetely have
+                    $$(\nabla{f}(x)-\nabla{f}(x))^T(x-y)\leq L\|x-y\|_2^2.$$
+                </p>
+
+                <p class="h1 text-left full-page-blog">
+                    ii &rarr; iii
+                </p>
+
+                <p class="text-left blog-content full-page-blog">
+                    From the mean value theorem we can have
+                    $$\frac{\nabla f(x + \Delta{x}) - \nabla f(x)}{\Delta{x}} = \nabla^2f(x + t\Delta{x}),\ t\in[0,
+                    1].$$
+                    If we multiply both sides with \(\Delta{x}\) and take the norm on both sides gives us
+                    $$\begin{align*}
+                    \|\nabla^2f(x + t\Delta{x})\Delta{x}\| &= \|\nabla f(x + \Delta{x}) - \nabla f(x)\|\\
+                    \|\nabla^2f(x + t\Delta{x})\|\|\Delta{x}\| &\leq L\|\Delta{x}\|\\
+                    \|\nabla^2f(x + t\Delta{x})\| &\leq L\\
+                    \|\nabla^2f(x)\| &\leq L & \mathrm{set}\ t\rightarrow 0\
+                    \end{align*}$$
+                    Since \(f\) is a convex function, we know its Hessian is positive semidefinite. Thus,
+                    \(\|\nabla^2f(x)\|\) represents the spectral norm, which is equal to its largest eigenvalue. Thus we
+                    have \(\nabla^2{f}(x)\preceq LI\). See definition 7 and fact 8 of
+                    <a href="../../../img/blog-materials/NotesMatrices.pdf">
+                        this note
+                    </a>.
+                </p>
+
+                <p class="h1 text-left full-page-blog">
+                    iii &rarr; iv
+                </p>
+
+                <p class="text-left blog-content full-page-blog">
+                    From the second-order Taylor series we have
+                    $$f(y) = f(x) + \nabla f(x)^T(y - x) + \frac{1}{2}(y - x)^T\nabla^2{f}(x)(y - x).$$
+                    From \(\nabla^2{f}(x)\preceq LI\) we have
+                    $$\frac{1}{2}(y - x)^T\nabla^2{f}(x)(y - x) \leq \frac{1}{2}(y - x)^TLI(y - x) =
+                    \frac{L}{2}\|y-x\|_2^2.$$
+                    Thus we have
+                    $$f(y) \leq f(x) + \nabla{f}(x)^T(y - x) + \frac{L}{2}\|y-x\|_2^2.$$
+                </p>
             </div>
 
             <div class="row">

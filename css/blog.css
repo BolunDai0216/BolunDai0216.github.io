@@ -152,3 +152,21 @@ pre, line-numbers{
 .table-body-style{
     font-size: large;
 }
+
+ol li{
+    margin-bottom: 1%;
+}
+
+ol{
+    list-style-type: lower-roman; 
+    list-style-position: inside;
+}
+
+.h1{
+    font-family: Georgia, 'Times New Roman', Times, serif, Avenir, Helvetica;
+    color: white;
+}
+
+p a{
+    font-weight: bold;
+}

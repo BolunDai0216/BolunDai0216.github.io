@@ -59,6 +59,9 @@
                         <a class="list-group-item blog-side-item" href="#discrete-fourier-transform">
                             Discrete Fourier Transform
                         </a>
+                        <a class="list-group-item blog-side-item" href="#applications">
+                            Applications
+                        </a>
                     </div>
                 </div>
 
@@ -192,12 +195,70 @@
 
                         <p class="text-left blog-content full-page-blog"
                             style="padding-left: 0%; padding-right: 0%; margin-top: 1%;">
-                            ...
+                            Till now, we only dealt with signals that are periodic, for non-periodic signals we will
+                            have to use a new tool: Fourier transform. Let's first see what happens if we write out the
+                            complex Fourier series for signals \(f(x)\) that are only defined on \([-L, L]\), then we
+                            will get a \(f(x)\) using Fourier series that is \(2L\) periodic. If \(L\rightarrow\infty\),
+                            then \(f(x)\) becomes a non-periodic signal, and we will see what happens as it approaches
+                            this limit.
+                        </p>
+
+                        <p class="text-left blog-content full-page-blog"
+                            style="padding-left: 0%; padding-right: 0%; margin-top: 1%;">
+                            As for \(f(x)\) that are defined on \([0, L]\), we need to first see what happens to the
+                            sine and cosine functions if they are \(2L\) or \(2L/k\) periodic
+                            $$\frac{2\pi}{m} = \frac{2L}{k} \rightarrow m = \frac{k\pi}{L}.$$
+                            Thus we have
+                            $$\cos(\frac{k\pi}{L}x) + i\sin(\frac{k\pi}{L}x) = e^{ik\pi x/L},$$
+                            the corresponding Fourier series becomes
+                            $$f(x) = \sum_{k=-\infty}^{\infty}c_ke^{ik\pi x/L},$$
+                            with
+                            $$c_k = \frac{1}{2\pi}\Big\langle f(x), e^{ik\pi x/L}\Big\rangle =
+                            \frac{1}{2L}\int_{-L}^{L}{f(x)e^{-ik\pi x/L}dx}.$$
+                            To simplify the notation we define \(\Delta{\omega} = \pi/L\), as \(L\rightarrow\infty\) we
+                            have \(\Delta{\omega}\rightarrow0\). We then have
+                            $$\begin{align*}
+                            f(x) &= \lim_{L\rightarrow\infty}\sum_{k=-\infty}^{\infty}c_ke^{ik\pi x/L}\\
+                            &=
+                            \lim_{L\rightarrow\infty}\sum_{k=-\infty}^{\infty}\Bigg[\frac{1}{2L}\int_{-L}^{L}{f(x)e^{-ik\pi
+                            x/L}dx}\Bigg]e^{ik\pi x/L}\\
+                            &=
+                            \lim_{L\rightarrow\infty}\sum_{k=-\infty}^{\infty}\Bigg[\frac{1}{2L}\int_{-L}^{L}{f(\xi)e^{-ik\pi
+                            \xi/L}d\xi}\Bigg]e^{ik\pi x/L} & \mathrm{replace}\ x\ \mathrm{using\ a\ dummy\ variable\
+                            }\xi\\
+                            &=
+                            \lim_{\Delta{\omega}\rightarrow0}\sum_{k=-\infty}^{\infty}\Bigg[\frac{\Delta{\omega}}{2\pi}\int_{-\pi/\Delta{\omega}}^{\pi/\Delta{\omega}}{f(\xi)e^{-ik\Delta{\omega}
+                            \xi}d\xi}\Bigg]e^{ik\Delta{\omega}x} & \mathrm{replace}\ L\ \mathrm{with}\ \Delta{\omega}\\
+                            &=
+                            \lim_{\Delta{\omega}\rightarrow0}\sum_{k=-\infty}^{\infty}\Bigg[\frac{1}{2\pi}\int_{-\pi/\Delta{\omega}}^{\pi/\Delta{\omega}}{f(\xi)e^{-ik\Delta{\omega}
+                            \xi}d\xi}\Bigg]e^{ik\Delta{\omega}x}\Delta{\omega}\\
+                            &=
+                            \int_{-\infty}^{\infty}\frac{1}{2\pi}\Bigg[\int_{-\infty}^{\infty}{f(\xi)e^{-i\omega\xi}d\xi}\Bigg]e^{i\omega
+                            x}d\omega\\
+                            &= \frac{1}{2\pi}\int_{-\infty}^{\infty}\widehat{f}(\omega)e^{i\omega x}d\omega.
+                            \end{align*}$$
+                            This gives us a forward and an inverse Fourier transform, or a Fourier transform pair
+                            $$\begin{align*}
+                            \widehat{f}(\omega) &= \mathcal{F}\Big(f(x)\Big) = \int_{-\infty}^{\infty}{f(x)e^{-i\omega
+                            x}dx}\\
+                            f(x) &= \mathcal{F}^{-1}\Big(\widehat{f}(\omega)\Big) =
+                            \frac{1}{2\pi}\int_{-\infty}^{\infty}\widehat{f}(\omega)e^{i\omega x}d\omega.
+                            \end{align*}$$
                         </p>
 
                         <p class="h2 text-left full-page-blog" id="discrete-fourier-transform"
                             style="color: white; font-family: Georgia; border-bottom: 2px solid white; padding-left: 0%; margin-right: 15%;">
                             Discrete Fourier Transform
+                        </p>
+
+                        <p class="text-left blog-content full-page-blog"
+                            style="padding-left: 0%; padding-right: 0%; margin-top: 1%;">
+                            ...
+                        </p>
+
+                        <p class="h2 text-left full-page-blog" id="applications"
+                            style="color: white; font-family: Georgia; border-bottom: 2px solid white; padding-left: 0%; margin-right: 15%;">
+                            Applications
                         </p>
 
                         <p class="text-left blog-content full-page-blog"

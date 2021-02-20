@@ -158,6 +158,31 @@
                             $$B_k = \frac{2}{L}\int_{0}^{L}{f(x)\sin(\frac{2k\pi}{L}x)dx} =
                             \frac{1}{\|\sin(\frac{2k\pi}{L}x)\|^2}\Big\langle
                             f(x), \sin(\frac{2k\pi}{L}x)\Big\rangle.$$
+                            Note that even though \(f(x)\) is defined on \([0, L]\), the resulting Fourier series is a
+                            periodic function defined on \(\mathbb{R}\) with period \(L\).
+                        </p>
+
+                        <p class="text-left blog-content full-page-blog"
+                            style="padding-left: 0%; padding-right: 0%; margin-top: 1%;">
+                            The above is only concerned about \(f(x)\in\mathbb{R}\), what happens if
+                            \(f(x)\in\mathbb{C}\)? We can use a different set of complex functions \(e^{ikx}\), which
+                            using Euler's equation we have
+                            $$e^{ikx} = \cos(kx) + i\sin(kx).$$
+                            We can easily prove that the \(e^{ikx}\)'s form an orthogonal basis
+                            $$\begin{align*}
+                            \Big\langle e^{ijx}, e^{ikx}\Big\rangle &= \int_{-\pi}^{\pi}{e^{ijx}(e^{ikx})^*dx}\\
+                            &= \int_{-\pi}^{\pi}{e^{ijx}e^{-ikx}dx}\\
+                            &= \int_{-\pi}^{\pi}{e^{i(j-k)x}dx}\\
+                            &= \frac{1}{i(j-k)}e^{i(j-k)x}\Big|_{-\pi}^{\pi} = \begin{cases}
+                            0 & j\neq k\\
+                            2\pi & j = k.
+                            \end{cases}
+                            \end{align*}$$
+                            Then for \(f(x)\) defined on \([-\pi, \pi]\) we have:
+                            $$f(x) = \sum_{k=-\infty}^{\infty}c_ke^{ikx} = \sum_{k=-\infty}^{\infty}(\alpha_k +
+                            i\beta_k)\Big[\cos(kx) + i\sin(kx)\Big],$$
+                            where
+                            $$c_k = \frac{1}{2\pi}\Big\langle f(x), e^{ikx}\Big\rangle.$$
                         </p>
 
                         <p class="h2 text-left full-page-blog" id="fourier-transform"

@@ -47,16 +47,16 @@
             <div class="row">
                 <div class="col-12 col-lg-2">
                     <div id="side-list" class="list-group sticky-top">
-                        <a class="list-group-item blog-side-item" href="#introduction">
-                            Introduction
+                        <a class="list-group-item blog-side-item" href="#preliminaries">
+                            Preliminaries
                         </a>
-                        <a class="list-group-item blog-side-item" href="#">
+                        <a class="list-group-item blog-side-item" href="#fourier-series">
                             Fourier Series
                         </a>
-                        <a class="list-group-item blog-side-item" href="#">
+                        <a class="list-group-item blog-side-item" href="#fourier-transform">
                             Fourier Transform
                         </a>
-                        <a class="list-group-item blog-side-item" href="#">
+                        <a class="list-group-item blog-side-item" href="#discrete-fourier-transform">
                             Discrete Fourier Transform
                         </a>
                     </div>
@@ -69,9 +69,9 @@
                             series, show the intuition behind them and talk about how to obtain them in real life.
                         </p>
 
-                        <p class="h2 text-left full-page-blog" id="introduction"
-                            style="color: white; font-family: Avenir; border-bottom: 2px solid white; padding-left: 0%; margin-right: 15%;">
-                            Introduction
+                        <p class="h2 text-left full-page-blog" id="preliminaries"
+                            style="color: white; font-family: Georgia; border-bottom: 2px solid white; padding-left: 0%; margin-right: 15%;">
+                            Preliminaries
                         </p>
 
                         <p class="text-left blog-content full-page-blog"
@@ -84,12 +84,102 @@
                             (Fourier series) and non-periodic signals (Fourier transform).
                         </p>
 
-                        <p class="text-left blog-content full-page-blog"
-                            style="padding-left: 0%; padding-right: 0%; margin-top: 1%;">
+                        <p class="text-left blog-content full-page-blog" style="padding-left: 0%; padding-right: 0%;">
                             Before going into the details, first let's review inner products and its role in
                             projections, then we will show that using a specific definition of inner products sine and
-                            cosine waves form an orthogonal basis.
+                            cosine waves form an orthogonal basis. In the Euclidean space, the inner product can be seen
+                            as a measurement of how similar two vectors are. The inner product of two vectors in a
+                            Euclidean space can be calulated as
+                            $$\langle\vec{a},\vec{b}\rangle = \|\vec{a}\|\|\vec{b}\|\cos\theta,$$
+                            where \(\theta\) is the angle between \(\vec{a}\) and \(\vec{b}\). We can see if the two
+                            vectors are pointing in the same direction \(\cos\theta = 1\), if they are pointing in the
+                            opposite direction then \(\cos\theta = -1\). Thus, the more similar the two vectors, the
+                            larger the inner product, vice versa. If \(\vec{b}\) is a unit vector then
+                            \(\|\vec{a}\|\|\vec{b}\|\cos\theta\) is the magnitude of the projection vector of
+                            \(\vec{a}\) onto \(\vec{b}\). If we have two coordinate systems \(x, y\) and \(u,
+                            v\), for a vector in the \(x, y\) coordinate system it can be represented as
+                            $$\vec{p} = (a, b) := a\frac{\vec{x}}{\|\vec{x}\|^2} + b\frac{\vec{y}}{\|\vec{y}\|^2}.$$
+                            To represent it in the \(u, v\) coordinate system, we would have
+                            $$\vec{p} = (\langle\vec{p},\vec{u}\rangle, \langle\vec{p},\vec{v}\rangle) :=
+                            \langle\vec{p},\vec{u}\rangle\frac{\vec{u}}{\|\vec{u}\|^2} +
+                            \langle\vec{p},\vec{v}\rangle\frac{\vec{v}}{\|\vec{v}\|^2}.$$
+                            The reason the we have the norm square in the denominator is because the projection vector
+                            of \(\vec{a}\) onto \(\vec{b}\) is actually \(\|\vec{a}\|\cos\theta\vec{e}\), where
+                            \(\vec{e}\)
+                            is the unit vector along the direction of \(\vec{b}\). Thus we have
+                            $$\langle\vec{a},\vec{b}\rangle\frac{\vec{b}}{\|\vec{b}\|^2} =
+                            \|\vec{a}\|\|\vec{b}\|\cos\theta\frac{\vec{b}}{\|\vec{b}\|^2} =
+                            \|\vec{a}\|\cos\theta\frac{\vec{b}}{\|\vec{b}\|} = \|\vec{a}\|\cos\theta\vec{e}$$
                         </p>
+
+                        <p class="text-left blog-content full-page-blog" style="padding-left: 0%; padding-right: 0%;">
+                            The above definition of the inner product is defined in the Euclidean space. Since we are
+                            using sine and cosine functions as basis, we are no longer in a Euclidean space, now we are
+                            in the realm of a Hilbert space (this is not important, you can just see this as a way of
+                            saying the coordinate system is made up of functions). In the Hilbert space, the inner
+                            product can be defined as
+                            $$\Big\langle f(x), g(x)\Big\rangle = \int_b^a f(x)\overline{g}(x)dx, x\in\mathbb{C}$$
+                            where \(\overline{g}(x)\) denotes the conjugate of \(g(x)\). Recall the conjugate of \(a +
+                            ib\) is simply \(a - ib\). If we are using a computer to get data from \(f(x)\) and
+                            \(g(x)\), we are not able to get the data at each \(x\). What we can do is for every fixed
+                            iterval \(\Delta{x}\) we sample a data point and we can calculate the inner product as
+                            $$\Big\langle f(x), g(x)\Big\rangle \approx \sum_{i=1}^{n}{f_i\overline{g}_i\Delta{x}}.$$
+                        </p>
+
+                        <p class="h2 text-left full-page-blog" id="fourier-series"
+                            style="color: white; font-family: Georgia; border-bottom: 2px solid white; padding-left: 0%; margin-right: 15%;">
+                            Fourier Series
+                        </p>
+
+                        <p class="text-left blog-content full-page-blog"
+                            style="padding-left: 0%; padding-right: 0%; margin-top: 1%;">
+                            First we show the result, for \(f(x)\) defined on \([-\pi, \pi]\) we have:
+                            $$f(x) = \frac{A_0}{2} + \sum_{k=1}^{\infty}\Big[A_k\cos(kx) + B_k\sin(kx)\Big],$$
+                            where we have
+                            $$A_k = \frac{1}{\pi}\int_{-\pi}^{\pi}{f(x)\cos(kx)dx} = \frac{1}{\|\cos(kx)\|^2}\Big\langle
+                            f(x), \cos(kx)\Big\rangle$$
+                            and
+                            $$B_k = \frac{1}{\pi}\int_{-\pi}^{\pi}{f(x)\sin(kx)dx} = \frac{1}{\|\sin(kx)\|^2}\Big\langle
+                            f(x), \sin(kx)\Big\rangle.$$
+                            We can see that by simply projecting \(f(x)\) onto the sine and cosine functions we can get
+                            the corresponding Fourier coefficients. If \(f(x)\) is defined on \([0, L]\) then we would
+                            need to use a different set of sine and cosine functions. This set of functions need to have
+                            periods of \(L\) or \(L/k\). Note that the period of \(\sin(kx)\) is \(2\pi/k\). Thus, if
+                            \(\sin(mx)\) has period \(L/k\) we have
+                            $$\frac{2\pi}{m} = \frac{L}{k} \rightarrow m = \frac{2k\pi}{L}.$$
+                            Thus, we can write the Fourier series as
+                            $$f(x) = \frac{A_0}{2} + \sum_{k=1}^{\infty}\Big[A_k\cos(\frac{2k\pi}{L}x) +
+                            B_k\sin(\frac{2k\pi}{L}x)\Big],$$
+                            with
+                            $$A_k = \frac{2}{L}\int_{0}^{L}{f(x)\cos(\frac{2k\pi}{L}x)dx} =
+                            \frac{1}{\|\cos(\frac{2k\pi}{L}x)\|^2}\Big\langle
+                            f(x), \cos(\frac{2k\pi}{L}x)\Big\rangle$$
+                            and
+                            $$B_k = \frac{2}{L}\int_{0}^{L}{f(x)\sin(\frac{2k\pi}{L}x)dx} =
+                            \frac{1}{\|\sin(\frac{2k\pi}{L}x)\|^2}\Big\langle
+                            f(x), \sin(\frac{2k\pi}{L}x)\Big\rangle.$$
+                        </p>
+
+                        <p class="h2 text-left full-page-blog" id="fourier-transform"
+                            style="color: white; font-family: Georgia; border-bottom: 2px solid white; padding-left: 0%; margin-right: 15%;">
+                            Fourier Transform
+                        </p>
+
+                        <p class="text-left blog-content full-page-blog"
+                            style="padding-left: 0%; padding-right: 0%; margin-top: 1%;">
+                            ...
+                        </p>
+
+                        <p class="h2 text-left full-page-blog" id="discrete-fourier-transform"
+                            style="color: white; font-family: Georgia; border-bottom: 2px solid white; padding-left: 0%; margin-right: 15%;">
+                            Discrete Fourier Transform
+                        </p>
+
+                        <p class="text-left blog-content full-page-blog"
+                            style="padding-left: 0%; padding-right: 0%; margin-top: 1%;">
+                            ...
+                        </p>
+
                     </div>
                 </div>
             </div>

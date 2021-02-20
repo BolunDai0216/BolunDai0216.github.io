@@ -21,6 +21,20 @@ body{
     margin-right: 10%;
 }
 
+.blog-side-item{
+    background-color: transparent;
+    font-family: Avenir;
+    color: darkolivegreen;
+    font-size: 125%;
+    border-top: 0;
+    border-left: 0;
+    border-bottom: 0;
+    border-right: 0;
+    font-weight: normal;
+    margin-right: 10%;
+    padding-left: 10%;
+}
+
 .list-group a:hover{
     background-color: transparent;
     color: white;

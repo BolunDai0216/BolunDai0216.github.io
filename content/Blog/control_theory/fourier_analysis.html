@@ -263,7 +263,62 @@
 
                         <p class="text-left blog-content full-page-blog"
                             style="padding-left: 0%; padding-right: 0%; margin-top: 1%;">
-                            ...
+                            This section we will talk about how we can apply Fourier transform to solve a variety of
+                            problems. These include a way to calculate derivative that has higher accuracy than simply
+                            doing finite differencing, transforming a convolution into multiplication in the frequency
+                            domain.
+                        </p>
+
+                        <p class="text-left blog-content full-page-blog"
+                            style="padding-left: 0%; padding-right: 0%; margin-top: 1%;">
+                            We will show how taking the Fourier transform of derivatives gives a nice way to calculate
+                            derivatives
+                            $$\begin{align*}
+                            \mathcal{F}\Big(\frac{d}{dt}f(x)\Big) &=
+                            \int_{-\infty}^{\infty}{\frac{d}{dt}f(x)e^{-i\omega x}dx}\\
+                            &= \int_{-\infty}^{\infty}{\frac{d}{dt}f(x)e^{-iwx}dx} &
+                            \text{perform integration by parts}\ \int{duv} = uv - \int{udv}\\
+                            &= f(x)e^{-i\omega x}\Big|_{-\infty}^{\infty} +
+                            i\omega\int_{-\infty}^{\infty}{f(x)e^{-i\omega x}dx}\\
+                            &= 0 + i\omega\int_{-\infty}^{\infty}{f(x)e^{-i\omega x}dx} & \text{as}\
+                            x\rightarrow\pm\infty,\ f(x)\rightarrow0\\
+                            &= i\omega\widehat{f}(\omega) = i\omega\mathcal{F}\Big(f(x)\Big)
+                            \end{align*}$$
+                        </p>
+
+                        <p class="text-left blog-content full-page-blog"
+                            style="padding-left: 0%; padding-right: 0%; margin-top: 1%;">
+                            Now let's look into the relationship between convolutions and multiplication in the Fourier
+                            domain. A convolution is defined as
+                            $$f(x)*g(x). = \int_{-\infty}^{\infty}{f(x-\xi)g(\xi)d\xi}.$$
+                            If we take the inverse Fourier transform of the multiplication of \(\widehat{f}(\omega)\)
+                            and
+                            \(\widehat{g}(\omega)\) we have
+                            $$\begin{align*}
+                            \mathcal{F}^{-1}\Big(\widehat{f}(\omega)\widehat{g}(\omega)\Big) &=
+                            \frac{1}{2\pi}\int_{-\infty}^{\infty}{\widehat{f}(\omega)\widehat{g}(\omega)e^{i\omega
+                            x}d\omega}\\
+                            &=
+                            \frac{1}{2\pi}\int_{-\infty}^{\infty}{\widehat{f}(\omega)\Big[\int_{-\infty}^{\infty}{g(y)e^{-i\omega
+                            y}dy}\Big]e^{i\omega
+                            x}d\omega}\\
+                            &=
+                            \frac{1}{2\pi}\int_{-\infty}^{\infty}{\int_{-\infty}^{\infty}{\widehat{f}(\omega)g(y)e^{-i\omega
+                            y}e^{i\omega x}dy}d\omega}\\
+                            &=
+                            \frac{1}{2\pi}\int_{-\infty}^{\infty}{\int_{-\infty}^{\infty}{\widehat{f}(\omega)g(y)e^{i\omega
+                            (x-y)}d\omega}dy} & \text{commutative property of double integrals}\\
+                            &=
+                            \frac{1}{2\pi}\int_{-\infty}^{\infty}{g(y)\int_{-\infty}^{\infty}{\widehat{f}(\omega)e^{i\omega
+                            (x-y)}d\omega}dy}\\
+                            &= \int_{-\infty}^{\infty}{g(y)f(x - y)dy} & f(x - y) =
+                            \mathcal{F}^{-1}(\widehat{f}(\omega)) =
+                            \frac{1}{2\pi}\int_{-\infty}^{\infty}\widehat{f}(\omega)e^{i\omega(x-y)}d\omega\\
+                            &= f(x)*g(x).
+                            \end{align*}$$
+                            Thus we have
+                            $$\mathcal{F}(f(x)*g(x)) = \mathcal{F}(f(x)\mathcal{F}(g(x)) =
+                            \widehat{f}(\omega)\widehat{g}(\omega).$$
                         </p>
 
                     </div>

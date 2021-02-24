@@ -253,7 +253,41 @@
 
                         <p class="text-left blog-content full-page-blog"
                             style="padding-left: 0%; padding-right: 0%; margin-top: 1%;">
-                            ...
+                            One thing to note is that using discrete Fourier transform (DFT) you are actually
+                            generating a periodic function, where it is the same on the finite interval where the
+                            original function \(f(x)\) is defined. So a more suitable name maybe discrete Fourier
+                            series. Another widely used algorithm is the fast Fourier transform (FFT). The relationship
+                            between FFT and DFT is: FFT is a way to numerically realize DFT.
+                        </p>
+
+                        <p class="text-left blog-content full-page-blog"
+                            style="padding-left: 0%; padding-right: 0%; margin-top: 1%;">
+                            The forward and inverse pair of DFT is
+                            $$\begin{align*}
+                            \hat{f}_k &= \sum_{j=0}^{N-1}{f_je^{-i2\pi jk/n}}\\
+                            f_k &= \frac{1}{n}\sum_{j=0}^{N-1}{\hat{f}_je^{i2\pi jk/n}}.
+                            \end{align*}$$
+                            We can define \(\omega_n = e^{-i2\pi/n}\), then we can write the relationship between the
+                            discrete sampled data points \(f_k\)'s and the Fourier series coefficient \(\hat{f}_k\)'s
+                            $$\begin{bmatrix}
+                            \hat{f}_0\\
+                            \hat{f}_1\\
+                            \hat{f}_2\\
+                            \vdots\\
+                            \hat{f}_n
+                            \end{bmatrix} = \underbrace{\begin{bmatrix}
+                            1 & 1 & 1 & \cdots & 1\\
+                            1 & \omega_n & \omega_n^2 & \cdots & \omega_n^{(n-1)}\\
+                            1 & \omega_n^2 & \omega_n^4 & \cdots & \omega_n^{2(n-1)}\\
+                            \vdots\ & \vdots\ & \vdots\ & \ddots & \vdots\\\
+                            1 & \omega_n^{(n-1)} & \omega_n^{2(n-1)} & \cdots & \omega_n^{(n-1)^2}\\
+                            \end{bmatrix}}_\mathrm{DFT\ Matrix}\begin{bmatrix}
+                            f_0\\
+                            f_1\\
+                            f_2\\
+                            \vdots\\
+                            f_n
+                            \end{bmatrix}$$
                         </p>
 
                         <p class="h2 text-left full-page-blog" id="applications"

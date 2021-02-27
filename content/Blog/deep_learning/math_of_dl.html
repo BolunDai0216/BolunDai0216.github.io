@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mathematics of Deep Learning Notes</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Own Design -->
+    <link rel="stylesheet" href="../../../css/base.css" />
+    <link rel="stylesheet" href="../../../css/blog.css" />
+    <script src="../../../js/utils.js"></script>
+
+    <!-- Academicons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <my-header></my-header>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-0 col-lg-2">
+                    <p>
+
+                    </p>
+                </div>
+
+                <div class="col-12 col-lg-8">
+                    <h1 class="text-left blog-title" style="padding-left: 0%;">Mathematics of Deep Learning Notes</h1>
+                    <p class="blog-date" style="padding-left: 0%;">By Bolun Dai | Feb 27th, 2021</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-lg-2">
+                    <div id="side-list" class="list-group sticky-top">
+                        <a class="list-group-item blog-side-item" href="#error">
+                            Source of Error
+                        </a>
+                        <a class="list-group-item blog-side-item" href="#fourier-series">
+                            ...
+                        </a>
+                        <a class="list-group-item blog-side-item" href="#fourier-transform">
+                            ...
+                        </a>
+                        <a class="list-group-item blog-side-item" href="#discrete-fourier-transform">
+                            ...
+                        </a>
+                        <a class="list-group-item blog-side-item" href="#applications">
+                            ...
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-8">
+                    <div class="row" style="margin-top: 4%;">
+                        <p class="text-left blog-content full-page-blog" style="padding-left: 0%; padding-right: 0%;">
+                            The blog is derived from the notes I have from taking the
+                            <a
+                                href="https://www.notion.so/Mathematics-of-Deep-Learning-05cd9255f03842489083ec7cbb6338d5">
+                                Mathematics of Deep Learning
+                            </a> course at NYU by Joan Bruna.
+                        </p>
+
+                        <p class="h2 text-left full-page-blog" id="error"
+                            style="color: white; font-family: Georgia; border-bottom: 2px solid white; padding-left: 0%; margin-right: 15%;">
+                            Source of Error
+                        </p>
+
+                        <p class="text-left blog-content full-page-blog"
+                            style="padding-left: 0%; padding-right: 0%; margin-top: 1%;">
+                            ...
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <hr style="height:4px; border-width:0; margin-top: 2%; color:white; background-color:white">
+                <p class="text-left blog-content full-page-blog citation">
+                    Credit to Joan Bruna, powered by <a href="https://www.mathjax.org">
+                        <img title="Powered by MathJax" src="https://www.mathjax.org/badge/mj_logo.png"
+                            style="border:0;" alt="Powered by MathJax" />
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <my-footer></my-footer>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="../../../js/page_components.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

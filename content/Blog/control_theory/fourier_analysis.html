@@ -62,6 +62,9 @@
                         <a class="list-group-item blog-side-item" href="#applications">
                             Applications
                         </a>
+                        <a class="list-group-item blog-side-item" href="#laplace">
+                            Laplace Transform
+                        </a>
                     </div>
                 </div>
 
@@ -353,6 +356,71 @@
                             Thus we have
                             $$\mathcal{F}(f(x)*g(x)) = \mathcal{F}(f(x)\mathcal{F}(g(x)) =
                             \widehat{f}(\omega)\widehat{g}(\omega).$$
+                        </p>
+
+                        <p class="h2 text-left full-page-blog" id="laplace"
+                            style="color: white; font-family: Georgia; border-bottom: 2px solid white; padding-left: 0%; margin-right: 15%;">
+                            Laplace Transform
+                        </p>
+
+                        <p class="text-left blog-content full-page-blog"
+                            style="padding-left: 0%; padding-right: 0%; margin-top: 1%;">
+                            One limitation for Fourier transform is that it is only able to deal with functions that
+                            decay to zero as it approaches both positive and negative infinity. To deal with functions
+                            that does not decay to zero you would need to utilize the Laplace transform. Essentially,
+                            the Laplace transform constructs a new well-behaved function \(F(x)\) from the original
+                            function \(f(x)\),
+                            $$F(x) = f(x)e^{-\gamma x}H(x) = \begin{cases}
+                            f(x)e^{-\gamma x} & x\geq0\\
+                            0 & x\leq0
+                            \end{cases},$$
+                            with \(H(x)\) being the heaviside function
+                            $$H(x) = \begin{cases}
+                            1 & x\geq0\\
+                            0 & x\leq0
+                            \end{cases}.$$
+                            We can see that \(F(x)\) now is a well-behaved function that decays to zero as \(x\)
+                            approaches both positive and negative infinity. Then we can simply perform the Fourier
+                            transform on \(F(x)\)
+                            $$\begin{align*}
+                            \hat{F}(x) &= \int_{-\infty}^{\infty}{F(x)e^{-i\omega x}dx}\\
+                            &= \int_{-\infty}^{\infty}{f(x)e^{-\gamma x}H(x)e^{-i\omega x}dx} & F(x) = f(x)e^{-\gamma
+                            x}H(x)\\
+                            &= \int_{0}^{\infty}{f(x)e^{-\gamma x}e^{-i\omega x}dx} & H(x) = 0\ \mathrm{for}\ x \leq 0\\
+                            &= \int_{0}^{\infty}{f(x)e^{-(\gamma + i\omega) x}dx}\\
+                            &= \int_{0}^{\infty}{f(x)e^{-sx}dx} & s = \gamma + i\omega\\
+                            &= \bar{f}(s),
+                            \end{align*}$$
+                            this is the forward Laplace transform. For the inverse Laplace transform, we can simply
+                            perform the inverse Fourier transform on \(\hat{F}(x)\)
+                            $$\begin{align*}
+                            f(x) &= e^{\gamma x}F(x) \\
+                            &= e^{\gamma x}\frac{1}{2\pi}\int_{-\infty}^{\infty}{\hat{F}(x)e^{i\omega
+                            x}d\omega}\\
+                            &= \frac{1}{2\pi}\int_{-\infty}^{\infty}{\bar{f}(s)e^{\gamma + i\omega x}d\omega}\\
+                            &= \frac{1}{2\pi}\int_{-\infty}^{\infty}{\bar{f}(s)e^{sx}d\omega}\\
+                            &= \frac{1}{2\pi i}\int_{\gamma-i\infty}^{\gamma+i\infty}{\bar{f}(s)e^{sx}ds} & ds =
+                            id\omega.
+                            \end{align*}$$
+                            And we have the Laplace transform pair
+                            $$\begin{align*}
+                            \bar{f}(s) &= \int_{0}^{\infty}{f(x)e^{-sx}dx}\\
+                            f(x) &= \frac{1}{2\pi i}\int_{\gamma-i\infty}^{\gamma+i\infty}{\bar{f}(s)e^{sx}ds}.
+                            \end{align*}$$
+                            Note that the recovered \(f(x)\) only consists of the positive \(x\) portion, however, for
+                            most control related cases that would be enough due to nothing happening when time is
+                            negative.
+                        </p>
+
+                        <p class="text-left blog-content full-page-blog"
+                            style="padding-left: 0%; padding-right: 0%; margin-top: 1%;">
+                            Some properties of the Laplace transform:
+                            $$\begin{align}
+                            \mathcal{L}\{f(x)\} &= \bar{f}(s)\\
+                            \mathcal{L}\Big\{\frac{df}{dx}\Big\} &= -f(0) + s\bar{f}(s)\\
+                            \mathcal{L}\Big\{f(x)*g(x)\Big\} &= \mathcal{L}\{f(x)\}\mathcal{L}\{g(x)\} =
+                            \bar{f}(s)\bar{g}(s).
+                            \end{align}$$
                         </p>
 
                     </div>

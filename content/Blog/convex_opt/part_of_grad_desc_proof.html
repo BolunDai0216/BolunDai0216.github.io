@@ -110,6 +110,48 @@
                     Thus we have
                     $$f(y) \leq f(x) + \nabla{f}(x)^T(y - x) + \frac{L}{2}\|y-x\|_2^2.$$
                 </p>
+
+                <p class="h1 text-left full-page-blog">
+                    i &rarr; iv
+                </p>
+
+                <p class="text-left blog-content full-page-blog">
+                    Prof.Joan Bruna's mentioned in his class a way to prove iv from i which I did not think of before,
+                    thus I will include it here. If we have \(F(t) = f\big(y + t(x-y)\big)\), then using the fundamental
+                    theorem of calculus
+                    $$F(b) - F(a) = \int_{b}^{a}{f(t)dt},\ \mathrm{if\ }F^\prime(t) = f(t),$$
+                    we can have
+                    $$\begin{align}
+                    F(b) - F(a) &= \int_{b}^{a}{F^\prime(t)dt}\\
+                    &= \int_{b}^{a}{(x-y)\nabla{f}\big(y + t(x-y)\big)dt}.
+                    \end{align}$$
+                    By setting \(a = 1\) and \(b = 0\) we have
+                    $$F(b) - F(a) = f(x) - f(y) = \int_{0}^{1}{(x-y)\nabla{f}\big(y + t(x-y)\big)dt},$$
+                    which can be written as
+                    $$f(x) - f(y) = \int_{0}^{1}{\Big\langle\nabla{f}\big(y + t(x-y)\big), (x-y)\Big\rangle dt}.$$
+                    Also we need to note that for a constant \(s\) or function \(s(x)\) with no \(t\) in the input, we
+                    have \(F(x) = s(x)t\) and \(dF(x)/dt = s(x)\). Thus, using the fundamental theorem of calculus we
+                    have
+                    $$s(x) = \int_{0}^{1}s(x)dt = s(x)t\Big|_0^1 = s(x) - 0.$$
+                    Therefore, we have
+                    $$\begin{align}
+                    \Bigg|f(x) - f(y) - \langle\nabla f(y), x-y\rangle\Bigg| &=
+                    \Bigg|\int_{0}^{1}{\Big\langle\nabla{f}\big(y +
+                    t(x-y)\big), x-y\Big\rangle dt} - \int_{0}^{1}{\langle\nabla f(y), x-y\rangle dt}\Bigg|\\
+                    &= \Bigg|\int_{0}^{1}{\Big\langle\Big[\nabla{f}\big(y + t(x-y)\big) - \nabla f(y)\Big],
+                    x-y\Big\rangle dt}\Bigg|\\
+                    &\leq \int_{0}^{1}{\Bigg|\Big\langle\Big[\nabla{f}\big(y + t(x-y)\big) - \nabla f(y)\Big],
+                    x-y\Big\rangle\Bigg|dt}\\
+                    &\leq \int_{0}^{1}{\Big\|\nabla{f}\big(y + t(x-y)\big) - \nabla f(y)\Big\|\Big\|x-y\Big\|dt}\\
+                    &\leq \int_{0}^{1}{L\Big\|t(x-y)\Big\|\Big\|x-y\Big\|dt}\\
+                    &= L\|x-y\|^2\int_{0}^{1}{tdt}\\
+                    &= \frac{L}{2}\|x-y\|^2.
+                    \end{align}$$
+                    Then we finally have
+                    $$f(x) \leq f(y) + \langle\nabla f(y), x-y\rangle + \frac{L}{2}\|x-y\|^2,\ \forall x, y.$$
+                </p>
+
+
             </div>
 
             <div class="row">

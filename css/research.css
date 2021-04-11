@@ -43,12 +43,12 @@ body{
     box-shadow: 1px 1px 15px 2px rgba(0,0,0,0.2);
 }
 
-h5 a{
+.arxiv-link{
     color:white;
     text-decoration: none;
 }
 
-h5 a:hover{
+.arxiv-link:hover{
     text-decoration: underline;
     color: white;
 }

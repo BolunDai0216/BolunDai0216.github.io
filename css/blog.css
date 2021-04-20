@@ -184,3 +184,43 @@ ol{
 p a{
     font-weight: bold;
 }
+
+.dt-article-class{
+    background-color: #b3b149;
+}
+
+dt-article h1{
+    color: darkolivegreen;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 600;
+}
+
+dt-article h2{
+    color: white;
+}
+
+dt-article p{
+    color: white;
+}
+
+.dt-byline-class{
+    color: darkolivegreen;
+}
+
+.dt-appendix-class{
+    background-color: #b3b149;
+    color: darkolivegreen !important;
+}
+
+dt-appendix h3{
+    color: darkolivegreen !important;
+}
+
+dt-appendix a{
+    color: darkolivegreen !important;
+}
+
+dt-cite .citation-number{
+    color: white !important;
+}
+

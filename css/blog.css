@@ -224,3 +224,7 @@ dt-cite .citation-number{
     color: white !important;
 }
 
+dt-banner{
+    display: none;
+}
+

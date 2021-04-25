@@ -197,10 +197,13 @@ dt-article h1{
 
 dt-article h2{
     color: white;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
 }
 
 dt-article p{
     color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
 }
 
 .dt-byline-class{
@@ -226,5 +229,9 @@ dt-cite .citation-number{
 
 dt-banner{
     display: none !important;
+}
+
+ol{
+    list-style-type: decimal;
 }
 

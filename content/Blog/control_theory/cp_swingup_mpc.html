@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Implicit Regularization in Deep Learning</title>
+    <title>Cart-pole Swing-up Task Using MPC</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -27,13 +27,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
     <script type="text/front-matter">
-        title: "Implicit Regularization in Deep Learning"
+        title: "Cart-pole Swing-up Task Using MPC"
         description: "Description of the post"
         authors:
         - Bolun Dai: http://bolundai0216.github.io
-        - Yi Ma: http://nyu.edu
         affiliations:
-        - New York University: http://nyu.edu
         - New York University: http://nyu.edu
     </script>
 </head>
@@ -75,7 +73,7 @@
                     </div>
 
                     <div class="col-12 col-lg-8">
-                        <h1>Implicit Regularization in Deep Learning</h1>
+                        <h1>Cart-pole Swing-up Task Using MPC</h1>
                         <dt-byline class="dt-byline-class"></dt-byline>
                     </div>
                 </div>
@@ -88,13 +86,106 @@
                             <a class="list-group-item blog-side-item" href="#intro">
                                 Introduction
                             </a>
+                            <a class="list-group-item blog-side-item" href="#trap_co">
+                                Trapezoidal Collocation
+                            </a>
                         </div>
                     </div>
 
                     <div class="col-12 col-lg-8">
-                        <p>This is the first paragraph of the article.</p>
-                        <p>We can also cite <dt-cite key="gregor2015draw"></dt-cite> external publications.</p>
-                        <p>This is the first paragraph of the article.</p>
+                        <p>
+                            Here we want to swing-up a cart-pole system using a model predictive control (MPC) based
+                            method. When I was initially shown this problem, I thought this was a toy example and I will
+                            be able to solve in a few minutes. Then I realized that in school, all I have been
+                            taught was about linear MPC, and for cartpole related problems all I know is how to balance
+                            it on the top, assuming that it starting close to the top, so that the linearization is
+                            still valid. As for the case of swinging-up the cartpole, this stems firmly in the realm of
+                            nonlinear control. Which I have also learned. One of the more classical ways to deal with
+                            this would then be to linearize along the trajectory, such as using iLQR. However, when
+                            given state and control constraints, e.g. limit control effort and not letting the cartpole
+                            sway to far, iLQR losses its appeal. There are ways to incorporate constraints into iLQR,
+                            such as<dt-cite key="DBLP:conf/iros/HowellJM19"></dt-cite>, which seems like an
+                            overkill for such a simple problem.
+                        </p>
+
+                        <p>
+                            I then did some reading and I found a way to do constrained nonlinear control: using direct
+                            collocation<dt-cite key="DBLP:journals/siamrev/Kelly17"></dt-cite>. By tweaking the
+                            formulation a bit I was able to find a way to perform a trapezoidal-collocation-based-MPC to
+                            swing-up a cartpole system and that is what I will be presenting in this blog.
+                        </p>
+
+                        <hr>
+
+                        <h2 id="intro">Introduction</h2>
+
+                        <p>
+                            Now let's first define the system and the problem. The dynamics of the cart-pole system can
+                            be defined as
+                            $$\dot{\mathbf{x}} = \begin{bmatrix}
+                            \dot{x}\\
+                            \dot{\theta}\\
+                            \ddot{x}\\
+                            \ddot{\theta}
+                            \end{bmatrix} = \begin{bmatrix}
+                            \dot{x}\\
+                            \dot{\theta}\\
+                            \frac{m_p\sin{\theta}(l\dot{\theta}^2 + g\cos{\theta})}{m_c + m_p\sin^2{\theta}}\\
+                            \frac{-m_pl\dot{\theta}^2\cos{\theta}\sin{\theta} - (m_c + m_p)g\sin{\theta}}{l(m_c +
+                            m_p\sin^2{\theta})}
+                            \end{bmatrix} + \begin{bmatrix}
+                            0\\
+                            0\\
+                            \frac{1}{m_c + m_p\sin^2{\theta}}\\
+                            \frac{-1}{l(m_c + m_p\sin^2{\theta})}
+                            \end{bmatrix}u,$$
+                            where \(m_c\) is the weight of the cart, \(m_p\) is the weight of the pole, \(\ell\) is the
+                            length of the pole, \(x\) is the center of mass position of the cart, \(\theta\) is the
+                            orientation of the pole and \(u\) is the control action which in this case is a force acting
+                            on the cart. The control problem is to swing-up the pole till it balances at the upright
+                            position. This can be captured using the following cost function
+                            $$J = \sum_{i=1}^{N}{(\mathbf{x}_i - x^*)^TQ(\mathbf{x}_i - x^*) + u_i^TRu_i},$$
+                            where \(Q\) and \(R\) are weight matrices, \(N\) is the preview horizon and \(x^*\) is the
+                            target state, which in this case is \([1,\ \pi,\ 0,\ 0]^T\). To make the problem more
+                            realistic, the cart position and control efforts are all constrained, i.e. \(x\in[-a,\ a]\)
+                            and \(u\in[-b,\ b]\). This problem is a nonlinear constrained optimization problem which is
+                            quite hard to solve, if written as-is I don't even know how to give it to a solver (if
+                            anyone reading this has a solution please let me know). In the next section, we will look
+                            into how using a trapezoidal collocation method we can transform the problem into something
+                            more tractable.
+                        </p>
+
+                        <hr>
+
+                        <h2 id="trap_co">Trapezoidal Collocation</h2>
+
+                        <p>
+                            The key idea here is to approximate integrals using trapezoidal quadrature. There are other
+                            ways to approximate it, as mentioned in<dt-cite key="DBLP:journals/siamrev/Kelly17">
+                            </dt-cite>, however, given its simplicity we will focus on the trapezoidal approximation.
+                            Like with any other idea, to understand the concept all you need is the right image.
+                        </p>
+
+                        <figure class="l-middle">
+                            <img src="../../../img/blog-materials/trapezoidal.png" alt="trapezoidal quadrature">
+                        </figure>
+
+                        <p>
+                            Here we can use the system dynamics \(\dot{x} = f(x)\) as an example. If we want to
+                            integrate the system dynamics from \(t_k\) to \(t_{k+1}\),
+                            $$\int_{t_k}^{t_{k+1}}{\dot{x}} = \int_{t_k}^{t_{k+1}}{f(x)},$$
+                            is equivalent to calculating the area under the curve \(f(x)\) from \(t_k\) to
+                            \(t_{k+1}\). Which we can easily see can be approximated by a trapezoidal quadrature
+                            denoted by the yellow region. Using the formula of trapezoidal area we can get an
+                            approximation of the system dynamics
+                            $$\int_{t_k}^{t_{k+1}}{\dot{x}} = \frac{t_{k+1} - t_k}{2}\Big(f(x(t_k)) +
+                            f(x(t_{k+1}))\Big) \approx x(t_{k+1}) - x(t_k),$$
+                            where the last approximation is obtained by the fundamental theorem of calculus. By
+                            discretizing the system dynamics and cost function using a trapezoidal approximation we can
+                            easily write out the aforementioned nonlinear constrained optimization problem, which we
+                            will discuss in the next section.
+                        </p>
+
                     </div>
                 </div>
             </div>
@@ -157,25 +248,27 @@
 
     </div>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-    <script src="../../../js/page_components.js"></script>
-    <script>
-        var vm = new Vue({
-            el: '#app',
-            data: {
-
-            }
-        });
-    </script> -->
-
     <script type="text/bibliography">
-        @article{gregor2015draw,
-        title={DRAW: A recurrent neural network for image generation},
-        author={Gregor, Karol and Danihelka, Ivo and Graves, Alex and Rezende, Danilo Jimenez and Wierstra, Daan},
-        journal={arXivreprint arXiv:1502.04623},
-        year={2015},
-        url={https://arxiv.org/pdf/1502.04623.pdf}
+        @inproceedings{DBLP:conf/iros/HowellJM19,
+            author    = {Taylor A. Howell and
+                         Brian E. Jackson and
+                         Zachary Manchester},
+            title     = {ALTRO: A Fast Solver for Constrained Trajectory Optimization},
+            booktitle = {2019 IEEE/RSJ International Conference on Intelligent Robots and
+                         Systems, IROS 2019, Macau, SAR, China, November 3-8, 2019},
+            pages     = {7674--7679}
         }
+
+        @article{DBLP:journals/siamrev/Kelly17,
+            author    = {Matthew Kelly},
+            title     = {An Introduction to Trajectory Optimization: How to Do Your Own Direct
+                         Collocation},
+            journal   = {SIAM Rev.},
+            volume    = {59},
+            number    = {4},
+            pages     = {849--904},
+            year      = {2017}
+          }
     </script>
 </body>
 

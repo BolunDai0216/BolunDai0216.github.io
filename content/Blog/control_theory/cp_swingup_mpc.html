@@ -222,11 +222,40 @@
                             &\ -b \leq u(t_k) \leq b.\\
                             &\ x_0 = 0, \forall i = 1, \cdots, N-1.
                             \end{align*}$$
+                            For the original direct collocation approach, the cost is only the control squared and there
+                            is an additional terminal state constraint. However, in a MPC framework, this approach is
+                            too "fragmented". Intuitively, one can think that under such a setup, in order the minimize
+                            the cost, it would be best to plan to only reach the top at the end of the preview horizon.
+                            Since in MPC the preview horizon is moving, this will make the system never attempt to
+                            actually reach the target, but always "preparing" to.
                         </p>
 
                         <hr>
 
                         <h2 id="results">Results</h2>
+
+                        <figure class="l-middle">
+                            <img src="../../../img/blog-materials/cartpole_solution.png" alt="cartpole solution">
+                        </figure>
+
+                        <p>
+                            Using the aforementioned approach we can see that the cart-pole system is able to balance at
+                            the top. The control is saturated at 10N. The target is \([1.0,\ \pi,\ 0.0,\ 0.0]\). Though
+                            not shown here, the simulation is ran for 10 seconds and the pole is firmly
+                            balanced at the top. We see that this approach truly is able to solve the cartpole
+                            swing-up task. One thing to note is that when running SQP there is no need to run till a
+                            solution is found, in this case only four iteration is allowed at each timestep.
+                        </p>
+
+                        <p>
+                            A few notes on the implementation. I implemented this in Matlab, due to not being able to
+                            get scipy's optimization package to work, while fmincon works right out the box, credit to
+                            Mathworks. If anyone is able to get this working on scipy please let me know, I am dying to
+                            know what I did wrong. To ensure the system dynamics are as close to reality as possible, it
+                            was integrated using ode45. This shows that even if the dynamics are simplified when using
+                            trapezoidal collocation, the resulting control is still adequate in dealing with real
+                            dynamics.
+                        </p>
 
                     </div>
                 </div>

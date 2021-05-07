@@ -89,6 +89,9 @@
                             <a class="list-group-item blog-side-item" href="#rotations">
                                 Rotations
                             </a>
+                            <a class="list-group-item blog-side-item" href="#rigid_motion">
+                                Rigid Motions in \(\mathbb{R}^3\)
+                            </a>
                         </div>
                     </div>
 
@@ -113,10 +116,68 @@
                             <li>The cross product is preserved \(g_*(v\times w) = g_*(v)\times g_*(w)\) for all vectors
                                 \(v, w\in\mathbb{R}^3\).</li>
                         </ul>
+                        <p>
+                            In addition to the above properties we can also prove that the inner product is preserved
+                            $$v_1^Tv_2 = g_*(v_1)^Tg_*(v_2).$$
+                        </p>
 
                         <hr>
 
                         <h2 id="rotations">Rotations</h2>
+
+                        <p>
+                            The rotation matrix has the following properties
+                            $$SO(3) = \{R\in\mathbb{R}^{3\times3}\ |\ RR^T = I, \mathrm{det}R = 1\},$$
+                            where \(SO(3)\) represents the special orthogonal group. Since the rotation matrix is a
+                            group under matrix multiplication it has some additional properties:
+                        </p>
+
+                        <ul>
+                            <li>Closure: If \(R_1, R_2\) are rotation matrices then \(R_1R_2\) is also a rotation
+                                matrix.</li>
+                            <li>Identity: The identity matrix is the identity element.</li>
+                            <li>Inverse: Each rotation matrix has an inverse \(R^{-1} = R^T\).</li>
+                            <li>Associativity: For rotation matrices \(R_1, R_2\) and \(R_3\) we have \((R_1R_2)R_3 =
+                                R_1(R_2R_3)\).</li>
+                        </ul>
+
+                        <p>
+                            Also rotation matrix is a rigid transformation which means that
+                        </p>
+                        <ul>
+                            <li>R preserves length: \(\|Rq - Rp\| = \|p - q\|\) for all points \(p,
+                                q\in\mathbb{R}^3\).</li>
+                            <li>R preserves orientation: \(R(v\times w) = (Rv)\times(Rw)\) for all vectors \(v,
+                                w\in\mathbb{R}^3\).</li>
+                        </ul>
+
+                        <p>
+                            Now let's see how can we obtain the rotation matrix. From the Euler's theorem we know that
+                            for any rotation matrix \(R\in SO(3)\), it can be seen to be equivalent to rotation about a
+                            fixed axis \(\omega\in\mathbb{R}^3\) through an angle \(\theta\in[0, 2\pi]\). To represent
+                            the rotation matrix this way we need to use an exponential map
+                            $$R = e^{\hat{w}\theta} = I + \frac{\hat{\omega}}{\|\omega\|}\sin{(\|\omega\|\theta)} +
+                            \frac{\hat{\omega}^2}{\|\omega\|}\bigg(1 - \cos{((\|\omega\|\theta))}\bigg)$$
+                            where \(\hat{\omega}\) is defined as
+                            $$\hat{\omega} = \begin{bmatrix}
+                            0 & -\omega_3 & \omega_2\\
+                            \omega_3 & 0 & -\omega_1\\
+                            -\omega_2 & \omega_1 & 0
+                            \end{bmatrix}\in so(3) = \{S\in\mathbb{R}^{3\times3}\ |\ S^T = -S\}.$$
+                            This mapping is many-to-one, which says that there are many \(e^{\hat{w}\theta}\)
+                            corresponding to one \(R\), and for every \(R\in SO(3)\) we have more than one
+                            \(e^{\hat{w}\theta}\). To obtain \(\omega\) and \(\theta\) from \(R\) we have
+                            $$\theta = \cos^{-1}\Big(\frac{\mathrm{trace}(R) - 1}{2}\Big)\ \mathrm{and}\ \omega =
+                            \frac{1}{2\sin\theta}\begin{bmatrix}
+                            r_{32} - r_{23}\\
+                            r_{13} - r_{31}\\
+                            r_{21} - r_{12}
+                            \end{bmatrix},$$
+                            we can see that the pair \((\theta, \omega)\) and \((2\pi - \theta, -\omega)\) can both
+                            obtain \(R\), thus makes this mapping many-to-one. Note that in the case where \(\theta =
+                            0\) we can pick any arbitrary \(\omega\), which all makes \(R = I\).
+
+                        </p>
 
                         <p>
                             Rotation matrices can be seen as a mapping from describing a point in one coordinate frame
@@ -169,10 +230,14 @@
                             To map \(x_D^{b3}\) into the global frame we can have
                             $$R_3R_1R_2x_D^{b3} = x_D^g\ \rightarrow\ R_4^TR_2^TR_1^TR_3^Tx_D^g = x_B^g\ \rightarrow\
                             x_D^g = R_3R_1R_2R_4x_B^g.$$
-                            Following this line of though, I conjecture that we can completely decouple the rotations
+                            Following this line of thought, I conjecture that we can completely decouple the rotations
                             about the global frame and the body frame. I am pretty sure this is proved and shown
                             somewhere, if anyone reading this has any information please let me know.
                         </p>
+
+                        <hr>
+
+                        <h2 id="rigid_motion">Rigid Motions in \(\mathbb{R}^3\)</h2>
 
                     </div>
                 </div>

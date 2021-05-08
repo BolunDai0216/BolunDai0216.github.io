@@ -35,7 +35,8 @@ body{
 }
 
 .footer { 
-    position: absolute; 
+    position: absolute;
+    /* background-color: white; */
     left: 0 ; 
     right: 0; 
     bottom: 0; 

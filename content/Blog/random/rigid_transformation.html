@@ -92,6 +92,12 @@
                             <a class="list-group-item blog-side-item" href="#rigid_motion">
                                 Rigid Motions in \(\mathbb{R}^3\)
                             </a>
+                            <a class="list-group-item blog-side-item" href="#velocity">
+                                Velocity of a Rigid Body
+                            </a>
+                            <a class="list-group-item blog-side-item" href="#wrenches">
+                                Wrenches
+                            </a>
                         </div>
                     </div>
 
@@ -348,6 +354,10 @@
 
                         <h3>Twists</h3>
                         <p>
+                            In the previous sections, we talked about how to rotate rigid bodies, however, all of them
+                            were rotating about an axis that passes through the global fixed frame, in this part in
+                            addition to introducing a more compact way of representing rigid body motion, I will also
+                            talk about how to rotate about axis that do not pass through the origin of the fixed frame.
                             In the homogeneous coordinates we can write the pure rotation with unit velocity about axis
                             \(\omega\in\mathbb{R}^3\)
                             $$\dot{p}(t) = \omega\times(p(t) - q)$$
@@ -367,8 +377,8 @@
                             \end{bmatrix}\ \longleftrightarrow \dot{\bar{p}} = \hat{\xi}\bar{p}.$$
                             Thus the solution \(\bar{p}(t) = \exp{(\hat{\xi}t)}\bar{p}(0)\) enables a mapping from the
                             initial location to the location after \(t\) radians of rotation \(\exp{(\hat{\xi}t)}\).
-                            Note that here \(q\) is a point on the axis \(\omega\) given in the global coordinates. For
-                            pure translations we have
+                            Note that here \(q\) is a point on the axis \(\omega\) given in the global coordinates, and
+                            we can write \(v = -\omega\times q\). For pure translations we have
                             $$\hat{\xi} = \begin{bmatrix}
                             0 & v\\
                             0 & 0
@@ -392,7 +402,7 @@
                             Also for every \(p, R\) we can find its corresponding twist \(\hat{\xi}\in se(3)\) and
                             \(\theta\in\mathbb{R}\), for \(R = I\) we have
                             $$\begin{align*}
-                            \xi &= \begin{bmatrix}
+                            \hat{\xi} &= \begin{bmatrix}
                             0 & p/\|p\|\\
                             0 & 0
                             \end{bmatrix} &\theta = \|p\|.
@@ -406,9 +416,172 @@
                             $$p(\theta) = \exp{(\hat{\xi}\theta)}g_{gb}(0)p^b(0)$$
                             where \(g_{gb}\) gives the mapping between coordinates in the body and the global frame at
                             \(t = 0\).
+
+                        <table class="table">
+                            <thead class="table-head-style">
+                                <tr>
+                                    <td>Twist</td>
+                                    <td>Linear System</td>
+                                    <td>Comments</td>
+                                </tr>
+                            </thead>
+                            <tbody class="table-body-style">
+                                <tr class="align-middle">
+                                    <td>\(\dot{p}(t) = \omega\times(p(t) - q)\)</td>
+                                    <td>\(\dot{x}(t) = \omega(x(t) - O) \)</td>
+                                    <td>
+                                        \(\xi = \begin{bmatrix}
+                                        -\omega\times q\\
+                                        \omega
+                                        \end{bmatrix} = \begin{bmatrix}
+                                        v\\
+                                        \omega
+                                        \end{bmatrix}\), differential equations governing the movement
+                                    </td>
+                                </tr>
+                                <tr class="align-middle">
+                                    <td>\(\dot{\bar{p}} = \hat{\xi}\bar{p}\)</td>
+                                    <td>\(\dot{x} = Ax\)</td>
+                                    <td>
+                                        \(\hat{\xi} = \begin{bmatrix}
+                                        \hat{\omega} & -\omega\times q\\
+                                        0 & 1
+                                        \end{bmatrix}\), differential equation in vector form
+                                    </td>
+                                </tr>
+                                <tr class="align-middle">
+                                    <td>\(\bar{p}(t) = \exp{(\hat{\xi}t)}\bar{p}(0)\)</td>
+                                    <td>\(x(t) = \exp{(At)}x(0)\)</td>
+                                    <td>
+                                        \(\exp{(\hat{\xi}t)} = \begin{bmatrix}
+                                        e^{\hat{\omega}\theta} & (I - e^{\hat{\omega}\theta})(\omega\times v) +
+                                        \omega\omega^Tv\theta\\
+                                        0 & 1
+                                        \end{bmatrix}\), analytic solution to differential equation.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                         </p>
 
                         <h3>Screw Motion</h3>
+
+                        <p>
+                            Here we state <b>Chasles' Theorem</b>: every rigid body motion can be realized by a rotation
+                            about an axis \(\omega\) combined with a translation parallel to that axis. We assume that
+                            the rotation is of \(\theta\) radians and the translation is of amount \(d\), also we can
+                            find a point on \(\omega\) and call it \(q\).
+                        </p>
+
+                        <p>
+                            We can see that this movement resembles the movement of a screw. We can describe the screw
+                            movement using: <i>pitch</i> as \(h:=d/\theta\), the <i>axis</i> of the screw movement as
+                            \(l = \{q + \lambda\omega\ |\ \lambda\in\mathbb{R}\}\), and a <i>magnitude</i> \(M =
+                            \theta\) when there is rotation and \(M = \infty\) when there is only translation.
+                        </p>
+
+                        <p>
+                            For a given screw motion we can find its rigid transfomation as
+                            $$\begin{align*}
+                            g &= \begin{bmatrix}
+                            e^{\hat{\omega}\theta} & (I - e^{\hat{\omega}\theta})q + h\theta\omega\\
+                            0 & 1
+                            \end{bmatrix} & \mathrm{with\ rotation}\\
+                            g &= \begin{bmatrix}
+                            I & \theta v\\
+                            0 & 1
+                            \end{bmatrix} & \mathrm{pure\ translation}
+                            \end{align*}$$
+                            where \(v\) is the vector of translation. Additionally, when given a twist we can also find
+                            its corresponding screw, and given a screw we can find its corresponding twist.
+                        </p>
+
+                        <hr>
+
+                        <h2 id="velocity">Velocity of a Rigid Body</h2>
+
+                        <h3>Rotational Velocity</h3>
+                        <p>
+                            First we define the spatial coordinate frame \(A\) which is fixed and the body coordinate
+                            frame \(B\) which is moving. If we define a point \(q_b\) in the body frame, and a rotation
+                            motion \(R_{ab}(t)\), then we can have the trajectory of the point in spatial coordinates as
+                            $$q_a(t) = R_{ab}(t)q_b.$$
+                            By deriving that both \(R^{-1}\dot{R}\) and \(\dot{R}R^{-1}\) are skew symmetric matrices,
+                            we can get the angular velocity in both the spatial coordinate \(\hat{\omega}^s\) and the
+                            instantaneous body coordinate \(\hat{\omega}^b\) (since the body coordinate is changing due
+                            to rotation)
+                            $$v_{q_a}(t) = \dot{R}_{ab}(t)q_b =
+                            \underbrace{\dot{R}_{ab}(t)R_{ab}^{-1}(t)}_{:=\ \hat{\omega}_{ab}^s}R_{ab}(t)q_b =
+                            \hat{\omega}_{ab}^sR_{ab}(t)q_b = \hat{\omega}_{ab}q_a.$$
+                            The instantaneous body angluar velocity is defined as seeing the spatial angular velocity
+                            vector in the body frame,
+                            $$v_{q_b}(t) := R_{ab}^Tv_{q_a}(t)\ \ \ \ \hat{\omega}_{ab}^b = R_{ab}^{-1}\dot{R}_{ab}$$
+                            which is not the angluar velocity of the rigid body w.r.t the body frame, the latter is
+                            always zero.
+                        </p>
+
+                        <h3>Rigid Body Velocity</h3>
+                        <p>
+                            For a rigid motion plan \(g_{ab}(t)\in SE(3)\) we can get the spatial velocity as a twist
+                            \(\hat{V}_{ab}^s\in se(3)\)
+                            $$\hat{V}_{ab}^s = \dot{g}_{ab}g_{ab}^{-1}\ \ \ \ V_{ab}^s = \begin{bmatrix}
+                            v_{ab}^s\\
+                            \omega_{ab}^s
+                            \end{bmatrix} = \begin{bmatrix}
+                            -\dot{R}_{ab}R_{ab}^Tp_{ab} + \dot{p}_{ab}\\
+                            (\dot{R}_{ab}R_{ab}^T)^\vee
+                            \end{bmatrix}$$
+                            Thus the velocity of a point \(q_a\) can be found as
+                            $$v_{q_a} = \hat{V}_{ab}^sq_a = \omega_{ab}^s\times q_a + v_{ab}^s.$$
+                            Here we can interpret \(\omega_{ab}^s\) as the instantaneous angular velocity of the body as
+                            viewed in the spatial frame and \(v_{ab}^s\) as the velocity of a (possibly imaginary) point
+                            on the rigid body which is traveling through the origin of the spatial frame at time \(t\).
+                            The body velocity is defined as
+                            $$\hat{V}_{ab}^b = g_{ab}^{-1}\dot{g}_{ab}\ \ \ \ V_{ab}^b = \begin{bmatrix}
+                            v_{ab}^b\\
+                            \omega_{ab}^b
+                            \end{bmatrix} = \begin{bmatrix}
+                            R_{ab}^T\dot{p}_{ab}\\
+                            (R_{ab}^T\dot{R}_{ab})^\vee
+                            \end{bmatrix}$$
+                            which for \(v_{ab}^b\) can be interpretted as the velocity of the origin of the body
+                            coordinate frame relative to the spatial frame, as viewed in the current body frame; for
+                            \(\omega_{ab}^b\) we can see it as the angular velocity of the coordinate frame, also as
+                            viewed in the current body frame. We can also define an adjoint transformation to relate the
+                            spatial and body velcoties
+                            $$V_{ab}^s = \begin{bmatrix}
+                            v_{ab}^s\\
+                            \omega_{ab}^s
+                            \end{bmatrix} = \begin{bmatrix}
+                            R_{ab} & \hat{p}_{ab}R_{ab}\\
+                            0 & R_{ab}
+                            \omega_{ab}^b
+                            \end{bmatrix}\begin{bmatrix}
+                            v_{ab}^b\\
+                            \omega_{ab}^b
+                            \end{bmatrix} = Ad_{g}V_{ab}^b.$$
+                        </p>
+
+                        <h3>Coordinate Transformation</h3>
+                        <p>
+                            For three coordinate frames A, B and C, we can have the relationship between their spatial
+                            velocity as
+                            $$V_{ac}^s = V_{ab}^s + Ad_{g_{ab}}V_{bc}^s$$
+                            similarly we can get the relationship between their body velocities as
+                            $$V_{ac}^b = Ad_{g_{bc}^{-1}}V_{ab}^b + V_{bc}^b.$$
+                            This relationship can also be used to represent twists before and after applying a rigid
+                            motion
+                            $$\xi^\prime = Ad_g\xi\ \ \mathrm{or}\ \ \hat{\xi}^\prime = g\hat{\xi}g^{-1}.$$
+                            Some additional properties include
+                            $$\begin{align*}
+                            V_{ab}^{b} &= V_{ba}^{s}\\
+                            V_{ab}^{b} &= -Ad_{g_{ab}}V_{ba}^{b}
+                            \end{align*}$$
+                        </p>
+
+                        <hr>
+
+                        <h2 id="wrenches">Wrenches</h2>
 
                     </div>
                 </div>

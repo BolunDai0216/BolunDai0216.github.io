@@ -105,7 +105,8 @@
                         <p>
                             In this blog, I want to talk give a review of rigid transformations, in specific rotation
                             and translation. Although this is the most basic concept in robotics, I tend to confuse many
-                            concepts. Therefore, this to me is more like a cheatsheet.
+                            concepts. Therefore, this to me is more like a cheatsheet. The content is developed from
+                            <dt-cite key="DBLP:books/daglib/0073732"></dt-cite>.
                         </p>
 
                         <hr>
@@ -575,13 +576,34 @@
                             Some additional properties include
                             $$\begin{align*}
                             V_{ab}^{b} &= V_{ba}^{s}\\
-                            V_{ab}^{b} &= -Ad_{g_{ab}}V_{ba}^{b}
+                            V_{ab}^{b} &= -Ad_{g_{ba}}V_{ba}^{b}
                             \end{align*}$$
                         </p>
 
                         <hr>
 
                         <h2 id="wrenches">Wrenches</h2>
+                        <p>
+                            A wrench is defined as a force/moment pair \(F\in\mathbb{R}^6\)
+                            $$F = \begin{bmatrix}
+                            f\\
+                            \tau
+                            \end{bmatrix}.$$
+                            Given its dual nature with twist we have the relationship mapping wrenches between different
+                            coordinates systems as
+                            $$F_c = Ad_{g_{bc}}^TF_b.$$
+                            And for the same wrench the instantaneous work is the same in both the spatial and body
+                            frame
+                            $$\delta W = V^b\cdot F^b = V^s\cdot F^s,$$
+                            note that here \(\cdot\) represents the dot product.
+                        </p>
+
+                        <p>
+                            Using <b>Poinsot</b>'s Theorem we can see every collection of wrenches applied to a rigid
+                            body is equivalent to a force applied along a fixed axis plus a torque about the same axis.
+                            Thus there exists a direct mapping between wrenches and screw motions.
+
+                        </p>
 
                     </div>
                 </div>
@@ -646,7 +668,14 @@
     </div>
 
     <script type="text/bibliography">
-
+        @book{DBLP:books/daglib/0073732,
+            author = {Richard M. Murray and
+            Zexiang Li and
+            Shankar Sastry},
+            title = {A mathematical introduction to robotics manipulation},
+            publisher = {CRC Press},
+            year = {1994}
+            }
     </script>
 </body>
 

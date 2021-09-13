@@ -296,7 +296,7 @@
                         <p>
                             In this section I will talk about rigid motions which includes both translation and
                             rotation. I will present three ways of describing such a motion, namely, homogeneous
-                            transformation, twist and screw motions, and we will how these three descriptions are
+                            transformation, twist and screw motions, and we will see how these three descriptions are
                             related.
                         </p>
 
@@ -370,32 +370,35 @@
                             </li>
                         </ul>
 
+                        <figure class="l-middle">
+                            <img src="../../../img/blog-materials/twoViewofg.png" alt="rotation illustration">
+                        </figure>
+
                         <p>
                             Now I want to use an example to better understand the two views of this homogeneous
                             representation. Consider rotating \(\theta\) about the vertical line going though point
-                            \((0, l_1, 0)\), how can we find the transformation \(g_{ab}\) such that \(q_b\) is the
-                            position of the point before and \(q_b\) is the position after, which are all represented in
-                            the global fixed frame. The idea is that in the fixed frame attached to \((0, l_1, 0)\), the
-                            point only goes through a rotation, thus we have
-                            $$q_a^\prime = Rq_b,$$
-                            and for any point in the fixed frame attached to \((0, l_1, 0)\) we can represent it in the
-                            global fixed frame as
-                            $$q_a = p + q_a^\prime.$$
+                            \((l_x, l_y, 0)\), how can we find the transformation \(g_{ab}\) such that \(x_g\) is the
+                            position of the point before and \(x_g^\prime\) is the position after, which are all
+                            represented in the global fixed frame. We can see this as two steps, a rotation \(R\) and a
+                            translation \(p\), the rotation is w.r.t the vertical line \((0, 0, 0)\) and the translation
+                            is from \((0, 0, 0)\) to \((l_x, l_y, 0)\). Denoting a point \(x\) with the coordinates in
+                            the body frame (light purple frame above) as \(x_b\), we define
+                            $$x_b^1 = Rx_b.$$
+                            And after the translation we have
+                            $$x_g^\prime = x_b^1 + p = Rx_b + p.$$
                             Therefore we have
-                            $$q_a = p + Rq_b\ \rightarrow\ g_{ab} = \begin{bmatrix}
+                            $$x_g^\prime = p + Rx_b\ \rightarrow\ \bar{g} = \begin{bmatrix}
                             R & p\\
                             0 & 1
                             \end{bmatrix} = \begin{bmatrix}
-                            \cos\theta & -\sin\theta & 0 & 0\\
-                            \sin\theta & \cos\theta & 0 & l_1\\
+                            \cos\theta & -\sin\theta & 0 & l_x\\
+                            \sin\theta & \cos\theta & 0 & l_y\\
                             0 & 0 & 1 & 0\\
                             0 & 0 & 0 & 1
                             \end{bmatrix}.$$
-                            Here we can see that \(q_b\) is the location of the point in the moving frame attached to
-                            \((0, l_1, 0)\) (not to be confused with the fixed frame attached to \((0, l_1, 0)\)), and
-                            \(q_a\) is the location of the point in the global fixed frame. If we view this as an action
-                            then we would need to change the rotation matrix so that it can describe the rotation in the
-                            global fixed frame.
+                            Also if we start at point \(x_g = x_b\), where \(x_g\) is measured in the global frame, this
+                            gives you a way to calculate the position after applying \(R\) and \(p\)
+                            $$x_g^\prime = p + Rx_g.$$
                         </p>
 
                         <h3>Twists</h3>

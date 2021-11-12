@@ -426,15 +426,19 @@
                             \end{bmatrix}\ \longleftrightarrow \dot{\bar{p}} = \hat{\xi}\bar{p}.$$
                             Thus the solution \(\bar{p}(t) = \exp{(\hat{\xi}t)}\bar{p}(0)\) enables a mapping from the
                             initial location to the location after \(t\) radians of rotation \(\exp{(\hat{\xi}t)}\).
-                            Note that here \(q\) is a point on the axis \(\omega\) given in the global coordinates, and
-                            we can write \(v = -\omega\times q\). For pure translations we have
+                            Note that here \(q\) is a point on the axis \(\omega\) given in the global coordinates. For
+                            pure translations we have
                             $$\hat{\xi} = \begin{bmatrix}
                             0 & v\\
                             0 & 0
                             \end{bmatrix}$$
                             where \(v\) is a vector representing the translation velocity. We define twists as the group
-                            $$se(3) := \{(v, \hat{\omega})\ |\ v\in\mathbb{R}^3, \hat{\omega}\in so(3)\},$$
-                            with the twist coordinates \(\xi = [v^T,\ \omega^T]^T\in\mathbb{R}^6\). We can prove that
+                            $$\hat{\xi} \in se(3) := \{(v, \hat{\omega})\ |\ v\in\mathbb{R}^3, \hat{\omega}\in so(3)\} =
+                            \begin{bmatrix}
+                            \hat{\omega} & v\\
+                            0 & 1
+                            \end{bmatrix}\in\mathbb{R}^{4\times4},$$
+                            with the twist coordinates \(\xi := (v,\ \omega)\). We can prove that
                             for every member of \(se(3)\) we can find its corresponding element in \(SE(3)\) using an
                             exponential mapping
                             $$\begin{align*}

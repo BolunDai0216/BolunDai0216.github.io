@@ -1,0 +1,14 @@
+- school_name: New York University
+  school_link: https://www.nyu.edu/
+  time_period: Sep 2019 - Present
+  degree: Ph.D Candidate, Electrical and Computer Engineering
+
+- school_name: Carnegie Mellon University
+  school_link: https://www.cmu.edu/
+  time_period: Aug 2017 - May 2019
+  degree: Master of Science, Mechanical Engineering
+
+- school_name: Huazhong University of Science and Technology
+  school_link: http://english.hust.edu.cn/
+  time_period: Sep 2013 - Jun 2017
+  degree: Bachelor of Engineering, Mechanical Engineering

@@ -1,0 +1,27 @@
+- title: State Constrained Stochasitic Optimal Control Using LSTMs
+  time: May 2020 -- Sep 2020
+  place: New York University, Tandon School of Engineering, Brooklyn, NY
+  job1: Proposed a new methodology for state constrained nonlinear stochastic optimal control using forward-backward stochastic differential equations and LSTMs.
+  job2: Tested the performance and scalability on nonlinear systems in simulation.
+  job3: None
+
+- title: Reinforcement Learning in Mining
+  time: Jun 2019 -- Aug 2019
+  place: SafeAI Inc, San Jose, CA
+  job1: Created a reinforcement learning simulation environment for the load-haul-dump cycle.
+  job2: Designed the reward function, state space and action space to be both realistic while also speeds up training.
+  job3: Constructed a behavior tree that orchestrates between reinforcement learning based and traditional controllers.
+
+- title: Adaptive Identification of Robotic Kinematic Structure
+  time: Jan 2018 -- May 2019
+  place: Carnegie Mellon University, Robotic Institute, Pittsburgh, PA
+  job1: Proposed a 6 degrees-of-freedom (DOF) joint based kinematic model for a multi-link bipedal robot system
+  job2: Developed a 6 DOF joint based kinematic identification algorithm using linear regression and achieved 92.3\% accuracy in simulation with white noise polluted data.
+  job3: Implemented the kinematic identification algorithm on a real bipedal robot ATRIAS using mocap data.
+
+- title: Human Knee Sensory System for Exoskeletons
+  time: Jan 2017 -- May 2017
+  place: Huazhong University of Science and Technology, Mechanical Engineering Department, Wuhan, Hubei, China
+  job1: Used a three-dimension curvature-based model to represent the whole femur-knee-tibia system, which overcomes the difficulty for modelling non-uniform shaped contact parts in bio-joints.
+  job2: Implemented a modal-superpostion method to reduce the number of sensors required to only three.
+  job3: None

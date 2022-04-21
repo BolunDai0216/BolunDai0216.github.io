@@ -1,0 +1,9 @@
+- name: Blog
+  link: /blog.html
+  oncolor_command: changeBackgroundColor('#b3b149')
+- name: CV
+  link: /cv.html
+  oncolor_command: changeBackgroundColor('#257cb3')
+- name: Research
+  link: /research.html
+  oncolor_command: changeBackgroundColor('#e56530')

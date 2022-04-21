@@ -1,0 +1,40 @@
+---
+title: Bolun's Blog
+page-type: blog
+---
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-3 d-none d-lg-block">
+            <div id="side-list" class="list-group sticky-top">
+                {% for item in site.data.blog_types %}
+                <a class="list-group-item" href="#" onclick="{{item.onclick_action}}">
+                    {{item.type}}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-9">
+            <div class="row justify-content-center justify-content-sm-start">
+                {% for post in site.posts %}
+                <div class="mb-3 {{ post.class }}" style="width: 350px">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{% if post.link == 'None' %}{{ post.url }}{% else %}{{ post.link}}{% endif %}">
+                                    {{ post.title }}
+                                </a>
+                            </h5>
+                            <p class="card-text">
+                                {{ post.text }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,109 @@
+I"<p>The blog is derived from the notes I have from taking the <a href="https://www.notion.so/Mathematics-of-Deep-Learning-05cd9255f03842489083ec7cbb6338d5">Mathematics of Deep Learning</a> course by Joan Bruna at New York Univeristy.</p>
+
+<h2 id="main-ingredients-of-superivised-learning">Main Ingredients of Superivised Learning</h2>
+
+<p>A supervised learning problem usually consists of four components: the input domain \(\chi\), the data distribution \(\nu\), the target function \(f^*\) and a loss (or risk) \(\mathcal{L}\).</p>
+
+<p>The input domain \(\chi\) is usually high dimension, \(\chi\in\mathbb{R}^d\). For the MNIST dataset, inputs are of dimension \(28\times28 = 784\). The data distribution \(\nu\) is defined over an input domain \(\chi\), \(\nu\in P(\chi)\), where \(P(\chi)\) is the set of all probability distributions over the input domain \(\chi\). The target function \(f^*\) maps inputs to scalar values, \(f^*: \chi\rightarrow\mathbb{R}\), i.e. for an image \(\chi_i\), \(f^*\) maps it to \(1\) if it contains a cat, \(0\) otherwise. The loss (or risk) \(\mathcal{L}\) is a functional</p>
+
+\[\mathcal{L}(f) = \mathbb{E}_{x\sim\nu}\Big[\ell\Big(f(x), f^*(x)\Big)\Big],\]
+
+<p>this is saying for data sampled from data distribution \(\nu\) the loss is a metric of the difference between the learned function \(f\) and target function \(f^*\). For mean squared error (MSE) loss, we have</p>
+
+\[\mathcal{L}(f) = \mathbb{E}_{x\sim\nu}\Big[\Big|f(x) - f^*(x)\Big|^2\Big] = \Big\|f(x) - f^*(x)\Big\|_\nu^2,\]
+
+<p>here the loss \(\mathcal{L}\) is convex w.r.t the learned function \(f\).</p>
+
+<p>The goal of supervised learning is to predict the target function \(f^*\) from finite number of observations, under the assumption observations are sampled i.i.d from the data distribution \(\nu\)</p>
+
+\[\nu = \Big\{\Big(x_i, f^*(x_i)\Big)\Big\}_i,\ x_i\underset{iid}{\sim}\nu.\]
+
+<p>Since we cannot know exactly how well an algorithm will work in practice (the true “risk”) because we don’t know the true distribution of data that the algorithm will work on, we can instead measure its performance on a known set of training data (the “empirical” risk) (<a href="https://en.wikipedia.org/wiki/Empirical_risk_minimization&quot;&gt;Wikipedia">Wikipedia</a>). The
+empirical risk is defined as</p>
+
+\[\widehat{\mathcal{L}}(f) = \frac{1}{L}\sum_{i=1}^{L}\ell\Big(f(x), f^*(x)\Big).\]
+
+<p>Instead of looking at any function \(f\) we are only searching for the target functions within a subset. We consider a hypothesis space of possible functions that approximates the target function</p>
+
+\[\mathcal{F} \subseteq \Big\{f: \chi\rightarrow\mathbb{R}\Big\},\]
+
+<p>where it is a normed space. By saying it is a norm space we are saying a measurement of length exists, in this case the “length” measurement denotes the complexity of the function. Thus, \(\gamma: \mathcal{F}\rightarrow\mathbb{R}\), where \(\gamma(f)\) denotes how complex the hypothesis \(f\in\mathcal{F}\) is. In the case of deep learning, \(\mathcal{F}\) can be the set of neural networks of a certain architecture, i.e.</p>
+
+\[\mathcal{F} = \Big\{f: x\rightarrow\mathbb{R}\ \Big|\ f(x) = w_3g_2(w_2g_1(w_1x))\Big\},\]
+
+<p>where \(w_i\) is the weight vector of the \(i\)-th layer and \(g_i\) is the \(i\)-th activation function. This denotes the set of neural networks with three layers, no bias and two activation functions (no activation at the output layer). If we consider a ball</p>
+
+\[\mathcal{F}_\delta = \Big\{f\in\mathcal{F}\ \Big|\ \gamma(f)\leq\delta\Big\},\]
+
+<p>it is a convex set, we can then only look for functions within this ball.</p>
+
+<p>Now the principle of stuctural risk minimization can be introduced. When fitting a function to a dataset overfitting can occur, this usually happens when the learned function has high complexity. When overfitting occurs, the learned model will have a really good performance on the training set and will generally perform badly on the test set. Therefore, to avoid overfitting, we would like the learned model to have low complexity while minimizing the training error. These two objectives can be written as</p>
+
+\[\min_{\gamma(f)\leq\delta}\widehat{\mathcal{L}}(f),\]
+
+<p>this is called the constrained form, where the emprical risk is minimized while restricting the complexity of the learned model. We can also write it in the penalized form</p>
+
+\[\min_{f\in\mathcal{F}}\widehat{\mathcal{L}}(f) + \lambda\gamma(f),\]
+
+<p>to penalize models with large complexity. Or the interpolating form</p>
+
+\[\begin{align*}
+\min &amp;\ \gamma(f)\\
+\mathrm{s.t.} &amp;\ \widehat{\mathcal{L}}(f) = 0.
+\end{align*}\]
+
+<p>Note the interpolating form makes sense only when the data has no false labels.</p>
+
+<h2 id="basic-decomposition-of-errors">Basic Decomposition of Errors</h2>
+
+<p>Suppose using the constrained form we found a function \(\tilde{f}\in\mathcal{F}_\delta\), such that</p>
+
+\[\widehat{\mathcal{L}}(\tilde{f}) \leq \min_{f\in\mathcal{F}_\delta}\widehat{\mathcal{L}}(f) + \epsilon_o.\]
+
+<p>This is saying the empirical loss of the candidate function \(\tilde{f}\) is only \(\epsilon_0\) away from the best solution in the ball (the problem is almost solved). Now let’s take a look at how good is our candidate function \(\tilde{f}\) w.r.t. to the original loss (not the empirical loss)</p>
+
+\[\begin{align*}
+&amp;\ \mathcal{L}(\tilde{f}) - \min_{f\in\mathcal{F}}\mathcal{L}(f)\\
+=&amp;\ \mathcal{L}(\tilde{f}) - \min_{f\in\mathcal{F}_\delta}\mathcal{L}(f) +
+\min_{f\in\mathcal{F}_\delta}\mathcal{L}(f) - \min_{f\in\mathcal{F}}\mathcal{L}(f)\\
+=&amp;\ \mathcal{L}(\tilde{f}) - \min_{f\in\mathcal{F}_\delta}\mathcal{L}(f) + \epsilon_a &amp;
+\epsilon_a = \min_{f\in\mathcal{F}_\delta}\mathcal{L}(f) -
+\min_{f\in\mathcal{F}}\mathcal{L}(f)\\
+=&amp;\ \widehat{\mathcal{L}}(\tilde{f}) - \min_{f\in\mathcal{F}_\delta}\mathcal{L}(f) +
+\mathcal{L}(\tilde{f}) - \widehat{\mathcal{L}}(\tilde{f}) + \epsilon_a\\
+\leq&amp;\ \min_{f\in\mathcal{F}_\delta}\widehat{\mathcal{L}}(f) -
+\min_{f\in\mathcal{F}_\delta}\mathcal{L}(f) + \mathcal{L}(\tilde{f}) -
+\widehat{\mathcal{L}}(\tilde{f}) + \epsilon_a + \epsilon_o &amp;
+\text{used inequality above}\\
+\leq&amp;\ 2\sup_{f\in\mathcal{F}_\delta}\Big|\mathcal{L}(f) - \widehat{\mathcal{L}}(f)\Big| +
+\epsilon_a + \epsilon_o &amp; \text{see proof below}\\
+=&amp;\ \epsilon_s + \epsilon_a + \epsilon_o &amp; \epsilon_s =
+2\sup_{f\in\mathcal{F}_\delta}\Big|\mathcal{L}(f) - \widehat{\mathcal{L}}(f)\Big|
+\end{align*}\]
+
+<p>We now see why</p>
+
+\[\min_{f\in\mathcal{F}_\delta}\widehat{\mathcal{L}}(f) - \min_{f\in\mathcal{F}_\delta}\mathcal{L}(f) \leq \sup_{f\in\mathcal{F}_\delta}\Big|\mathcal{L}(f) - \widehat{\mathcal{L}}(f)\Big|.\]
+
+<p>Assume we have</p>
+
+\[\DeclareMathOperator*{\argmin}{arg\,min} \argmin_{f\in\mathcal{F}_\delta}\widehat{\mathcal{L}}(f) = f_1\ \ \ \text{and}\ \ \ \argmin_{f\in\mathcal{F}_\delta}\mathcal{L}(f) = f_2.\]
+
+<p>For the case</p>
+
+\[\min_{f\in\mathcal{F}_\delta}\widehat{\mathcal{L}}(f) &gt; \min_{f\in\mathcal{F}_\delta}\mathcal{L}(f),\]
+
+<p>we have</p>
+
+\[\begin{align*}
+\min_{f\in\mathcal{F}_\delta}\widehat{\mathcal{L}}(f) -
+\min_{f\in\mathcal{F}_\delta}\mathcal{L}(f) &amp;= \widehat{\mathcal{L}}(f_1) -
+\mathcal{L}(f_2)\\
+&amp;\leq \widehat{\mathcal{L}}(f_2) -
+\mathcal{L}(f_2)\\
+&amp;\leq \sup_{f\in\mathcal{F}_\delta}\Big|\mathcal{L}(f) -
+\widehat{\mathcal{L}}(f)\Big|,
+\end{align*}\]
+
+<p>which is denoted by the right figure.</p>
+:ET

@@ -1,0 +1,39 @@
+---
+layout: default
+---
+<div class="post distill">
+    <d-title class="blog-title">
+        <h1>{{ page.title }}</h1>
+        <p class="blog-date">{{ page.description }}</p>
+    </d-title>
+
+    <d-article class="blog-content">
+        {% if page.toc -%}
+        <d-contents class="d-none d-xl-grid">
+            <nav class="l-text figcaption">
+                {% for section in page.toc -%}
+                <div class="blog-side-item">
+                    <a href="#{{ section.name | slugify }}">{{ section.name }}</a>
+                </div>
+                {% if section.subsections -%}
+                <ul class="blog-side-item">
+                    {% for subsection in section.subsections -%}
+                    <li><a href="#{{ subsection.name | slugify }}">{{ subsection.name }}</a></li>
+                    {% endfor %}
+                </ul>
+                {%- endif -%}
+                {%- endfor %}
+            </nav>
+        </d-contents>
+
+        {%- endif %}
+
+        {{ content }}
+    </d-article>
+
+    <d-appendix>
+        <d-footnote-list></d-footnote-list>
+        <d-citation-list></d-citation-list>
+    </d-appendix>
+
+</div>

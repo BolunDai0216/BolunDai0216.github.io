@@ -1,0 +1,23 @@
+body { background-color: #257cb3; }
+
+.list-group-item { background-color: transparent; font-family: Avenir, Helvetica; color: lightblue; font-size: 125%; border-top: 0; border-left: 0; border-bottom: 0; border-right-width: 3px; border-right-color: white; margin-right: 10%; }
+
+.list-group-item.active { background-color: transparent; color: white; font-weight: bold; border-right-color: white; }
+
+.list-group { border-radius: 0; }
+
+.list-group a:hover { color: white; font-weight: bolder; }
+
+h2 { color: seashell; font-weight: bold; font-family: Avenir; }
+
+.edu-links { font-family: Avenir, Helvetica, Garamond; display: inline-block; text-decoration: none; color: #ffffff !important; font-size: 150%; font-weight: bold; }
+
+.edu_years { font-family: Avenir, Helvetica, Garamond; display: inline-block; color: #ffffff !important; font-size: 150%; }
+
+.edu-major { font-family: Avenir, Helvetica, Garamond; display: block; color: #ffffff !important; font-size: 125%; font-style: italic; }
+
+.edu-title { font-family: Avenir, Helvetica, Garamond; }
+
+.edu-content { font-family: Avenir, Helvetica, Garamond; color: #ffffff !important; font-size: 125%; }
+
+/*# sourceMappingURL=cv.css.map */

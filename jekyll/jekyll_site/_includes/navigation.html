@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid mx-2">
+        <a href="/" class="navbar-brand header-brand">Bolun Dai</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse me-5" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                {% for item in site.data.navigation %}
+                <li class="nav-item nav-item-bolun">
+                    {% if page.page-type == "home" %}
+                    <a href="{{ item.link }}" class="nav-link" onmouseover="{{ item.oncolor_command }}"
+                        onmouseleave="changeBackgroundColor('#b33737')">
+                        {{ item.name }}
+                    </a>
+                    {% else %}
+                    <a href="{{ item.link }}" class="nav-link" onmouseover="addUnderline(this)"
+                        onmouseleave="removeUnderline(this)">
+                        {{ item.name }}
+                    </a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,445 @@
+I"Y<p>In this blog, I want to talk give a review of rigid transformations, in specific rotation and translation. Although this is the most basic concept in robotics, I tend to confuse many concepts. Therefore, this to me is more like a cheatsheet. The content is developed from <d-cite key="DBLP:books/daglib/0073732"></d-cite>.</p>
+
+<h2 id="rigid-transformations">Rigid Transformations</h2>
+
+<p>A rigid transformation in \(\mathbb{R}^3\) is a mapping \(g:\mathbb{R}^3\rightarrow\mathbb{R}^3\) that has the following properties:</p>
+
+<ul>
+  <li>Length is preserved \(\|g(p) - g(q)\| = \|p - q\|\) for all points \(p, q\in\mathbb{R}^3\).</li>
+  <li>The cross product is preserved \(g_*(v\times w) = g_*(v)\times g_*(w)\) for all vectors \(v, w\in\mathbb{R}^3\).</li>
+</ul>
+
+<p>In addition to the above properties we can also prove that the inner product is preserved
+\(v_1^Tv_2 = g_*(v_1)^Tg_*(v_2).\)</p>
+
+<figure class="l-middle">
+    <img src="/assets/images/random/rigid_transformation.gif" alt="rigid transformation illustration" />
+</figure>
+
+<p>We can see from the above animation, that after translation and rotation the length of the two blue lines did not change (\(\|\cdot\|\) did not change), thus satisfying the first property. From the definition of inner product we have</p>
+
+\[\langle \mathbf{a}, \mathbf{b}\rangle = \|\mathbf{a}\|\|\mathbf{b}\|\cos(\theta)\]
+
+<p>where \(\theta\) is the angle between \(\mathbf{a}\) and \(\mathbf{b}\). We can see that the angle between the two lines did not change (\(\cos(\theta)\) does not change), and since the length is also kept the same, the inner product is preserved. The rotation is in a 2D plane, but we can see that for the body coordinate system before and after the transformation (orange axes) the z-axis is the same, thus the cross product is preserved. This result generalizes to 3D rotations.</p>
+
+<h2 id="rotations">Rotations</h2>
+
+<h3 id="properites">Properites</h3>
+
+<p>The rotation matrix has the following properties
+\(SO(3) = \{R\in\mathbb{R}^{3\times3}\ |\ RR^T = I, \mathrm{det}R = 1\},\)</p>
+
+<p>where \(SO(3)\) represents the special orthogonal group. Since the rotation matrix is a group under matrix multiplication it has some additional properties:</p>
+
+<ul>
+  <li>Closure: If \(R_1, R_2\) are rotation matrices then \(R_1R_2\) is also a rotation matrix.</li>
+  <li>Identity: The identity matrix is the identity element.</li>
+  <li>Inverse: Each rotation matrix has an inverse \(R^{-1} = R^T\).</li>
+  <li>Associativity: For rotation matrices \(R_1, R_2\) and \(R_3\) we have \((R_1R_2)R_3 = R_1(R_2R_3)\).</li>
+</ul>
+
+<p>Also rotation matrix is a rigid transformation which means that</p>
+
+<ul>
+  <li>R preserves length: \(\|Rq - Rp\| = \|p - q\|\) for all points \(p, q\in\mathbb{R}^3\).</li>
+  <li>R preserves orientation: \(R(v\times w) = (Rv)\times(Rw)\) for all vectors \(v, w\in\mathbb{R}^3\).</li>
+</ul>
+
+<h3 id="representations">Representations</h3>
+
+<figure class="l-middle">
+    <img src="/assets/images/random/rotation.gif" alt="rotation illustration" />
+</figure>
+
+<p>We can see from the animation, that if we have a vector \(\mathbf{q}\) rotating with respect to another vector \(\omega\) with constant angular velocity \(\|\omega\|\), its linear velocity can be calculated as \(\dot{\mathbf{q}} = \omega\times\mathbf{q} = \hat{\omega}\mathbf{q}\). From the knowledge of linear systems (solution of \(\dot{x} = Ax\) is \(x(t) = e^{At}x_0\)) we have the trajectory of the vector as \(\mathbf{q}^\prime = \mathbf{q}(t) = e^{\hat{\omega}t}\mathbf{q}_0\). Additionally, if we have \(\|\omega\| = 1\), then we have \(t = \theta\) the rotation angle.</p>
+
+<p>From <strong>Euler’s theorem</strong> we know that for any rotation matrix \(R\in SO(3)\), it can be seen to be equivalent to rotation about a fixed axis \(\omega\in\mathbb{R}^3\) through an angle \(\theta\in[0, 2\pi]\). To represent the rotation matrix this way we can use the exponential map</p>
+
+\[R = e^{\hat{w}\theta} = I + \frac{\hat{\omega}}{\|\omega\|}\sin{(\|\omega\|\theta)} + \frac{\hat{\omega}^2}{\|\omega\|}\bigg(1 - \cos{((\|\omega\|\theta))}\bigg)\]
+
+<p>where \(\hat{\omega}\) is defined as</p>
+
+\[\hat{\omega} = \begin{bmatrix}
+0 &amp; -\omega_3 &amp; \omega_2\\
+\omega_3 &amp; 0 &amp; -\omega_1\\
+-\omega_2 &amp; \omega_1 &amp; 0
+\end{bmatrix}\in so(3) = \{S\in\mathbb{R}^{3\times3}\ |\ S^T = -S\}.\]
+
+<p>This mapping is many-to-one, which says that there are many \(e^{\hat{w}\theta}\) corresponding to one \(R\), and for every \(R\in SO(3)\) we have more than one \(e^{\hat{w}\theta}\). To obtain \(\omega\) and \(\theta\) from \(R\) we have</p>
+
+\[\theta = \cos^{-1}\Big(\frac{\mathrm{trace}(R) - 1}{2}\Big)\ \mathrm{and}\ \omega =
+\frac{1}{2\sin\theta}\begin{bmatrix}
+r_{32} - r_{23}\\
+r_{13} - r_{31}\\
+r_{21} - r_{12}
+\end{bmatrix},\]
+
+<p>we can see that the pair \((\theta, \omega)\) and \((2\pi - \theta, -\omega)\) can both obtain \(R\), thus makes this mapping many-to-one. Note that in the case where \(\theta = 0\) we can pick any arbitrary \(\omega\), which all makes \(R = I\).</p>
+
+<h3 id="better-understanding-what-rotation-matrices-represent">Better understanding what rotation matrices represent</h3>
+
+<figure class="l-middle">
+    <img src="/assets/images/random/twoViewofR.png" alt="rotation illustration" />
+</figure>
+
+<p>Rotation matrices can be seen as a mapping from describing a point in one coordinate frame to describing it in another coordinate frame. For the equation \(x_g^\prime = Rx_b\), we can see \(x_b\) as a point specified in a body frame \(b\) and \(x_g^\prime\) being the same point, however, specified in the coordinates of the global fixed frame \(g\). The rotation matrix \(R\) then serves as a mapping between these two representations.</p>
+
+<p>Another way to see rotation matrices is to see it as an action, to rotate points in the same frame from one configuration to another. Using the equation \(x_g^\prime = Rx_g\), we can see \(x_g\) as the the point before applying the rotation \(R\) and \(x_g^\prime\) the point after applying rotation \(R\).</p>
+
+<p>With these two views, we can now better understand how to represent rotations w.r.t the global fixed frame and the body frame. Now we ask, if sequentially applying two rotations \(R_1\) and \(R_2\) both specified in the body frame, where would the point end up in the global frame? Denote \(x_2\) as the final position in the global frame and \(x_0\) the initial position in the global frame, we want to find the rotation matrix between \(x_2\) and \(x_0\). First, we denote the initial position in the global frame as \(x_0^g\), where the superscript \(g\) denotes that this is represented in the global frame. After applying \(R_1\) we have</p>
+
+\[x_1^g = R_1x_0^g.\]
+
+<p>One thing to note is that in the body frame the coordinates of the point is always the same, which is equal to \(x_0^g\). Thus we have</p>
+
+\[R_1^Tx_1^g = x_1^{1} = x_0^g,\]
+
+<p>where the superscript 1 denotes the point represented in the body frame after rotation \(R_1\). If we see \(R_1\) as a mapping between points in the frame 1 and the global frame \(g\), we have the following relationship</p>
+
+\[R_1^Tx^g = x^{1}\ \mathrm{and}\ x^g = R_1x^{1}.\]
+
+<p>Then we can see if we apply \(R_2\) which is w.r.t the frame \(b1\) we can have</p>
+
+\[x_2^{1} = R_2x_1^{1}\ \rightarrow\ R_2^Tx_2^{1} = x_2^{2} = x_1^{1} = x_0^g,\]
+
+<p>similar to before this utilizes the fact that the coordinates of the point is kept constant in the current body frame. Finally, if we use \(R_1\) to map \(x_2^{1}\) to \(x_2^g\) we can have</p>
+
+\[R_1x_2^{1} = x_2^g,\]
+
+<p>then we can have</p>
+
+\[x_2^{g} = R_1R_2x_0{g}.\]
+
+<p>An interesting question would be after we get \(x_2^{g}\) if we rotate about the global frame using \(R_3\) and then rotate about the body frame using \(R_4\) what point will we end up at. If call the point after applying \(R_3\): \(x_3\), we can easily have</p>
+
+\[x_3^g = R_3x_2^g = R_3R_1R_2x_0^{g} = R_3R_1R_2x_3^{3},\]
+
+<p>which again utilizes the fact that the body frame coordinates do not change \(x_3^{3} = x_2^{2} = x_1^{1} = x_0^g\). Also we obtain a mapping from the global frame and the body frame \(3\): \(x^g = R_3R_1R_2x^3\). Then if we apply \(R_4\), and get to point 4 we can have</p>
+
+\[x_4^{3} = R_4x_3^{3}\ \rightarrow\ R_4^Tx_4^{3} = x_3^{3} = x_4^{4} = x_0^g.\]
+
+<p>To map \(x_4^{3}\) into the global frame we can have</p>
+
+\[R_3R_1R_2x_4^{3} = R_3R_1R_2R_4x_4^{4} = x_4^g\ \rightarrow\ R_4^TR_2^TR_1^TR_3^Tx_4^g = x_0^g\ \rightarrow\ x_4^g = R_3R_1R_2R_4x_0^g.\]
+
+<p>Following this line of thought, I conjecture that we can completely decouple the rotations about the global frame and the body frame. I am pretty sure this is proved and shown somewhere, if anyone reading this has any information please let me know.</p>
+
+<h2 id="rigid-motions-in-3d">Rigid Motions in 3D</h2>
+
+<p>In this section I will talk about rigid motions which includes both translation and rotation. I will present three ways of describing such a motion, namely, homogeneous transformation, twist and screw motions, and we will see how these three descriptions are related.</p>
+
+<h3 id="homogeneous-representations">Homogeneous Representations</h3>
+
+<p>Any rigid motion can be represented by a translation \(p\) and a rotation \(R\). If we perform such a transformation \(g(\cdot)\), we can relate the position before and after the transformation as</p>
+
+\[q^\prime = g(q) = p + Rq.\]
+
+<p>And for a vector \(v\) we have \(g_*(v) = Rv\). This forms the special Euclidean group</p>
+
+\[SE(3) = \{(p, R)\ |\ p\in\mathbb{R}^3, R\in SO(3)\} = \mathbb{R}^3\times SO(3).\]
+
+<p>As before we can see this from two ways. If \(g(\cdot)\) is seen as an action then both \(q^\prime\) and \(q\) are measured in the same coordinate frame. If we see this as a mapping between frames, then \(q^\prime\) and \(q\) are measured in different frames. Later I will consolidate this using an example. Before that, I want to introduce the homogeneous representation of points and vectors. For a point \(p\) and vector \(v\) we can have their homogeneous representation as
+\(\bar{p} = \begin{bmatrix}
+p_1\\
+p_2\\
+p_3\\
+1
+\end{bmatrix},\ \bar{v} = \begin{bmatrix}
+v_1\\
+v_2\\
+v_3\\
+0
+\end{bmatrix},\)</p>
+
+<p>here I would like to draw your attention to the last element, for points the last element is \(1\) and for vectors the last element is \(0\). The we can homogeneous representation of \(SE(3)\) as</p>
+
+\[\bar{g} = \begin{bmatrix}
+R &amp; p\\
+\mathbf{0} &amp; 1
+\end{bmatrix}.\]
+
+<p>It is proved that \(SE(3)\) is a group, therefore, it satisfies the following properties</p>
+
+<ul>
+  <li>If \(g_1, g_2\in SE(3)\), then \(g_1g_2\in SE(3)\).</li>
+  <li>It has an identity element which is \(I_{4\times4}\).</li>
+  <li>
+    <p>There exists an inverse for \(g = (p, R)\in SE(3)\), defined as
+\(g^{-1} = (-R^Tp, R^T)\ \rightarrow\ \bar{g}^{-1} = \begin{bmatrix}
+  R^T &amp; -R^Tp\\
+  \mathbf{0} &amp; 1
+  \end{bmatrix}.\)</p>
+  </li>
+  <li>The composition rule
+\(\bar{g}_{ac} = \bar{g}_{ab}\bar{g}_{bc} = \begin{bmatrix}
+  R_{ab}R_{bc} &amp; R_{ab}p_{bc} + p_{ab}\\
+  \mathbf{0} &amp; 1
+  \end{bmatrix}\)
+is associative.</li>
+</ul>
+
+<p>Also we can prove that is a rigid transformation, which infers</p>
+
+<ul>
+  <li>\(g\) preserves distance between points \(\|g(p) - g(q)\| = \|p - q\|\), for all \(p, q\in\mathbb{R}^3\).</li>
+  <li>\(g\) preserves orientation between vectors \(g_*(v\times w) = g_*(v)\times g_*(w)\), for all \(v, w\in\mathbb{R}^3\).</li>
+</ul>
+
+<figure class="l-middle">
+    <img src="/assets/images/random/twoViewofg.png" alt="rotation illustration" />
+</figure>
+
+<p>Now I want to use an example to better understand the two views of this homogeneous representation. Consider rotating \(\theta\) about the vertical line going though point \((l_x, l_y, 0)\), how can we find the transformation \(g_{ab}\) such that \(x_g\) is the position of the point before and \(x_g^\prime\) is the position after, which are all represented in the global fixed frame. We can see this as two steps, a rotation \(R\) and a translation \(p\), the rotation is w.r.t the vertical line \((0, 0, 0)\) and the translation is from \((0, 0, 0)\) to \((l_x, l_y, 0)\). Denoting a point \(x\) with the coordinates in the body frame (light purple frame above) as \(x_b\), we define</p>
+
+\[x_b^1 = Rx_b.\]
+
+<p>And after the translation we have</p>
+
+\[x_g^\prime = x_b^1 + p = Rx_b + p.\]
+
+<p>Therefore we have</p>
+
+\[x_g^\prime = p + Rx_b\ \rightarrow\ \bar{g} = \begin{bmatrix}
+R &amp; p\\
+0 &amp; 1
+\end{bmatrix} = \begin{bmatrix}
+\cos\theta &amp; -\sin\theta &amp; 0 &amp; l_x\\
+\sin\theta &amp; \cos\theta &amp; 0 &amp; l_y\\
+0 &amp; 0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{bmatrix}.\]
+
+<p>Also if we start at point \(x_g = x_b\), where \(x_g\) is measured in the global frame, this gives you a way to calculate the position after applying \(R\) and \(p\)</p>
+
+\[x_g^\prime = p + Rx_g.\]
+
+<h3 id="twists">Twists</h3>
+
+<p>In the previous sections, we talked about how to rotate rigid bodies, however, all of them were rotating about an axis that passes through the global fixed frame, in this part in addition to introducing a more compact way of representing rigid body motion, I will also talk about how to rotate about axis that do not pass through the origin of the fixed frame. In the homogeneous coordinates we can write the pure rotation with unit velocity about axis \(\omega\in\mathbb{R}^3\)</p>
+
+<p>\(\dot{p}(t) = \omega\times(p(t) - q)\)
+as
+\(\begin{bmatrix}
+\dot{p}\\
+1
+\end{bmatrix} = \begin{bmatrix}
+\hat{\omega} &amp; -\omega\times q\\
+0 &amp; 1
+\end{bmatrix}\begin{bmatrix}
+p\\
+1
+\end{bmatrix} = \hat{\xi}\begin{bmatrix}
+p\\
+1
+\end{bmatrix}\ \longleftrightarrow \dot{\bar{p}} = \hat{\xi}\bar{p}.\)</p>
+
+<p>Thus the solution \(\bar{p}(t) = \exp{(\hat{\xi}t)}\bar{p}(0)\) enables a mapping from the initial location to the location after \(t\) radians of rotation \(\exp{(\hat{\xi}t)}\). Note that here \(q\) is a point on the axis \(\omega\) given in the global coordinates. For pure translations we have</p>
+
+\[\hat{\xi} = \begin{bmatrix}
+0 &amp; v\\
+0 &amp; 0
+\end{bmatrix}\]
+
+<p>where \(v\) is a vector representing the translation velocity. We define twists as the group</p>
+
+\[\hat{\xi} \in se(3) := \{(v, \hat{\omega})\ |\ v\in\mathbb{R}^3, \hat{\omega}\in so(3)\} =
+\begin{bmatrix}
+\hat{\omega} &amp; v\\
+0 &amp; 1
+\end{bmatrix}\in\mathbb{R}^{4\times4},\]
+
+<p>with the twist coordinates \(\xi := (v,\ \omega)\). We can prove that for every member of \(se(3)\) we can find its corresponding element in \(SE(3)\) using an exponential mapping</p>
+
+\[\begin{align*}
+e^{\hat{\xi}\theta} &amp;= \begin{bmatrix}
+I &amp; v\theta\\
+0 &amp; 1
+\end{bmatrix} &amp; \omega = 0\\
+e^{\hat{\xi}\theta} &amp;= \begin{bmatrix}
+e^{\hat{\omega}\theta} &amp; (I - e^{\hat{\omega}\theta})(\omega\times v) +
+\omega\omega^Tv\theta\\
+0 &amp; 1
+\end{bmatrix} &amp; \omega \neq 0.
+\end{align*}\]
+
+<p>Also for every \(p, R\) we can find its corresponding twist \(\hat{\xi}\in se(3)\) and \(\theta\in\mathbb{R}\), for \(R = I\) we have</p>
+
+\[\begin{align*}
+\hat{\xi} &amp;= \begin{bmatrix}
+0 &amp; p/\|p\|\\
+0 &amp; 0
+\end{bmatrix} &amp;\theta = \|p\|.
+\end{align*}\]
+
+<p>If \(R \neq I\), then first we can solve for \(\hat{w}\) and \(\theta\) by solving \(e^{\hat{\omega}\theta} = R\), which was mentioned above. Then we can solve for \(v\)</p>
+
+\[v = \Big[(I - e^{\hat{\omega}\theta})\hat{\omega} + \omega\omega^T\theta\Big]^{-1}p.\]
+
+<p>Note, here if we write \(p(\theta) = \exp{(\hat{\xi}\theta)}p(0)\), then \(p(\theta)\) and \(p(0)\) are specified in the same reference frame. If we want to specify \(p(0)\) in the body frame then we have</p>
+
+\[p(\theta) = \exp{(\hat{\xi}\theta)}g_{gb}(0)p^b(0)\]
+
+<p>where \(g_{gb}\) gives the mapping between coordinates in the body and the global frame at \(t = 0\).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Twist</th>
+      <th>Linear System</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\(\dot{p}(t) = \omega\times(p(t) - q)\)</td>
+      <td>\(\dot{x}(t) = \omega(x(t) - O)\)</td>
+      <td>\(\xi = \begin{bmatrix}-\omega\times q\\ \omega\end{bmatrix} = \begin{bmatrix}v\\ \omega\end{bmatrix}\), differential equations governing the movement</td>
+    </tr>
+    <tr>
+      <td>\(\dot{\bar{p}} = \hat{\xi}\bar{p}\)</td>
+      <td>\(\dot{x} = Ax\)</td>
+      <td>\(\hat{\xi} = \begin{bmatrix}\hat{\omega} &amp; -\omega\times q\\ 0 &amp; 1\end{bmatrix}\), differential equation in vector form</td>
+    </tr>
+    <tr>
+      <td>\(\bar{p}(t) = \exp{(\hat{\xi}t)}\bar{p}(0)\)</td>
+      <td>\(x(t) = \exp{(At)}x(0)\)</td>
+      <td>\(\exp{(\hat{\xi}t)} = \begin{bmatrix}e^{\hat{\omega}\theta} &amp; (I - e^{\hat{\omega}\theta})(\omega\times v) + \omega\omega^Tv\theta\\ 0 &amp; 1\end{bmatrix}\), analytic solution to differential equation.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="screw-motion">Screw Motion</h3>
+
+<p>Here we state <strong>Chasles’ Theorem</strong>: every rigid body motion can be realized by a rotation about an axis \(\omega\) combined with a translation parallel to that axis. We assume that the rotation is of \(\theta\) radians and the translation is of amount \(d\), also we can find a point on \(\omega\) and call it \(q\).</p>
+
+<p>We can see that this movement resembles the movement of a screw. We can describe the screw movement using: <em>pitch</em> as \(h:=d/\theta\), the <em>axis</em> of the screw movement as</p>
+
+\[l = \{q + \lambda\omega\ |\ \lambda\in\mathbb{R}\}\]
+
+<p>and a <em>magnitude</em> \(M = \theta\) when there is rotation and \(M = \infty\) when there is only translation.</p>
+
+<p>For a given screw motion we can find its rigid transfomation as</p>
+
+\[\begin{align*}
+g &amp;= \begin{bmatrix}
+e^{\hat{\omega}\theta} &amp; (I - e^{\hat{\omega}\theta})q + h\theta\omega\\
+0 &amp; 1
+\end{bmatrix} &amp; \mathrm{with\ rotation}\\
+g &amp;= \begin{bmatrix}
+I &amp; \theta v\\
+0 &amp; 1
+\end{bmatrix} &amp; \mathrm{pure\ translation}
+\end{align*}\]
+
+<p>where \(v\) is the vector of translation. Additionally, when given a twist we can also find its corresponding screw, and given a screw we can find its corresponding twist.</p>
+
+<h2 id="velocity-of-a-rigid-body">Velocity of a Rigid Body</h2>
+
+<h3 id="rotational-velocity">Rotational Velocity</h3>
+
+<p>First we define the spatial coordinate frame \(A\) which is fixed and the body coordinate frame \(B\) which is moving. If we define a point \(q_b\) in the body frame, and a rotation motion \(R_{ab}(t)\), then we can have the trajectory of the point in spatial coordinates as</p>
+
+\[q_a(t) = R_{ab}(t)q_b.\]
+
+<p>By deriving that both \(R^{-1}\dot{R}\) and \(\dot{R}R^{-1}\) are skew symmetric matrices, we can get the angular velocity in both the spatial coordinate \(\hat{\omega}^s\) and the instantaneous body coordinate \(\hat{\omega}^b\) (since the body coordinate is changing due to rotation)</p>
+
+\[v_{q_a}(t) = \dot{R}_{ab}(t)q_b =
+\underbrace{\dot{R}_{ab}(t)R_{ab}^{-1}(t)}_{:=\ \hat{\omega}_{ab}^s}R_{ab}(t)q_b =
+\hat{\omega}_{ab}^sR_{ab}(t)q_b = \hat{\omega}_{ab}q_a.\]
+
+<p>The instantaneous body angluar velocity is defined as seeing the spatial angular velocity vector in the body frame,</p>
+
+\[v_{q_b}(t) := R_{ab}^Tv_{q_a}(t)\ \ \ \ \hat{\omega}_{ab}^b = R_{ab}^{-1}\dot{R}_{ab}\]
+
+<p>which is not the angluar velocity of the rigid body w.r.t the body frame, the latter is always zero.</p>
+
+<h3 id="rigid-body-velocity">Rigid Body Velocity</h3>
+
+<p>For a rigid motion plan \(g_{ab}(t)\in SE(3)\) we can get the spatial velocity as a twist \(\hat{V}_{ab}^s\in se(3)\)</p>
+
+\[\hat{V}_{ab}^s = \dot{g}_{ab}g_{ab}^{-1}\ \ \ \ V_{ab}^s = \begin{bmatrix}
+v_{ab}^s\\
+\omega_{ab}^s
+\end{bmatrix} = \begin{bmatrix}
+-\dot{R}_{ab}R_{ab}^Tp_{ab} + \dot{p}_{ab}\\
+(\dot{R}_{ab}R_{ab}^T)^\vee
+\end{bmatrix}\]
+
+<p>Thus the velocity of a point \(q_a\) can be found as</p>
+
+\[v_{q_a} = \hat{V}_{ab}^sq_a = \omega_{ab}^s\times q_a + v_{ab}^s.\]
+
+<p>Here we can interpret \(\omega_{ab}^s\) as the instantaneous angular velocity of the body as viewed in the spatial frame and \(v_{ab}^s\) as the velocity of a (possibly imaginary) point on the rigid body which is traveling through the origin of the spatial frame at time \(t\). The body velocity is defined as</p>
+
+\[\hat{V}_{ab}^b = g_{ab}^{-1}\dot{g}_{ab}\ \ \ \ V_{ab}^b = \begin{bmatrix}
+v_{ab}^b\\
+\omega_{ab}^b
+\end{bmatrix} = \begin{bmatrix}
+R_{ab}^T\dot{p}_{ab}\\
+(R_{ab}^T\dot{R}_{ab})^\vee
+\end{bmatrix}\]
+
+<p>which for \(v_{ab}^b\) can be interpretted as the velocity of the origin of the body coordinate frame relative to the spatial frame, as viewed in the current body frame; for \(\omega_{ab}^b\) we can see it as the angular velocity of the coordinate frame, also as viewed in the current body frame. We can also define an adjoint transformation to relate the spatial and body velcoties</p>
+
+\[V_{ab}^s = \begin{bmatrix}
+v_{ab}^s\\
+\omega_{ab}^s
+\end{bmatrix} = \begin{bmatrix}
+R_{ab} &amp; \hat{p}_{ab}R_{ab}\\
+0 &amp; R_{ab}
+\omega_{ab}^b
+\end{bmatrix}\begin{bmatrix}
+v_{ab}^b\\
+\omega_{ab}^b
+\end{bmatrix} = Ad_{g}V_{ab}^b.\]
+
+<h3 id="coordinate-transformation">Coordinate Transformation</h3>
+
+<p>For three coordinate frames A, B and C, we can have the relationship between their spatial velocity as</p>
+
+\[V_{ac}^s = V_{ab}^s + Ad_{g_{ab}}V_{bc}^s\]
+
+<p>similarly we can get the relationship between their body velocities as</p>
+
+\[V_{ac}^b = Ad_{g_{bc}^{-1}}V_{ab}^b + V_{bc}^b.\]
+
+<p>This relationship can also be used to represent twists before and after applying a rigid motion</p>
+
+\[\xi^\prime = Ad_g\xi\ \ \mathrm{or}\ \ \hat{\xi}^\prime = g\hat{\xi}g^{-1}.\]
+
+<p>Some additional properties include</p>
+
+\[\begin{align*}
+V_{ab}^{b} &amp;= V_{ba}^{s}\\
+V_{ab}^{b} &amp;= -Ad_{g_{ba}}V_{ba}^{b}
+\end{align*}\]
+
+<h2 id="wrenches">Wrenches</h2>
+
+<p>A wrench is defined as a force/moment pair \(F\in\mathbb{R}^6\)</p>
+
+\[F = \begin{bmatrix}
+f\\
+\tau
+\end{bmatrix}.\]
+
+<p>Given its dual nature with twist we have the relationship mapping wrenches between different coordinates systems as</p>
+
+\[F_c = Ad_{g_{bc}}^TF_b.\]
+
+<p>And for the same wrench the instantaneous work is the same in both the spatial and body frame</p>
+
+\[\delta W = V^b\cdot F^b = V^s\cdot F^s,\]
+
+<p>note that here \(\cdot\) represents the dot product.</p>
+
+<p>Using <strong>Poinsot</strong>’s Theorem we can see every collection of wrenches applied to a rigid body is equivalent to a force applied along a fixed axis plus a torque about the same axis. Thus there exists a direct mapping between wrenches and screw motions.</p>
+
+<d-byline></d-byline>
+
+<p class="citation">
+    Powered by <a href="https://www.mathjax.org">
+    <img title="Powered by MathJax" src="https://www.mathjax.org/badge/mj_logo.png" style="border:0;" alt="Powered by MathJax" />
+    </a>
+</p>
+:ET

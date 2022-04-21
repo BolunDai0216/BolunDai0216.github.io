@@ -1,0 +1,14 @@
+- type: Control Theory
+  onclick_action: onlyShowCardsByClass('control-theory', ['convex-opt', 'deep-learning', 'random'])
+
+- type: Convex Optimization
+  onclick_action: onlyShowCardsByClass('convex-opt', ['control-theory', 'deep-learning', 'random'])
+
+- type: Deep Learning
+  onclick_action: onlyShowCardsByClass('deep-learning', ['control-theory', 'convex-opt', 'random'])
+
+- type: Random Stuff
+  onclick_action: onlyShowCardsByClass('random', ['control-theory', 'convex-opt', 'deep-learning'])
+
+- type: Show All
+  onclick_action: showAllCards(['convex-opt', 'control-theory', 'deep-learning', 'random'])

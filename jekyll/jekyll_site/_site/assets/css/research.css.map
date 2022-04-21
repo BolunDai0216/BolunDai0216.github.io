@@ -1,0 +1,14 @@
+{
+	"version": 3,
+	"file": "research.css",
+	"sources": [
+		"research.scss",
+		"_sass/re.scss"
+	],
+	"sourcesContent": [
+		"@import \"re\";",
+		"body {\n    background-color: #e56530;\n}\n\n.card-title {\n    font-family: Georgia, 'Times New Roman', Times, serif, Helvetica;\n    color: white;\n    text-decoration: none;\n    font-size: 24px;\n    font-weight: bold;\n}\n\n.card-author {\n    font-family: Avenir, Helvetica;\n    color: white;\n    margin-top: 15%;\n    font-size: 16px;\n}\n\n.card-publish {\n    font-family: Avenir, Helvetica;\n    color: white;\n    font-size: 16px;\n    margin-top: 5%;\n    font-style: italic;\n}\n\n.card-text {\n    font-family: Roboto, Avenir, Helvetica;\n    color: #fdcda5;\n    font-weight: 400;\n}\n\n.research-card {\n    background-color: #B35025;\n    border: none;\n    box-shadow: 1px 1px 15px 2px rgba(0, 0, 0, 0.2);\n}\n\n.arxiv-link {\n    color: white;\n    text-decoration: none;\n}\n\n.arxiv-link:hover {\n    text-decoration: underline;\n    color: white;\n}\n\n.research-block {\n    margin-top: 5%;\n    padding-left: 5%;\n    padding-right: 5%;\n}"
+	],
+	"names": [],
+	"mappings": "ACAA,AAAA,IAAI,CAAC,EACD,gBAAgB,EAAE,OAAO,GAC5B;;AAED,AAAA,WAAW,CAAC,EACR,WAAW,EAAE,mDAAmD,EAChE,KAAK,EAAE,KAAK,EACZ,eAAe,EAAE,IAAI,EACrB,SAAS,EAAE,IAAI,EACf,WAAW,EAAE,IAAI,GACpB;;AAED,AAAA,YAAY,CAAC,EACT,WAAW,EAAE,iBAAiB,EAC9B,KAAK,EAAE,KAAK,EACZ,UAAU,EAAE,GAAG,EACf,SAAS,EAAE,IAAI,GAClB;;AAED,AAAA,aAAa,CAAC,EACV,WAAW,EAAE,iBAAiB,EAC9B,KAAK,EAAE,KAAK,EACZ,SAAS,EAAE,IAAI,EACf,UAAU,EAAE,EAAE,EACd,UAAU,EAAE,MAAM,GACrB;;AAED,AAAA,UAAU,CAAC,EACP,WAAW,EAAE,yBAAyB,EACtC,KAAK,EAAE,OAAO,EACd,WAAW,EAAE,GAAG,GACnB;;AAED,AAAA,cAAc,CAAC,EACX,gBAAgB,EAAE,OAAO,EACzB,MAAM,EAAE,IAAI,EACZ,UAAU,EAAE,GAAG,CAAC,GAAG,CAAC,IAAI,CAAC,GAAG,CAAC,kBAAkB,GAClD;;AAED,AAAA,WAAW,CAAC,EACR,KAAK,EAAE,KAAK,EACZ,eAAe,EAAE,IAAI,GACxB;;AAED,AAAA,WAAW,CAAC,KAAK,CAAC,EACd,eAAe,EAAE,SAAS,EAC1B,KAAK,EAAE,KAAK,GACf;;AAED,AAAA,eAAe,CAAC,EACZ,UAAU,EAAE,EAAE,EACd,YAAY,EAAE,EAAE,EAChB,aAAa,EAAE,EAAE,GACpB"
+}

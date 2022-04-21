@@ -1,0 +1,26 @@
+I"Ð<p>In this blog, I want to talk give a review of rigid transformations, in specific rotation and translation. Although this is the most basic concept in robotics, I tend to confuse many concepts. Therefore, this to me is more like a cheatsheet. The content is developed from <d-cite key="DBLP:books/daglib/0073732"></d-cite>.</p>
+
+<h2 id="rigid-transformations">Rigid Transformations</h2>
+
+<p>A rigid transformation in \(\mathbb{R}^3\) is a mapping \(g:\mathbb{R}^3\rightarrow\mathbb{R}^3\) that has the following properties:</p>
+
+<ul>
+  <li>Length is preserved \(\|g(p) - g(q)\| = \|p - q\|\) for all points \(p, q\in\mathbb{R}^3\).</li>
+  <li>The cross product is preserved \(g_*(v\times w) = g_*(v)\times g_*(w)\) for all vectors \(v, w\in\mathbb{R}^3\).</li>
+</ul>
+
+<p>In addition to the above properties we can also prove that the inner product is preserved
+\(v_1^Tv_2 = g_*(v_1)^Tg_*(v_2).\)</p>
+
+<figure class="l-middle">
+    <img src="/assets/images/random/rigid_transformation.gif" alt="rigid transformation illustration" />
+</figure>
+
+<h2 id="rotations">Rotations</h2>
+
+<h2 id="rigid-motions-in-3d">Rigid Motions in 3D</h2>
+
+<h2 id="velocity-of-a-rigid-body">Velocity of a Rigid Body</h2>
+
+<h2 id="wrenches">Wrenches</h2>
+:ET

@@ -1,0 +1,56 @@
+I"H<p>This blog shows the proof that for a convex optimization problem such as</p>
+
+\[\begin{align*}
+\min_{x\in\mathcal{D}}&amp;\ f(x)\\
+\mathrm{s.t.}&amp;\ g_i(x) \leq 0\\
+&amp;\ h_i(x) = 0,
+\end{align*}\]
+
+<p>a local minimum is also a global minimum. If a point \(x\) is a local minimum, then in a small local region, any other point \(y\) will make the objective function output a larger value, i.e. \(f(x) &lt; f(y)\). In mathematical terms, no matter how weirdly shaped the local region is we can always find a circle that inscribes the edges. Therefore we can denote the local region where \(x\) is the local minimum as \(\|x - y\|_2\leq\rho\). For the global minimum, then any point \(y\) in the domain \(\mathcal{D}\) will make the objective function output a larger value, i.e. \(f(y)&gt; f(x)\).</p>
+
+<p>We can prove this by contradiction. The statement is</p>
+
+\[\mathrm{x\ is\ a\ local\ minimum}\rightarrow\mathrm{x\ is\ the\ global\ minimum},\]
+
+<p>to contradict it we simply need to assume \(x\) is not the global minimum. If \(x\) is not the global minimum than we can find a point \(z\in\mathcal{D}\), such that \(f(x) &gt; f(z)\). Since \(x\) is still a local minimum, having \(f(x) &gt; f(z)\) is saying that \(\|x - z\|_2 &gt; \rho\). We define a point \(m\) such that \(m = tx + (1-t)z\), where \(0 \leq t \leq1\).</p>
+
+<p>First, we can say that \(y\in\mathcal{D}\), because \(\mathcal{D}\) is a convex set. This comes from the definition of convex sets: for a convex set \(C\), if \(x, y\in C\) then for \(0\leq t\leq1\) we have \(tx + (1-t)y\in C\).</p>
+
+<p>Second, we can say that \(m\) is feasible, in other words \(g_i(m) \leq 0\) and \(h_i(m) = 0\), let’s prove this. For a problem to be a convex optimization problem we need the objective function \(f(\cdot)\) and inequality constraints \(g_i(\cdot)\) to be convex functions. Since \(g_i(\cdot)\) is a convex function we have</p>
+
+\[\begin{align*}
+g_i(m) &amp;= g_i(tx + (1-t)z)\\
+&amp;\leq tg_i(x) + (1-t)g_i(z)\\
+&amp;\leq t\cdot0 + (1-t)\cdot0\\
+&amp;= 0.
+\end{align*}\]
+
+<p>Another criterion to be a convex optimization problem is the equality constraint has to be an affine function, i.e. \(h_i(x) = a_i^Tx + b_i\). Thus we have</p>
+
+\[\begin{align*}
+h_i(m) &amp;= h_i[tx + (1-t)z]\\
+&amp;= a_i^T[tx + (1-t)z] + b_i\\
+&amp;= ta_i^Tx + (1-t)a_i^Tz + tb_i + (1-t)b_i\\
+&amp;= t[a_i^Tx + b_i] + (1-t)[a_i^Tz + b_i]\\
+&amp;= t\cdot0 + (1-t)\cdot0\\
+&amp;= 0.
+\end{align*}\]
+
+<p>Since \(m\) satisfies the inequality and equality constraints we say \(m\) is feasible.</p>
+
+<p>If we pick some \(t\) that is large enough (some value close to 1 would work) such that \(\|x - m\|_2\leq\rho\). Since \(m\) is in the local region of \(x\) it should have \(f(m) &gt; f(x)\). Since \(f(\cdot)\) is a convex function we can have</p>
+
+\[\begin{align*} f(m) &amp;=f[tx + (1-t)z]\\ &amp;\leq tf(x) + (1-t)f(z)\\
+&amp;\leq tf(x) + (1-t)f(x)\\ &amp;=f(x).
+\end{align*}\]
+
+<p>This shows that \(f(m) \leq f(x)\), which contradicts with the fact that \(x\) is a local minimum. Therefore, we can conclude that if \(x\) is a local minimum then it is also a global minimum.</p>
+
+<d-byline></d-byline>
+
+<p class="citation">
+    Credit to Ryan Tibshirani, powered by <a href="https://www.mathjax.org">
+    <img title="Powered by MathJax" src="https://www.mathjax.org/badge/mj_logo.png" style="border:0;" alt="Powered by MathJax" />
+    </a>
+</p>
+:ET

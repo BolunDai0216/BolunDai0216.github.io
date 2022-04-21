@@ -1,0 +1,16 @@
+I"v<p>Gradient descent is a method for unconstrained, smooth convex optimization problems, such as</p>
+
+\[\min_{x}\ \ f(x).\]
+
+<p>Following the definition of a convex optimiztion problem: the objective (f) has to be a convex
+function over a convex domain. Along with the smooth assumption, we can say that (f(x)) is a
+convex and differentiable function over (\mathrm{dom}(f) = \mathbb{R}^n). Starting from an initial
+state (x^{(0)}\in\mathbb{R}^n), at each step the gradient descent algorithm performs an update</p>
+
+\[x^{(k)} = x^{(k-1)} - t_k\nabla f(x^{(k-1)}),\ k=1, 2, 3, \cdots,\]
+
+<p>here (t_k) is the (k)-th step size, (\nabla f(x^{(k-1)})) is the gradient of (f(x))
+evaluated at (x^{(k-1)}) and (x^{(k)}) is the estimation of the solution after the (k)-th
+update. We perform the update iteratively until it converges to a solution (x^*), which
+approximately minimizes (f(x)).</p>
+:ET

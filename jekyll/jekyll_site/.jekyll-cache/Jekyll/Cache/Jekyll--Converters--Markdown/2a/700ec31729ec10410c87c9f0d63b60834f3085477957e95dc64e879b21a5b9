@@ -1,0 +1,94 @@
+I"<p>First we summarize the operations that preserves convexity for convex sets, which means for a convex set \(C\) after performing an operation the result is still a convex set. A convex set \(C\) is defined as for \(x, y\in C\) we have \(tx + (1-t)y\in C\) for all \(0\leq t\leq1\).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Operation</th>
+      <th style="text-align: left">Detailed Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Intersection</td>
+      <td style="text-align: left">\(\widetilde{C} = C_1\bigcap C_2\), where \(C_1\) and \(C_2\) are convex sets</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Scaling and Translation</td>
+      <td style="text-align: left">\(\widetilde{C} = \{ax + b: x\in C\}\), where \(C\) is a convex set</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Affine Images</td>
+      <td style="text-align: left">\(\mathcal{D} = \{f(x): x\in C\}\), where \(C\) is a convex set</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Affine Preimages</td>
+      <td style="text-align: left">\(C = \{x: f(x)\in \mathcal{D}\}\), where \(\mathcal{D}\) is a convex set</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Then we summarize the operations that preserve convexity for convex functions. A convex function \(f:\mathbb{R}^n\rightarrow\mathbb{R}\) needs to satisfy two criterias: the domain of \(f\), \(\mathrm{dom}(f)\subseteq\mathbb{R}^n\) needs to be convex; for \(x, y\in\mathrm{dom}(f)\) we have \(f(tx + (1-t)y)\leq tf(x) + (1-t)f(y), \forall 0\leq t\leq 1\).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Operation</th>
+      <th style="text-align: left">Detailed Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Nonnegative Linear Combination</td>
+      <td style="text-align: left">If \(f_i\), \(i = 1, \cdots, m\), are convex functions then \(\forall a_i\geq0\) we have \(\displaystyle\sum_{i=1}^{m}a_if_i\) as a convex function.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Pointwise Maximization</td>
+      <td style="text-align: left">If \(f_s\) is convex \(\forall s\in S\), then \(\displaystyle f(x) = \max_{s\in S}f_s(x)\) is also a convex function.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Partial Minimization</td>
+      <td style="text-align: left">For \(g(x, y)\) being convex in \(x\), \(y\) and \(C\) being a convex set, we have \(\displaystyle f(x)=\min_{y\in C}g(x, y)\) as a convex function</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Affine Composition</td>
+      <td style="text-align: left">If \(f(x)\) is a convex function, then \(g(x) = f(Ax + b)\) is also a convex function.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">General Composition</td>
+      <td style="text-align: left">See proof below.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For a convex function it satisfies two conditions.</p>
+
+<p>The <strong>first-order condition</strong> states that for a differentiable function \(f(\cdot)\), it is convex only is \(\mathrm{dom}(f)\subseteq\mathbb{R}^n\) is a convex set and</p>
+
+\[f(y)\geq f(x) + \nabla f^T(x)(y - x)\]
+
+<p>for all \(x, y\in\mathrm{dom}(f)\).</p>
+
+<p>The <strong>second-order condition</strong> states that for a two time differentiable function \(f(\cdot)\), it is convex only is \(\mathrm{dom}(f)\subseteq\mathbb{R}^n\) is a convex set and \(\nabla^2 f(x)\succeq0\) for all \(x\in\mathrm{dom}(f)\).</p>
+
+<p>We will use the second-order condition to find what kinds of functions preserves convexity under a general composition. The general composition can be denoted as \(f = h\circ g\) or \(f(x) = h(g(x))\). To simplify the problem we can let \(f:\mathbb{R}\rightarrow\mathbb{R}\), then we have</p>
+
+\[\begin{align*}
+f^{\prime\prime}(x) &amp;= [h^\prime(g(x))g^\prime(x)]^\prime\\
+&amp;= [h^{\prime\prime}(g(x))g^\prime(x)]g^\prime(x) + h^\prime(g(x))g^{\prime\prime}(x)\\
+&amp;= h^{\prime\prime}(g(x))g^\prime(x)^2 + h^\prime(g(x))g^{\prime\prime}(x).
+\end{align*}\]
+
+<p>To guarantee convexity we need \(f^{\prime\prime}(x) \geq 0\). Thus, if the following conditions hold then \(f(x)\) is convex:</p>
+<ul>
+  <li>if \(h\) is convex and nondecreasing, \(g\) is convex;</li>
+  <li>if \(h\) is convex and nonincreasing, \(g\) is concave.</li>
+</ul>
+
+<d-byline></d-byline>
+
+<p class="citation">
+    Credit to Ryan Tibshirani, powered by <a href="https://www.mathjax.org">
+    <img title="Powered by MathJax" src="https://www.mathjax.org/badge/mj_logo.png" style="border:0;" alt="Powered by MathJax" />
+    </a>
+</p>
+:ET

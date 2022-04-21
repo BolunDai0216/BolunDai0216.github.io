@@ -1,0 +1,34 @@
+---
+title: Bolun's Research
+page-type: research
+---
+<div class="container research-block">
+    <div class="row mx-5 mt-5">
+        {% for research in site.research %}
+        <div class="card mb-3 research-card" style="max-width: 100%;">
+            <div class="row align-items-start">
+                <div class="col-md-4" style="padding: 20px 20px 20px 20px;">
+                    <h5 class="card-title">{{research.paper_name}}</h5>
+                    <h5 class="card-author">{{research.paper_author}}</h5>
+                    <h5 class="card-publish">{{research.paper_venue}}</h5>
+                    <h5 class="card-publish">
+                        <a href="{{research.paper_link}}" class="arxiv-link">Paper</a>
+                        {% if research.video_link != "None" %}
+                        | <a href="{{research.video_link}}" class="arxiv-link">Video</a>
+                        {% endif %}
+                        {% if research.poster_link != "None" %}
+                        | <a href="{{research.poster_link}}" class="arxiv-link">Poster</a>
+                        {% endif %}
+                    </h5>
+                </div>
+
+                <div class="col-md-8 d-none d-sm-block" style="margin-top: 10px;">
+                    <div class="card-body card-text">
+                        {{research.content}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

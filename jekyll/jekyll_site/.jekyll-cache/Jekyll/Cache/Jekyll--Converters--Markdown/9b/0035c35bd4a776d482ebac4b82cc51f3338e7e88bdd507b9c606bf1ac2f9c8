@@ -1,0 +1,26 @@
+I"�<p>To understand control theory we need a medium. We can see how different motor torques effect the walking motion of a biped robot but the correlation would be convoluted for a beginner. The default choice of such a medium for control theory noobs is a linear time invariant (LTI) system. The next question would be what makes LTI systems special? Let’s start with some of its properties. A LTI system has three main properties: homogeneity, additivity (or commonly known as superposition) and as the name suggests time invariance. One may ask I see the time invariance, where is the linear? The “linear” part is constructed by the homogeneity and additivity. In the following sections we  will look into these three properties.</p>
+
+<p>First, let’s take a look at homogeneity. What this means is that for a LTI system, if the output of the system is \(y(t)\) when given input \(x(t)\), then the output will be \(ay(t)\) when the input is \(ax(t)\). For example, if I weight \(70kg\) the scale will show that I weight \(70kg\), if I weight \(2\times70 = 140kg\) the scale will show that I weight \(2\times70 = 140kg\).</p>
+
+<p>Then, let’s talk about additivity. What this means if that for a LTI system, if the system outputs \(y_1(t)\) when given input \(x_1(t)\) and outputs \(y_2(t)\) when given input \(x_2(t)\), when given input \(x_1(t) + x_2(t)\) it will output \(y_1(t) + y_2(t)\). Also using the scale example, if two people of weight \(70kg\) each stand on the scale at the same time the scale will show \(70 + 70 = 140kg\).</p>
+
+<p>Finally, for time invariance it means that if the output of the system is \(y(t)\) when given input \(x(t)\), the output will be \(y(t-a)\) when given input \(x(t-a)\). Using the scale example, if I maintained the same weight of \(70kg\) throughout the day, the scale will show \(70kg\) no matter if its in the morning or \(11\)pm.</p>
+
+<p>For a system that is subject to an unit impulse \(\delta(t)\) we can have its output as \(y(t)\). If the system is subject to three impulses \(\delta(t)\), \(2\delta(t-1)\) and \(3\delta(t-2)\), using the properties of a LTI system we can say the output at time \(t\) will be</p>
+
+\[\mathrm{output}(t) = y(t) + 2y(t-1) + 3y(t-2).\]
+
+<p>For a continuous input signal \(x(t)\) we can see it as applying the impulse \(x(a)\delta(t-a)\) at time \(t = a\). Then also using the properties of a LTI system we have</p>
+
+\[\mathrm{output}(t) = \int_{-\infty}^{\infty}x(a)y(t-a)da\]
+
+<p>with \(x(a) = 0\) for \(a \leq 0\) and \(y(t-a) = 0\) for \(a \geq 0\). This is for accounting for the control signal to be \(0\) for all negative time, and the output to be \(0\) for all negative time. This operation is called a convolution and usually denotes as \(x*y\).</p>
+
+<d-byline></d-byline>
+
+<p class="citation">
+    Powered by <a href="https://www.mathjax.org">
+    <img title="Powered by MathJax" src="https://www.mathjax.org/badge/mj_logo.png" style="border:0;" alt="Powered by MathJax" />
+    </a>
+</p>
+:ET

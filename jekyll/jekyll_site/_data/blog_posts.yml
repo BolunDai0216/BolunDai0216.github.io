@@ -1,0 +1,4 @@
+- name: Introduction to Rigid Transformations
+  class: random
+  link: _posts/random/rigid_transformation.html
+  text: A summary of concept for rigid transformations plus some derivations for confusing problems.

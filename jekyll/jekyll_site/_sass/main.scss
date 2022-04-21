@@ -1,0 +1,63 @@
+.current {
+    color: green;
+}
+
+body {
+    min-height: 100%;
+    background-color: #b33737;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.header-brand {
+    font-family: Avenir, Helvetica;
+    font-size: 300%;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 1% 0% 1% 0%;
+}
+
+.nav-item-bolun {
+    font-family: Avenir, Helvetica;
+    color: #ffffff !important;
+    font-size: 200%;
+    font-weight: bold;
+    margin: 1% 1% 1% 1%;
+}
+
+.footer-p {
+    color: #ffffff;
+    font-weight: bold;
+    font-family: Avenir, Helvetica;
+}
+
+.foot-icon {
+    display: inline-block;
+    margin: 0% 1% 0% 1%;
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+#content-wrap {
+    padding-bottom: 5rem;
+    /* Footer height */
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-top: 2.5rem;
+    /* Footer height */
+}

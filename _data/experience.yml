@@ -1,8 +1,8 @@
 - title: State Constrained Stochasitic Optimal Control Using LSTMs
-  time: May 2020 -- Sep 2020
+  time: May 2020 -- Sep 2021
   place: New York University, Tandon School of Engineering, Brooklyn, NY
   job1: Proposed a new methodology for state constrained nonlinear stochastic optimal control using forward-backward stochastic differential equations and LSTMs.
-  job2: Tested the performance and scalability on nonlinear systems in simulation.
+  job2: Created custom simulation environments to test the performance and scalability of nonlinear systems with both continuous and hybird dynamics.
   job3: None
 
 - title: Reinforcement Learning in Mining

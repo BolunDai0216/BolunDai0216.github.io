@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Gradient Descent &amp Line Search</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+
+  
+
+  
+
+  
+
+  <script src="/assets/js/utils.js"></script>
+
+  
+  <link rel="stylesheet" href="/assets/css/blog.css">
+  <script src="https://distill.pub/template.v2.js"></script>
+  <script defer type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  
+
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="jekyll" />
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Gradient Descent &amp;amp Line Search | jekyll</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Gradient Descent &amp;amp Line Search" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="By Bolun Dai Jan 21st 2022" />
+<meta property="og:description" content="By Bolun Dai Jan 21st 2022" />
+<link rel="canonical" href="http://localhost:4000/2021/01/21/line_search.html" />
+<meta property="og:url" content="http://localhost:4000/2021/01/21/line_search.html" />
+<meta property="og:site_name" content="jekyll" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-21T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Gradient Descent &amp;amp Line Search" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-01-21T00:00:00-05:00","datePublished":"2021-01-21T00:00:00-05:00","description":"By Bolun Dai Jan 21st 2022","headline":"Gradient Descent &amp;amp Line Search","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2021/01/21/line_search.html"},"url":"http://localhost:4000/2021/01/21/line_search.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3NQ4FBB1FB"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-3NQ4FBB1FB');
+</script>
+</head>
+
+
+
+<body class="mx-auto" style="width: 96%;">
+  <div id="page-container">
+    <div id="content-wrap">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid mx-2">
+        <a href="/" class="navbar-brand header-brand">Bolun Dai</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse me-5" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                
+                <li class="nav-item nav-item-bolun">
+                    
+                    <a href="/blog.html" class="nav-link" onmouseover="addUnderline(this)"
+                        onmouseleave="removeUnderline(this)">
+                        Blog
+                    </a>
+                    
+                </li>
+                
+                <li class="nav-item nav-item-bolun">
+                    
+                    <a href="/cv.html" class="nav-link" onmouseover="addUnderline(this)"
+                        onmouseleave="removeUnderline(this)">
+                        CV
+                    </a>
+                    
+                </li>
+                
+                <li class="nav-item nav-item-bolun">
+                    
+                    <a href="/research.html" class="nav-link" onmouseover="addUnderline(this)"
+                        onmouseleave="removeUnderline(this)">
+                        Research
+                    </a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+      <div class="post distill">
+    <d-title class="blog-title">
+        <h1>Gradient Descent &amp Line Search</h1>
+        <p class="blog-date">By Bolun Dai | Jan 21st 2022</p>
+    </d-title>
+
+    <d-article class="blog-content">
+        
+
+        <p>Gradient descent is a method for unconstrained, smooth convex optimization problems, such as</p>
+
+\[\min_{x}\ \ f(x).\]
+
+<p>Following the definition of a convex optimiztion problem: the objective \(f\) has to be a convex function over a convex domain. Along with the smooth assumption, we can say that \(f(x)\) is a convex and differentiable function over \(\mathrm{dom}(f) = \mathbb{R}^n\). Starting from an initial state \(x^{(0)}\in\mathbb{R}^n\), at each step the gradient descent algorithm performs an update</p>
+
+\[x^{(k)} = x^{(k-1)} - t_k\nabla f(x^{(k-1)}),\ k=1, 2, 3, \cdots,\]
+
+<p>here \(t_k\) is the \(k\)-th step size, \(\nabla f(x^{(k-1)})\) is the gradient of \(f(x)\) evaluated at \(x^{(k-1)}\) and \(x^{(k)}\) is the estimation of the solution after the \(k\)-th update. We perform the update iteratively until it converges to a solution \(x^*\), which approximately minimizes \(f(x)\).</p>
+
+<p>For those coming from a machine learning background we know the term gradient descent from stochastic gradient descent (SGD), and the intuition behind SGD is simply going in the direction of the negative gradient. This is correct. However, this is a processed version, the original intuition behind gradient descent is different.</p>
+
+<p>In the original flavor, we are approximating the function \(f(x)\) at \(x^{(k)}\) using a quadratic function, then we can find \(\tilde{x}\) such that it gives the minimal value to the quadratic function. Afterwards, we simply update the current estimation of the solution to be \(\tilde{x}\). Now the next problem becomes which quadratic approximation should we use? If we write the second-order Taylor’s expansion of \(f(x)\) at \(x^{(k-1)}\) we have</p>
+
+\[f(y)\approx f(x^{(k-1)}) + \nabla f^T(x^{(k-1)})(y - x^{(k-1)}) + \frac{1}{2}(y - x^{(k-1)})^T\nabla^2f^T(x^{(k-1)})(y - x^{(k-1)}).\]
+
+<p>Then by estimating the Hessian \(\nabla^2f^T(x^{(k-1)})\) with \(\frac{1}{t_k}I\) we have</p>
+
+\[f(y)\approx f(x^{(k-1)}) + \nabla f^T(x^{(k-1)})(y - x^{(k-1)}) + \frac{1}{2t_k}\|y - x^{(k-1)}\|_2^2.\]
+
+<p>We can set \(x^{(k)}\) to be where the minimum value of the approximated quadratic function is. To do this, we take the derivative of the approximated quadratic function</p>
+
+\[\frac{\partial f(y)}{\partial y} = \nabla{f(x^{(k)})} + \frac{1}{t_k}(y - x^{(k)}).\]
+
+<p>By setting it to 0 we have \(y^* = x^{(k)} = x^{(k-1)} - t_k\nabla f(x^{(k-1)})\). This process is shown in the image below. Assume we are at the light blue point \((4, e^4)\) on the blue curve \(e^x\). We do a quadratic approximation at \((4, e^4)\) with \(t=0.01\), which gives us the red curve. We find the argmin of the red curve and find its projection on the blue curve, which gives us the red dot. Although the result is that same as going in the negative gradient direction, the thought process is not the same. The next problem that we face is how to define the step size \(t_k\). One thing to note is that with different step sizes the approximated quadratic function will also be different.</p>
+
+<figure class="l-page">
+    <img src="/assets/images/convex_opt/lineSearchIntuition.png" alt="Illustration of intuition behind gradient descent" />
+</figure>
+
+<p>Line search is a method to get the step size \(t_k\) in gradient descent. A nice step size would make the next update \(x^+\) satisfy \(f(x^+)\) being less than \(f(x)\). Before we go into the details of line search, I want to show how we can change the units \(\Delta{x}\) when describing a function. When we describe a function \(f(x)\) it is a function of \(x\), we can do a change of variables and write it as \(f(x_0 + t\Delta{x})\) which is a function of \(t\). By default, the unit \(\Delta{x}\) we use in the coordinate system is 1. When we say \(x + t\) we are actually saying \(x + t\cdot\Delta{x}\), where \(\Delta{x}=1\). We can also set \(\Delta{x}\) to be other values. For example, let \(f(x) = (x-2)^2+1\), which we can rewrite as \(f(x_0 + t\Delta{x}) = (t\Delta{x}-2)^2 + 1\) if \(x_0 = 0\). And for different \(\Delta{x}\) values we can have the following plots:</p>
+
+<figure class="l-page">
+    <img src="/assets/images/convex_opt/unitLineSearchPlots.png" alt="Example of how using different units effect the function plot" />
+</figure>
+
+<p>We can change the unit to be anything we want, such as \(-\nabla{f(x_0)}\) which is exactly what it is for backtracing line search. The reason we use \(-\nabla{f(x_0)}\) is that if we write the next value \(x^{(k)}\) as \(x^{(k-1)} + t\Delta{x}\), since we know the update rule is \(x^{(k)} = x^{(k-1)} - t_k\nabla f(x^{(k-1)})\), we can match the terms and get \(\Delta{x} = -\nabla{f(x^{(k)})}\).</p>
+
+<p>Now let’s define what is an acceptable step size, we do not want to make the step size to small which leads to little progress, also we do not want to make the step size to large which might lead to overshooting. Also we would like the updated value \(x^{(k)}\) to give a smaller value of the objective function than \(x^{(k-1)}\).</p>
+
+<figure class="l-page">
+    <img src="/assets/images/convex_opt/goalLineSearchPlots.png" alt="Demonstration of the goal of line search" />
+</figure>
+
+<p>We can first write the function \(f(x)\) in the form of \(f(x_0 + t\Delta{x})\), and its tangent line at \(x_0\) can be described by \(f(x_0) + t\nabla_t{f(x_0)}^T\Delta{x}\). If we add a parameter \(\alpha\in(0, 0.5]\) and have the line \(f(x_0) + \alpha t\nabla_t{f(x_0)}^T\Delta{x}\), we can see that if we set a step size that makes the update appear on the opposite side of the solution and smaller than \(f(x_0) + \alpha t\nabla_t{f(x_0)}^T\Delta{x}\) it will generate a nice step size</p>
+
+\[f(x_0 + t\Delta{x}) \leq f(x_0) + \alpha t\nabla_t{f(x_0)}^T\Delta{x}.\]
+
+<p>To achieve this we can utilize another parameter \(\beta\in(0, 1)\) and set \(t_\mathrm{init}\) to some value, and iteratively decrease \(t\) by setting it to \(\beta t\) as long as the above criterion is not satisfied. Since we have \(\Delta{x} = -\nabla{f(x^{(k)})}\), we can write the above inequality as</p>
+
+\[f(x_0 + t\Delta{x}) \leq f(x_0) - \alpha t\|\nabla_t{f(x_0)}\|_2^2.\]
+
+<p>For exact line search we find the step size that gives the minimum value of the objective function along the gradient direction. However, this is not always plausible given that it may take many iterations to be within a tolerable range. Which makes exact line search actually slower than backtracking. One question that I had before was: since exact line search gives the minimum value why does it take more than one step to reach the solution. The answer to this question is: exact line search only gives the minimum value along the gradient direction at the current point, the solution might not be on that line.</p>
+
+<p>Using the image below as an example, if we want to do exact line search at the pink point, the next step will land a the point on the blue line. The minimum value is at the blue point. We can see that no way can we arrive at the minimum value in one step.</p>
+
+<figure class="l-body">
+    <img src="/assets/images/convex_opt/exactLineSearchIssue.png" alt="Why exact line search does not find the minimum in one step" />
+</figure>
+
+<p>That is all I want to say about gradient descent and line search. I will try to update the blog to make my explanation more understandable.</p>
+
+<d-byline></d-byline>
+
+<p class="citation">
+    Credit to Ryan Tibshirani, powered by <a href="https://www.mathjax.org">
+    <img title="Powered by MathJax" src="https://www.mathjax.org/badge/mj_logo.png" style="border:0;" alt="Powered by MathJax" />
+    </a>
+</p>
+
+    </d-article>
+
+    <d-appendix>
+        <d-footnote-list></d-footnote-list>
+        <d-citation-list></d-citation-list>
+    </d-appendix>
+
+</div>
+    </div>
+    <footer id="footer">
+    <div class="container-fluid">
+        <div class="row mx-5">
+            <p class="footer-p col-6">&copy Bolun Dai 2022</p>
+            <p class="col-6 text-end">
+                <a href="mailto:bd1555@nyu.edu" style="padding: 0px 0px 0px 2%; text-decoration: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white"
+                        class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
+                    </svg>
+                </a>
+
+                <a href="https://www.linkedin.com/in/bolun-dai" style="padding: 0px 0px 0px 2%; text-decoration: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-linkedin"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+                    </svg>
+                </a>
+
+                <a href="https://github.com/BolunDai0216" style="padding: 0px 0px 0px 2%; text-decoration: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-github"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                    </svg>
+                </a>
+
+                <a href="https://scholar.google.com/citations?user=AkuPvYUAAAAJ&hl=en&oi=ao"
+                    style="padding: 0px 0px 0px 2%; text-decoration: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-google"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z" />
+                    </svg>
+                </a>
+            </p>
+        </div>
+    </div>
+</footer>
+  </div>
+</body>
+
+
+<d-bibliography src="/assets/bibliography/">
+</d-bibliography>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</html>

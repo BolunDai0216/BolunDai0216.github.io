@@ -1,6 +1,0 @@
-I"<p>The blog is derived from the notes I have from taking the <a href="https://www.notion.so/Mathematics-of-Deep-Learning-05cd9255f03842489083ec7cbb6338d5">Mathematics of Deep Learning</a> course by Joan Bruna at New York Univeristy.</p>
-
-<h2 id="main-ingredients-of-superivised-learning">Main Ingredients of Superivised Learning</h2>
-
-<p>A supervised learning problem usually consists of four components: the input domain (\chi), the data distribution (\nu), the target function (f^*) and a loss (or risk) (\mathcal{L}).</p>
-:ET

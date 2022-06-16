@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-11T20:49:29-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">BolunDai0216.github.io</title><entry><title type="html">An Introduction to Control Barrier Functions</title><link href="http://localhost:4000/2022/04/20/cbf.html" rel="alternate" type="text/html" title="An Introduction to Control Barrier Functions" /><published>2022-04-20T00:00:00-04:00</published><updated>2022-04-20T00:00:00-04:00</updated><id>http://localhost:4000/2022/04/20/cbf</id><content type="html" xml:base="http://localhost:4000/2022/04/20/cbf.html"></content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Introduction to Rigid Transformations</title><link href="http://localhost:4000/2022/04/20/rigid_transformation.html" rel="alternate" type="text/html" title="Introduction to Rigid Transformations" /><published>2022-04-20T00:00:00-04:00</published><updated>2022-04-20T00:00:00-04:00</updated><id>http://localhost:4000/2022/04/20/rigid_transformation</id><content type="html" xml:base="http://localhost:4000/2022/04/20/rigid_transformation.html">&lt;p&gt;In this blog, I want to talk give a review of rigid transformations, in specific rotation and translation. Although this is the most basic concept in robotics, I tend to confuse many concepts. Therefore, this to me is more like a cheatsheet. The content is developed from &lt;d-cite key=&quot;DBLP:books/daglib/0073732&quot;&gt;&lt;/d-cite&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-15T20:35:28-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">BolunDai0216.github.io</title><entry><title type="html">Feedback Linearization for Double Pendulums</title><link href="http://localhost:4000/2022/06/15/feedback_linearization_db.html" rel="alternate" type="text/html" title="Feedback Linearization for Double Pendulums" /><published>2022-06-15T00:00:00-04:00</published><updated>2022-06-15T00:00:00-04:00</updated><id>http://localhost:4000/2022/06/15/feedback_linearization_db</id><content type="html" xml:base="http://localhost:4000/2022/06/15/feedback_linearization_db.html"></content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Walking Without Thinking About It Notes</title><link href="http://localhost:4000/2022/04/20/walking.html" rel="alternate" type="text/html" title="Walking Without Thinking About It Notes" /><published>2022-04-20T00:00:00-04:00</published><updated>2022-04-20T00:00:00-04:00</updated><id>http://localhost:4000/2022/04/20/walking</id><content type="html" xml:base="http://localhost:4000/2022/04/20/walking.html"></content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Introduction to Rigid Transformations</title><link href="http://localhost:4000/2022/04/20/rigid_transformation.html" rel="alternate" type="text/html" title="Introduction to Rigid Transformations" /><published>2022-04-20T00:00:00-04:00</published><updated>2022-04-20T00:00:00-04:00</updated><id>http://localhost:4000/2022/04/20/rigid_transformation</id><content type="html" xml:base="http://localhost:4000/2022/04/20/rigid_transformation.html">&lt;p&gt;In this blog, I want to talk give a review of rigid transformations, in specific rotation and translation. Although this is the most basic concept in robotics, I tend to confuse many concepts. Therefore, this to me is more like a cheatsheet. The content is developed from &lt;d-cite key=&quot;DBLP:books/daglib/0073732&quot;&gt;&lt;/d-cite&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;rigid-transformations&quot;&gt;Rigid Transformations&lt;/h2&gt;
 
@@ -441,7 +441,7 @@ f\\
     Powered by &lt;a href=&quot;https://www.mathjax.org&quot;&gt;
     &lt;img title=&quot;Powered by MathJax&quot; src=&quot;https://www.mathjax.org/badge/mj_logo.png&quot; style=&quot;border:0;&quot; alt=&quot;Powered by MathJax&quot; /&gt;
     &lt;/a&gt;
-&lt;/p&gt;</content><author><name></name></author><summary type="html">In this blog, I want to talk give a review of rigid transformations, in specific rotation and translation. Although this is the most basic concept in robotics, I tend to confuse many concepts. Therefore, this to me is more like a cheatsheet. The content is developed from .</summary></entry><entry><title type="html">Walking Without Thinking About It Notes</title><link href="http://localhost:4000/2022/04/20/walking.html" rel="alternate" type="text/html" title="Walking Without Thinking About It Notes" /><published>2022-04-20T00:00:00-04:00</published><updated>2022-04-20T00:00:00-04:00</updated><id>http://localhost:4000/2022/04/20/walking</id><content type="html" xml:base="http://localhost:4000/2022/04/20/walking.html"></content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">PyMuJoCoBase</title><link href="http://localhost:4000/2022/04/20/pymujocobase.html" rel="alternate" type="text/html" title="PyMuJoCoBase" /><published>2022-04-20T00:00:00-04:00</published><updated>2022-04-20T00:00:00-04:00</updated><id>http://localhost:4000/2022/04/20/pymujocobase</id><content type="html" xml:base="http://localhost:4000/2022/04/20/pymujocobase.html"></content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Modular &amp;amp; Minimal PyTorch Implementation of Proximal Policy Optimization</title><link href="http://localhost:4000/2022/04/20/ppo_torch.html" rel="alternate" type="text/html" title="Modular &amp;amp; Minimal PyTorch Implementation of Proximal Policy Optimization" /><published>2022-04-20T00:00:00-04:00</published><updated>2022-04-20T00:00:00-04:00</updated><id>http://localhost:4000/2022/04/20/ppo_torch</id><content type="html" xml:base="http://localhost:4000/2022/04/20/ppo_torch.html"></content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Cart-pole Swing-up Task Using MPC</title><link href="http://localhost:4000/2022/04/20/cp_swingup_mpc.html" rel="alternate" type="text/html" title="Cart-pole Swing-up Task Using MPC" /><published>2022-04-20T00:00:00-04:00</published><updated>2022-04-20T00:00:00-04:00</updated><id>http://localhost:4000/2022/04/20/cp_swingup_mpc</id><content type="html" xml:base="http://localhost:4000/2022/04/20/cp_swingup_mpc.html">&lt;p&gt;In this blog, I want to swing-up a cart-pole system using a model predictive control (MPC) based method. When I was initially shown this problem, I thought this was a toy problem and I will be able to solve in a few minutes. Then I realized that in school, all I have been taught was about linear MPC, and for cartpole related problems all I know is how to balance it on the top, assuming that it starting close to the top, so that the linearization is still valid. As for the case of swinging-up the cartpole, this stems firmly in the realm of nonlinear control. Which I have also learned. One of the more classical ways to deal with this would then be to linearize along the trajectory, such as using iLQR. However, when given state and control constraints, e.g. limit control effort and not letting the cartpole sway to far, iLQR losses its appeal. There are ways to incorporate constraints into iLQR, such as&lt;d-cite key=&quot;DBLP:conf/iros/HowellJM19&quot;&gt;&lt;/d-cite&gt;, which seems like an overkill for such a simple problem.&lt;/p&gt;
+&lt;/p&gt;</content><author><name></name></author><summary type="html">In this blog, I want to talk give a review of rigid transformations, in specific rotation and translation. Although this is the most basic concept in robotics, I tend to confuse many concepts. Therefore, this to me is more like a cheatsheet. The content is developed from .</summary></entry><entry><title type="html">PyMuJoCoBase</title><link href="http://localhost:4000/2022/04/20/pymujocobase.html" rel="alternate" type="text/html" title="PyMuJoCoBase" /><published>2022-04-20T00:00:00-04:00</published><updated>2022-04-20T00:00:00-04:00</updated><id>http://localhost:4000/2022/04/20/pymujocobase</id><content type="html" xml:base="http://localhost:4000/2022/04/20/pymujocobase.html"></content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Modular &amp;amp; Minimal PyTorch Implementation of Proximal Policy Optimization</title><link href="http://localhost:4000/2022/04/20/ppo_torch.html" rel="alternate" type="text/html" title="Modular &amp;amp; Minimal PyTorch Implementation of Proximal Policy Optimization" /><published>2022-04-20T00:00:00-04:00</published><updated>2022-04-20T00:00:00-04:00</updated><id>http://localhost:4000/2022/04/20/ppo_torch</id><content type="html" xml:base="http://localhost:4000/2022/04/20/ppo_torch.html"></content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Cart-pole Swing-up Task Using MPC</title><link href="http://localhost:4000/2022/04/20/cp_swingup_mpc.html" rel="alternate" type="text/html" title="Cart-pole Swing-up Task Using MPC" /><published>2022-04-20T00:00:00-04:00</published><updated>2022-04-20T00:00:00-04:00</updated><id>http://localhost:4000/2022/04/20/cp_swingup_mpc</id><content type="html" xml:base="http://localhost:4000/2022/04/20/cp_swingup_mpc.html">&lt;p&gt;In this blog, I want to swing-up a cart-pole system using a model predictive control (MPC) based method. When I was initially shown this problem, I thought this was a toy problem and I will be able to solve in a few minutes. Then I realized that in school, all I have been taught was about linear MPC, and for cartpole related problems all I know is how to balance it on the top, assuming that it starting close to the top, so that the linearization is still valid. As for the case of swinging-up the cartpole, this stems firmly in the realm of nonlinear control. Which I have also learned. One of the more classical ways to deal with this would then be to linearize along the trajectory, such as using iLQR. However, when given state and control constraints, e.g. limit control effort and not letting the cartpole sway to far, iLQR losses its appeal. There are ways to incorporate constraints into iLQR, such as&lt;d-cite key=&quot;DBLP:conf/iros/HowellJM19&quot;&gt;&lt;/d-cite&gt;, which seems like an overkill for such a simple problem.&lt;/p&gt;
 
 &lt;p&gt;I then did some reading and I found a way to do constrained nonlinear control: using direct collocation&lt;d-cite key=&quot;DBLP:journals/siamrev/Kelly17&quot;&gt;&lt;/d-cite&gt;. By tweaking the formulation a bit I was able to find a way to perform a trapezoidal-collocation-based-MPC to swing-up a cartpole system and that is what I will be presenting in this blog.&lt;/p&gt;
 
@@ -538,7 +538,7 @@ x(t_{k+1}) - x(t_k)\\
     Powered by &lt;a href=&quot;https://www.mathjax.org&quot;&gt;
     &lt;img title=&quot;Powered by MathJax&quot; src=&quot;https://www.mathjax.org/badge/mj_logo.png&quot; style=&quot;border:0;&quot; alt=&quot;Powered by MathJax&quot; /&gt;
     &lt;/a&gt;
-&lt;/p&gt;</content><author><name></name></author><summary type="html">In this blog, I want to swing-up a cart-pole system using a model predictive control (MPC) based method. When I was initially shown this problem, I thought this was a toy problem and I will be able to solve in a few minutes. Then I realized that in school, all I have been taught was about linear MPC, and for cartpole related problems all I know is how to balance it on the top, assuming that it starting close to the top, so that the linearization is still valid. As for the case of swinging-up the cartpole, this stems firmly in the realm of nonlinear control. Which I have also learned. One of the more classical ways to deal with this would then be to linearize along the trajectory, such as using iLQR. However, when given state and control constraints, e.g. limit control effort and not letting the cartpole sway to far, iLQR losses its appeal. There are ways to incorporate constraints into iLQR, such as, which seems like an overkill for such a simple problem.</summary></entry><entry><title type="html">Linear Time Invariant Systems</title><link href="http://localhost:4000/2022/01/01/lti.html" rel="alternate" type="text/html" title="Linear Time Invariant Systems" /><published>2022-01-01T00:00:00-05:00</published><updated>2022-01-01T00:00:00-05:00</updated><id>http://localhost:4000/2022/01/01/lti</id><content type="html" xml:base="http://localhost:4000/2022/01/01/lti.html">&lt;p&gt;To understand control theory we need a medium. We can see how different motor torques effect the walking motion of a biped robot but the correlation would be convoluted for a beginner. The default choice of such a medium for control theory noobs is a linear time invariant (LTI) system. The next question would be what makes LTI systems special? Let’s start with some of its properties. A LTI system has three main properties: homogeneity, additivity (or commonly known as superposition) and as the name suggests time invariance. One may ask I see the time invariance, where is the linear? The “linear” part is constructed by the homogeneity and additivity. In the following sections we  will look into these three properties.&lt;/p&gt;
+&lt;/p&gt;</content><author><name></name></author><summary type="html">In this blog, I want to swing-up a cart-pole system using a model predictive control (MPC) based method. When I was initially shown this problem, I thought this was a toy problem and I will be able to solve in a few minutes. Then I realized that in school, all I have been taught was about linear MPC, and for cartpole related problems all I know is how to balance it on the top, assuming that it starting close to the top, so that the linearization is still valid. As for the case of swinging-up the cartpole, this stems firmly in the realm of nonlinear control. Which I have also learned. One of the more classical ways to deal with this would then be to linearize along the trajectory, such as using iLQR. However, when given state and control constraints, e.g. limit control effort and not letting the cartpole sway to far, iLQR losses its appeal. There are ways to incorporate constraints into iLQR, such as, which seems like an overkill for such a simple problem.</summary></entry><entry><title type="html">An Introduction to Control Barrier Functions</title><link href="http://localhost:4000/2022/04/20/cbf.html" rel="alternate" type="text/html" title="An Introduction to Control Barrier Functions" /><published>2022-04-20T00:00:00-04:00</published><updated>2022-04-20T00:00:00-04:00</updated><id>http://localhost:4000/2022/04/20/cbf</id><content type="html" xml:base="http://localhost:4000/2022/04/20/cbf.html"></content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Linear Time Invariant Systems</title><link href="http://localhost:4000/2022/01/01/lti.html" rel="alternate" type="text/html" title="Linear Time Invariant Systems" /><published>2022-01-01T00:00:00-05:00</published><updated>2022-01-01T00:00:00-05:00</updated><id>http://localhost:4000/2022/01/01/lti</id><content type="html" xml:base="http://localhost:4000/2022/01/01/lti.html">&lt;p&gt;To understand control theory we need a medium. We can see how different motor torques effect the walking motion of a biped robot but the correlation would be convoluted for a beginner. The default choice of such a medium for control theory noobs is a linear time invariant (LTI) system. The next question would be what makes LTI systems special? Let’s start with some of its properties. A LTI system has three main properties: homogeneity, additivity (or commonly known as superposition) and as the name suggests time invariance. One may ask I see the time invariance, where is the linear? The “linear” part is constructed by the homogeneity and additivity. In the following sections we  will look into these three properties.&lt;/p&gt;
 
 &lt;p&gt;First, let’s take a look at homogeneity. What this means is that for a LTI system, if the output of the system is \(y(t)\) when given input \(x(t)\), then the output will be \(ay(t)\) when the input is \(ax(t)\). For example, if I weight \(70kg\) the scale will show that I weight \(70kg\), if I weight \(2\times70 = 140kg\) the scale will show that I weight \(2\times70 = 140kg\).&lt;/p&gt;
 
@@ -1063,120 +1063,4 @@ f(x) &amp;amp;= \frac{1}{2\pi i}\int_{\gamma-i\infty}^{\gamma+i\infty}{\bar{f}(s
     Credit to Steve Brunton, powered by &lt;a href=&quot;https://www.mathjax.org&quot;&gt;
     &lt;img title=&quot;Powered by MathJax&quot; src=&quot;https://www.mathjax.org/badge/mj_logo.png&quot; style=&quot;border:0;&quot; alt=&quot;Powered by MathJax&quot; /&gt;
     &lt;/a&gt;
-&lt;/p&gt;</content><author><name></name></author><summary type="html">The goal of this blog post is to discuss breifly what is Fourier transform and Fourier series, show the intuition behind them and talk about how to obtain them in real life.</summary></entry><entry><title type="html">Important Part of Gradient Descent Convergence Proof</title><link href="http://localhost:4000/2021/02/10/part_of_grad_desc_proof.html" rel="alternate" type="text/html" title="Important Part of Gradient Descent Convergence Proof" /><published>2021-02-10T00:00:00-05:00</published><updated>2021-02-10T00:00:00-05:00</updated><id>http://localhost:4000/2021/02/10/part_of_grad_desc_proof</id><content type="html" xml:base="http://localhost:4000/2021/02/10/part_of_grad_desc_proof.html">&lt;p&gt;This blog post proves a crucial statement in the gradient descent convergence analysis: from the assumption \(f\) is convex, twice differentiable function and \(\nabla{f}\) is Lipschitz continuous with constant \(L&amp;gt;0\) we have&lt;/p&gt;
-
-\[f(y) \leq f(x) + \nabla{f}(x)^T(y - x) + \frac{L}{2}\|y-x\|_2^2.\]
-
-&lt;p&gt;Here we list four statements:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;(1) \(\nabla{f}\) is Lipschitz continuous with constant \(L&amp;gt;0\)&lt;/li&gt;
-  &lt;li&gt;(2) \((\nabla{f}(x)-\nabla{f}(y))^T(x-y)\leq L\|x-y\|_2^2\)&lt;/li&gt;
-  &lt;li&gt;(3) \(\nabla^2{f}(x)\preceq LI\)&lt;/li&gt;
-  &lt;li&gt;(4) \(f(y) \leq f(x) + \nabla{f}(x)^T(y - x) + \frac{L}{2}\|y-x\|_2^2\)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The outline of the proof is \(\mathrm{i}\rightarrow \mathrm{iii} \rightarrow \mathrm{iv}\) but the proof of \(\mathrm{i}\rightarrow \mathrm{ii}\) is also given.&lt;/p&gt;
-
-&lt;h2 id=&quot;i--ii&quot;&gt;i → ii&lt;/h2&gt;
-
-&lt;p&gt;From \(\nabla{f}\) is Lipschitz continuous with constant \(L&amp;gt;0\) we know \(\|\nabla{f}(x) - \nabla{f}(y)\|_2\leq L\|x-y\|_2\). From the Cauchy-Schwartz inequality we have&lt;/p&gt;
-
-\[|\langle u, v\rangle| \leq \|u\|_2\|v\|_2.\]
-
-&lt;p&gt;Setting \(u = \nabla{f}(x) - \nabla{f}(y)\) and \(v = x - y\) we have&lt;/p&gt;
-
-\[\begin{align*}
-|(\nabla{f}(x) - \nabla{f}(y))^T(x - y)| &amp;amp;\leq \|\nabla{f}(x) - \nabla{f}(y)\|_2\|x - y\|_2\\
-&amp;amp;\leq L\|x-y\|_2\|x - y\|_2 &amp;amp; \mathrm{Lipschitz\ condition}\\
-&amp;amp;\leq L\|x-y\|_2^2.
-\end{align*}\]
-
-&lt;p&gt;Since we have the absolute value of \((\nabla{f}(x) - \nabla{f}(y))^T(x - y)\) less than or equal to
-\(L\|x-y\|_2^2\), we definetely have&lt;/p&gt;
-
-\[(\nabla{f}(x)-\nabla{f}(x))^T(x-y)\leq L\|x-y\|_2^2.\]
-
-&lt;h2 id=&quot;i--iii&quot;&gt;i → iii&lt;/h2&gt;
-
-&lt;p&gt;From the mean value theorem we can have&lt;/p&gt;
-
-&lt;p&gt;\(\frac{\nabla f(x + \Delta{x}) - \nabla f(x)}{\Delta{x}} = \nabla^2f(x + t\Delta{x}),\ t\in[0, 1].\)
-If we multiply both sides with \(\Delta{x}\) and take the norm on both sides gives us&lt;/p&gt;
-
-\[\begin{align*}
-\|\nabla^2f(x + t\Delta{x})\Delta{x}\| &amp;amp;= \|\nabla f(x + \Delta{x}) - \nabla f(x)\|\\
-\|\nabla^2f(x + t\Delta{x})\|\|\Delta{x}\| &amp;amp;\leq L\|\Delta{x}\|\\
-\|\nabla^2f(x + t\Delta{x})\| &amp;amp;\leq L\\
-\|\nabla^2f(x)\| &amp;amp;\leq L &amp;amp; \mathrm{set}\ t\rightarrow 0\
-\end{align*}\]
-
-&lt;p&gt;Since \(f\) is a convex function, we know its Hessian is positive semidefinite. Thus,
-\(\|\nabla^2f(x)\|\) represents the spectral norm, which is equal to its largest eigenvalue. Thus we
-have \(\nabla^2{f}(x)\preceq LI\). See definition 7 and fact 8 of &lt;a href=&quot;/assets/images/convex_opt/NotesMatrices.pdf&quot;&gt;this note&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;iii--iv&quot;&gt;iii → iv&lt;/h3&gt;
-
-&lt;p&gt;From the second-order Taylor series we have&lt;/p&gt;
-
-\[f(y) = f(x) + \nabla f(x)^T(y - x) + \frac{1}{2}(y - x)^T\nabla^2{f}(x)(y - x).\]
-
-&lt;p&gt;From \(\nabla^2{f}(x)\preceq LI\) we have&lt;/p&gt;
-
-\[\frac{1}{2}(y - x)^T\nabla^2{f}(x)(y - x) \leq \frac{1}{2}(y - x)^TLI(y - x) = \frac{L}{2}\|y-x\|_2^2.\]
-
-&lt;p&gt;Thus we have&lt;/p&gt;
-
-\[f(y) \leq f(x) + \nabla{f}(x)^T(y - x) + \frac{L}{2}\|y-x\|_2^2.\]
-
-&lt;h2 id=&quot;i--iv&quot;&gt;i → iv&lt;/h2&gt;
-
-&lt;p&gt;Prof.Joan Bruna’s mentioned in his class a way to prove iv from i which I did not think of before, thus I will include it here. If we have \(F(t) = f\big(y + t(x-y)\big)\), then using the fundamental theorem of calculus&lt;/p&gt;
-
-\[F(b) - F(a) = \int_{b}^{a}{f(t)dt},\ \mathrm{if\ }F^\prime(t) = f(t),\]
-
-&lt;p&gt;we can have&lt;/p&gt;
-
-\[\begin{align}
-F(b) - F(a) &amp;amp;= \int_{b}^{a}{F^\prime(t)dt}\\
-&amp;amp;= \int_{b}^{a}{(x-y)\nabla{f}\big(y + t(x-y)\big)dt}.
-\end{align}\]
-
-&lt;p&gt;By setting \(a = 1\) and \(b = 0\) we have&lt;/p&gt;
-
-\[F(b) - F(a) = f(x) - f(y) = \int_{0}^{1}{(x-y)\nabla{f}\big(y + t(x-y)\big)dt},\]
-
-&lt;p&gt;which can be written as&lt;/p&gt;
-
-\[f(x) - f(y) = \int_{0}^{1}{\Big\langle\nabla{f}\big(y + t(x-y)\big), (x-y)\Big\rangle dt}.\]
-
-&lt;p&gt;Also we need to note that for a constant \(s\) or function \(s(x)\) with no \(t\) in the input, we have \(F(x) = s(x)t\) and \(dF(x)/dt = s(x)\). Thus, using the fundamental theorem of calculus we have&lt;/p&gt;
-
-\[s(x) = \int_{0}^{1}s(x)dt = s(x)t\Big|_0^1 = s(x) - 0.\]
-
-&lt;p&gt;Therefore, we have&lt;/p&gt;
-
-\[\begin{align}
-\Bigg|f(x) - f(y) - \langle\nabla f(y), x-y\rangle\Bigg| &amp;amp;=
-\Bigg|\int_{0}^{1}{\Big\langle\nabla{f}\big(y +
-t(x-y)\big), x-y\Big\rangle dt} - \int_{0}^{1}{\langle\nabla f(y), x-y\rangle dt}\Bigg|\\
-&amp;amp;= \Bigg|\int_{0}^{1}{\Big\langle\Big[\nabla{f}\big(y + t(x-y)\big) - \nabla f(y)\Big],
-x-y\Big\rangle dt}\Bigg|\\
-&amp;amp;\leq \int_{0}^{1}{\Bigg|\Big\langle\Big[\nabla{f}\big(y + t(x-y)\big) - \nabla f(y)\Big],
-x-y\Big\rangle\Bigg|dt}\\
-&amp;amp;\leq \int_{0}^{1}{\Big\|\nabla{f}\big(y + t(x-y)\big) - \nabla f(y)\Big\|\Big\|x-y\Big\|dt}\\
-&amp;amp;\leq \int_{0}^{1}{L\Big\|t(x-y)\Big\|\Big\|x-y\Big\|dt}\\
-&amp;amp;= L\|x-y\|^2\int_{0}^{1}{tdt}\\
-&amp;amp;= \frac{L}{2}\|x-y\|^2.
-\end{align}\]
-
-&lt;p&gt;Then we finally have&lt;/p&gt;
-
-\[f(x) \leq f(y) + \langle\nabla f(y), x-y\rangle + \frac{L}{2}\|x-y\|^2,\ \forall x, y.\]
-
-&lt;d-byline&gt;&lt;/d-byline&gt;
-
-&lt;p class=&quot;citation&quot;&gt;
-    Credit to Ryan Tibshirani, powered by &lt;a href=&quot;https://www.mathjax.org&quot;&gt;
-    &lt;img title=&quot;Powered by MathJax&quot; src=&quot;https://www.mathjax.org/badge/mj_logo.png&quot; style=&quot;border:0;&quot; alt=&quot;Powered by MathJax&quot; /&gt;
-    &lt;/a&gt;
-&lt;/p&gt;</content><author><name></name></author><summary type="html">This blog post proves a crucial statement in the gradient descent convergence analysis: from the assumption \(f\) is convex, twice differentiable function and \(\nabla{f}\) is Lipschitz continuous with constant \(L&amp;gt;0\) we have</summary></entry></feed>
+&lt;/p&gt;</content><author><name></name></author><summary type="html">The goal of this blog post is to discuss breifly what is Fourier transform and Fourier series, show the intuition behind them and talk about how to obtain them in real life.</summary></entry></feed>

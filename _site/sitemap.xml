@@ -65,6 +65,10 @@
 <lastmod>2022-04-20T00:00:00-04:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/2022/06/15/feedback_linearization_db.html</loc>
+<lastmod>2022-06-15T00:00:00-04:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/blog.html</loc>
 </url>
 <url>
@@ -79,6 +83,10 @@
 <url>
 <loc>http://localhost:4000/assets/images/control_theory/An%20Introduction%20to%20Control%20Barrier%20Functions.pdf</loc>
 <lastmod>2022-03-24T20:42:25-04:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/assets/images/control_theory/Feedback%20Linearization%20of%20Double%20Pendulum.pdf</loc>
+<lastmod>2022-06-15T20:35:01-04:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/assets/images/convex_opt/NotesMatrices.pdf</loc>

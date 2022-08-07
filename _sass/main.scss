@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat');
+
 .current {
     color: green;
 }
@@ -19,7 +21,7 @@ html {
 }
 
 .header-brand {
-    font-family: Avenir, Helvetica;
+    font-family: Avenir, Montserrat, Helvetica;
     font-size: 300%;
     color: #ffffff;
     font-weight: bold;
@@ -27,7 +29,7 @@ html {
 }
 
 .nav-item-bolun {
-    font-family: Avenir, Helvetica;
+    font-family: Avenir, Montserrat, Helvetica;
     color: #ffffff !important;
     font-size: 200%;
     font-weight: bold;
@@ -37,7 +39,7 @@ html {
 .footer-p {
     color: #ffffff;
     font-weight: bold;
-    font-family: Avenir, Helvetica;
+    font-family: Avenir, Montserrat, Helvetica;
 }
 
 .foot-icon {

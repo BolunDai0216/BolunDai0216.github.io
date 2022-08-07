@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat');
+
 body {
     background-color: #257cb3;
 }
 
 .list-group-item {
     background-color: transparent;
-    font-family: Avenir, Helvetica;
+    font-family: Avenir, Montserrat, Helvetica;
     color: lightblue;
     font-size: 125%;
     border-top: 0;
@@ -38,7 +40,7 @@ h2 {
 }
 
 .edu-links {
-    font-family: Avenir, Helvetica, Garamond;
+    font-family: Avenir, Montserrat, Helvetica, Garamond;
     display: inline-block;
     text-decoration: none;
     color: #ffffff !important;
@@ -47,14 +49,14 @@ h2 {
 }
 
 .edu_years {
-    font-family: Avenir, Helvetica, Garamond;
+    font-family: Avenir, Montserrat, Helvetica, Garamond;
     display: inline-block;
     color: #ffffff !important;
     font-size: 150%;
 }
 
 .edu-major {
-    font-family: Avenir, Helvetica, Garamond;
+    font-family: Avenir, Montserrat, Helvetica, Garamond;
     display: block;
     color: #ffffff !important;
     font-size: 125%;
@@ -62,11 +64,11 @@ h2 {
 }
 
 .edu-title {
-    font-family: Avenir, Helvetica, Garamond;
+    font-family: Avenir, Montserrat, Helvetica, Garamond;
 }
 
 .edu-content {
-    font-family: Avenir, Helvetica, Garamond;
+    font-family: Avenir, Montserrat, Helvetica, Garamond;
     color: #ffffff !important;
     font-size: 125%;
 }

@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat');
+
 body {
     background-color: #b3b149;
 }
 
 .list-group-item {
     background-color: transparent;
-    font-family: Avenir;
+    font-family: Avenir, Montserrat;
     color: darkolivegreen;
     font-size: 200%;
     border-top: 0;
@@ -30,7 +32,7 @@ body {
 }
 
 .card-text {
-    font-family: Avenir, Helvetica;
+    font-family: Avenir, Montserrat, Helvetica;
     color: #b3b149;
     font-weight: 500;
     font-size: 16px;
@@ -48,7 +50,7 @@ body {
 }
 
 .blog-title {
-    font-family: Avenir, Helvetica, Georgia;
+    font-family: Avenir, Montserrat, Helvetica, Georgia;
     color: darkolivegreen;
     font-weight: bolder;
 }
@@ -66,7 +68,7 @@ body {
 }
 
 .blog-date {
-    font-family: Avenir, Helvetica;
+    font-family: Avenir, Montserrat, Helvetica;
     font-weight: bold;
     font-size: 16px;
     color: darkolivegreen;
@@ -155,7 +157,7 @@ d-contents {
 
 .citation {
     color: beige;
-    font-family: Avenir, Helvetica;
+    font-family: Avenir, Montserrat, Helvetica;
     font-size: 80%;
 }
 
@@ -165,7 +167,7 @@ d-cite {
 }
 
 table {
-    font-family: Avenir, Helvetica;
+    font-family: Avenir, Montserrat, Helvetica;
     color: white;
 }
 

@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat');
+@import url('https://fonts.googleapis.com/css2?family=Tinos');
+@import url('https://fonts.googleapis.com/css2?family=Roboto');
+
 body {
     background-color: #e56530;
 }
@@ -11,14 +15,14 @@ body {
 }
 
 .card-author {
-    font-family: Avenir, Helvetica;
+    font-family: Avenir, Montserrat, Helvetica;
     color: white;
     margin-top: 15%;
     font-size: 16px;
 }
 
 .card-publish {
-    font-family: Avenir, Helvetica;
+    font-family: Avenir, Montserrat, Helvetica;
     color: white;
     font-size: 16px;
     margin-top: 5%;

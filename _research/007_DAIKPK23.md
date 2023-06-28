@@ -1,7 +1,7 @@
 ---
 paper_name: State Constrained Stochastic Optimal Control for Continuous and Hybrid Dynamical Systems Using DFBSDE
 paper_author: Bolun Dai, Andrew Papanicolaou, Prashanth Krishnamurthy, Farshad Khorrami
-paper_venue: Automatica (Accepted)
+paper_venue: Automatica
 paper_link: "https://arxiv.org/abs/2305.06499"
 video_link: None
 poster_link: None

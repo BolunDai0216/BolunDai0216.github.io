@@ -1,7 +1,7 @@
 ---
 paper_name: Safe Navigation and Obstacle Avoidance Using Differentiable Optimization Based Control Barrier Functions
 paper_author: Bolun Dai, Rooholla Khorrambakht, Prashanth Krishnamurthy, Vinícius Gonçalves, Anthony Tzes, Farshad Khorrami
-paper_venue: IEEE Robotics and Automation Letters (Accepted)
+paper_venue: IEEE Robotics and Automation Letters
 paper_link: "https://arxiv.org/abs/2304.08586"
 video_link: "https://youtu.be/MgFF3Xjnlpc"
 poster_link: None

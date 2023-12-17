@@ -1,7 +1,7 @@
 ---
 paper_name: Minigrid & Miniworld - Modular & Customizable Reinforcement Learning Environments for Goal-Oriented Tasks
 paper_author: Maxime Chevalier-Boisvert, Bolun Dai, Mark Towers, Rodrigo de Lazcano, Lucas Willems, Salem Lahlou, Suman Pal, Pablo Samuel Castro, Jordan Terry
-paper_venue: Neurips 2023 Dataset and Benchmark Track
+paper_venue: NeurIPS 2023 Dataset and Benchmark Track
 paper_link: "https://arxiv.org/abs/2306.13831"
 video_link: None
 poster_link: None

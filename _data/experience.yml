@@ -1,5 +1,26 @@
+- title: Point Cloud Based Control Barrier Function for Safe Navigation
+  time: Oct 2023 -- May 2024
+  place: New York University, Tandon School of Engineering, Brooklyn, NY
+  job1: Proposed a new methodology for synthesizing control barrier functions from raw point cloud measurements.
+  job2: Utilized GPU acceleration to make the control barrier function synthesis computationally efficient.
+  job3: Performed experimental validation of the proposed approach on Unitree Go2 and Unitree B1 quadrupedal robots.
+
+- title: Differentiable Optimzation Based Control Barrier Function Synthesis
+  time: Oct 2022 -- Sep 2023
+  place: New York University, Tandon School of Engineering, Brooklyn, NY
+  job1: Proposed a new methodology for control barrier function synthesis using differentiable optimization.
+  job2: Performed experimental validation of the proposed methodology on Franka Research 3 robot.
+  job3: Extended the methodology to handle problem with time-varying safe set which considering measurement noise and acutation limits.
+
+- title: Learning Based Control Barrier Function Synthesis
+  time: Oct 2021 -- Sep 2022
+  place: New York University, Tandon School of Engineering, Brooklyn, NY
+  job1: Proposed a new methodology for learning based control barrier function synthesis starting from handcrafted control barrier functions.
+  job2: Proposed a prioritized sampling method to make the learning based control barrier function synthesis more data efficient.
+  job3: None
+
 - title: State Constrained Stochasitic Optimal Control Using LSTMs
-  time: May 2020 -- Sep 2021
+  time: May 2020 -- Sep 2022
   place: New York University, Tandon School of Engineering, Brooklyn, NY
   job1: Proposed a new methodology for state constrained nonlinear stochastic optimal control using forward-backward stochastic differential equations and LSTMs.
   job2: Created custom simulation environments to test the performance and scalability of nonlinear systems with both continuous and hybird dynamics.

@@ -12,7 +12,7 @@
                 <li class="nav-item nav-item-bolun">
                     {% if page.page-type == "home" %}
                     <a href="{{ item.link }}" class="nav-link" onmouseover="{{ item.oncolor_command }}"
-                        onmouseleave="changeBackgroundColor('#b33737')">
+                        onmouseleave="resetBackgroundColor()">
                         {{ item.name }}
                     </a>
                     {% else %}

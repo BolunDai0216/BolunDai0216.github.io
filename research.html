@@ -7,7 +7,7 @@ page-type: research
         {% for research in site.research %}
         <div class="card mb-3 research-card" style="max-width: 100%;">
             <div class="row align-items-start">
-                <div class="col-md-4" style="padding: 20px 20px 20px 20px;">
+                <div class="col-lg-4" style="padding: 20px 20px 20px 20px;">
                     <h5 class="card-title">{{research.paper_name}}</h5>
                     <h5 class="card-author">{{research.paper_author}}</h5>
                     <h5 class="card-publish">{{research.paper_venue}}</h5>
@@ -20,9 +20,19 @@ page-type: research
                         | <a href="{{research.poster_link}}" class="arxiv-link">Poster</a>
                         {% endif %}
                     </h5>
+                    <div class="d-lg-none">
+                        <button class="abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abstract-{{forloop.index}}" aria-expanded="false" aria-controls="abstract-{{forloop.index}}">
+                            Abstract <span class="abstract-arrow">▼</span>
+                        </button>
+                        <div class="collapse" id="abstract-{{forloop.index}}">
+                            <div class="card-text abstract-mobile">
+                                {{research.content}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="col-md-8 d-none d-sm-block" style="margin-top: 10px;">
+                <div class="col-md-8 d-none d-lg-block" style="margin-top: 10px;">
                     <div class="card-body card-text">
                         {{research.content}}
                     </div>

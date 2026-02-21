@@ -179,3 +179,21 @@ thead {
 tbody {
     font-size: large;
 }
+
+@media (max-width: 767.98px) {
+    .card-title a {
+        font-size: 28px;
+    }
+
+    .card-text {
+        font-size: 18px;
+    }
+
+    .blog-content {
+        font-size: 22px;
+    }
+
+    .blog-date {
+        font-size: 18px;
+    }
+}

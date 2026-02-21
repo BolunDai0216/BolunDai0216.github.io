@@ -96,3 +96,25 @@ body {
         margin-top: 8px;
     }
 }
+
+@media (max-width: 767.98px) {
+    .card-title {
+        font-size: 28px;
+    }
+
+    .card-author {
+        font-size: 18px;
+    }
+
+    .card-publish {
+        font-size: 18px;
+    }
+
+    .abstract-toggle {
+        font-size: 18px;
+    }
+
+    .abstract-mobile {
+        font-size: 18px;
+    }
+}

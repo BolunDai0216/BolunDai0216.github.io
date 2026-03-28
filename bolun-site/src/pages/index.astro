@@ -1,11 +1,163 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+  <div class="grid"></div>
 </Layout>
+
+<style is:global>
+  body {
+    position: fixed;
+    inset: 0;
+    background-color: #0e100f;
+    overflow: hidden;
+    user-select: none;
+  }
+</style>
+
+<style>
+  .grid {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+    overflow: hidden;
+  }
+
+  :global(.row) {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  :global(.cell) {
+    width: 24px;
+    height: 24px;
+    background-color: #fffce1;
+    border-radius: 50%;
+    will-change: transform;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { Physics2DPlugin } from 'gsap/Physics2DPlugin';
+
+  gsap.registerPlugin(Physics2DPlugin);
+
+  const grid = document.querySelector('.grid') as HTMLElement;
+
+  const SIZE = 24;
+  const GAP = 12;
+  const UNIT = SIZE + GAP;
+  const PADDING = 24;
+  const PULL_DISTANCE = 70;
+
+  type Cell = HTMLElement & { center_position: { x: number; y: number }; pulled: boolean };
+
+  let cells: Cell[] = [];
+  let rows: HTMLElement[] = [];
+  let clicked = false;
+  let reset_all = false;
+
+  const buildGrid = () => {
+    grid.innerHTML = '';
+    const cols = Math.ceil((window.innerWidth - PADDING * 2) / UNIT);
+    const row_count = Math.ceil((window.innerHeight - PADDING * 2) / UNIT);
+
+    for (let x = 0; x < row_count; x++) {
+      const row = document.createElement('div');
+      row.className = 'row';
+      for (let y = 0; y < cols; y++) {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        row.appendChild(cell);
+      }
+      grid.appendChild(row);
+    }
+
+    rows = [...grid.querySelectorAll<HTMLElement>('.row')];
+    cells = [...grid.querySelectorAll<HTMLElement>('.cell')] as Cell[];
+
+    cells.forEach((cell, i) =>
+      cell.addEventListener('pointerup', (e) => handleCellClick(e, i))
+    );
+
+    updateCellPositions();
+  };
+
+  const updateCellPositions = () => {
+    cells.forEach((cell) => {
+      const rect = cell.getBoundingClientRect();
+      cell.center_position = {
+        x: (rect.left + rect.right) / 2,
+        y: (rect.top + rect.bottom) / 2,
+      };
+    });
+  };
+
+  const handleCellClick = (_e: Event, i: number) => {
+    if (clicked) return;
+    clicked = true;
+
+    gsap.to('.cell', {
+      duration: 1.6,
+      physics2D: {
+        velocity: 'random(400, 1000)',
+        angle: 'random(250, 290)',
+        gravity: 2000,
+      },
+      stagger: {
+        grid: [rows.length, rows[0].children.length],
+        from: i,
+        amount: 0.3,
+      },
+      onComplete: function () {
+        this.timeScale(-1.3);
+      },
+      onReverseComplete: () => {
+        clicked = false;
+        reset_all = true;
+        handlePointerMove();
+      },
+    });
+  };
+
+  const handlePointerMove = (e: PointerEvent | { x: number; y: number } = { x: -PULL_DISTANCE, y: -PULL_DISTANCE }) => {
+    if (clicked) return;
+
+    const pointer_x = 'pageX' in e ? e.pageX : e.x;
+    const pointer_y = 'pageY' in e ? e.pageY : e.y;
+
+    cells.forEach((cell) => {
+      const diff_x = pointer_x - cell.center_position.x;
+      const diff_y = pointer_y - cell.center_position.y;
+      const distance = Math.sqrt(diff_x * diff_x + diff_y * diff_y);
+
+      if (distance < PULL_DISTANCE) {
+        const percent = distance / PULL_DISTANCE;
+        cell.pulled = true;
+        gsap.to(cell, { duration: 0.2, x: diff_x * percent, y: diff_y * percent });
+      } else {
+        if (!cell.pulled) return;
+        cell.pulled = false;
+        gsap.to(cell, { duration: 1, x: 0, y: 0, ease: 'elastic.out(1, 0.3)' });
+      }
+    });
+
+    if (reset_all) {
+      reset_all = false;
+      gsap.to(cells, { duration: 1, x: 0, y: 0, ease: 'elastic.out(1, 0.3)' });
+    }
+  };
+
+  buildGrid();
+  window.addEventListener('resize', () => { if (!clicked) buildGrid(); });
+  window.addEventListener('pointermove', handlePointerMove);
+  document.body.addEventListener('pointerleave', () => handlePointerMove());
+</script>

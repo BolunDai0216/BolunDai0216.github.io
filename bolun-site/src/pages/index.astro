@@ -4,14 +4,14 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout>
   <div class="grid"></div>
-  <div class="name-layer"></div>
+  <div class="name">Bolun Dai</div>
 </Layout>
 
 <style is:global>
   body {
     position: fixed;
     inset: 0;
-    background-color: #0e100f;
+    background-color: #f4f3ee;
     overflow: hidden;
     user-select: none;
   }
@@ -23,42 +23,37 @@ import Layout from '../layouts/Layout.astro';
     inset: 0;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 10px;
     padding: 24px;
     overflow: hidden;
   }
 
-  .name-layer {
-    position: fixed;
-    top: 24px;
-    left: 24px;
-  }
-
   :global(.row) {
     display: flex;
-    gap: 14px;
+    gap: 10px;
     flex-shrink: 0;
   }
 
   :global(.cell) {
-    width: 6px;
-    height: 6px;
-    background-color: #fffce1;
+    width: 10px;
+    height: 10px;
+    background-color: #C15F3C;
     border-radius: 50%;
     will-change: transform;
     cursor: pointer;
     flex-shrink: 0;
   }
 
-  :global(.cell-hidden) {
-    opacity: 0;
+  .name {
+    position: fixed;
+    top: 30px;
+    left: 40.5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: #0e100f;
     pointer-events: none;
-  }
-
-  :global(.name-cell) {
-    position: absolute;
-    width: 3px;
-    height: 3px;
+    z-index: 10;
   }
 </style>
 
@@ -69,105 +64,43 @@ import Layout from '../layouts/Layout.astro';
   gsap.registerPlugin(Physics2DPlugin);
 
   const grid = document.querySelector('.grid') as HTMLElement;
-  const nameLayer = document.querySelector('.name-layer') as HTMLElement;
 
-  // ── Grid constants ───────────────────────────────────────────────────────────
-
-  const SIZE = 6;
-  const GAP = 14;
+  const SIZE = 10;
+  const GAP = 10;
   const UNIT = SIZE + GAP;
   const PADDING = 24;
   const PULL_DISTANCE = 70;
-
-  // ── Name constants ───────────────────────────────────────────────────────────
-
-  const FONT_NAME = 'Space Mono'; // swap to change font
-  const FONT_SIZE = 16;              // canvas px; controls name resolution & size
-  const NAME_DOT = 3;                // name dot size px
-  const NAME_GAP = 2;                // name dot gap px
-  const NAME_UNIT = NAME_DOT + NAME_GAP;
-  const NAME_TEXT = 'Bolun Dai';
 
   type Cell = HTMLElement & { center_position: { x: number; y: number }; pulled: boolean };
 
   let cells: Cell[] = [];
   let rows: HTMLElement[] = [];
-  let name_dom_cells: Cell[] = [];
-  let name_cols = 0;
-  let name_rows = 0;
   let clicked = false;
   let reset_all = false;
-
-  // ── Name dot-art ─────────────────────────────────────────────────────────────
-
-  const computeNamePositions = async () => {
-    await document.fonts.load(`${FONT_SIZE}px "${FONT_NAME}"`);
-
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d')!;
-
-    ctx.font = `${FONT_SIZE}px "${FONT_NAME}"`;
-    canvas.width = Math.ceil(ctx.measureText(NAME_TEXT).width) + 2;
-    canvas.height = FONT_SIZE + 4;
-
-    ctx.fillStyle = 'white';
-    ctx.font = `${FONT_SIZE}px "${FONT_NAME}"`;
-    ctx.fillText(NAME_TEXT, 0, FONT_SIZE);
-
-    const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-    nameLayer.innerHTML = '';
-    name_dom_cells = [];
-
-    for (let py = 0; py < canvas.height; py++) {
-      for (let px = 0; px < canvas.width; px++) {
-        if (data[(py * canvas.width + px) * 4 + 3] > 50) {
-          const dot = document.createElement('div');
-          dot.className = 'cell name-cell';
-          dot.style.left = `${px * NAME_UNIT}px`;
-          dot.style.top = `${py * NAME_UNIT}px`;
-          nameLayer.appendChild(dot);
-          name_dom_cells.push(dot as Cell);
-        }
-      }
-    }
-
-    name_cols = canvas.width;
-    name_rows = canvas.height;
-  };
-
-  // Clear background grid cells that fall within the name's pixel footprint
-  const inClearZone = (gx: number, gy: number): boolean =>
-    gx < Math.ceil(name_cols * NAME_UNIT / UNIT) + 1 &&
-    gy < Math.ceil(name_rows * NAME_UNIT / UNIT) + 1;
-
-  // ── Grid ────────────────────────────────────────────────────────────────────
 
   const buildGrid = () => {
     grid.innerHTML = '';
     const col_count = Math.ceil((window.innerWidth - PADDING * 2) / UNIT);
     const row_count = Math.ceil((window.innerHeight - PADDING * 2) / UNIT);
-    const name_fits = col_count > Math.ceil(name_cols * NAME_UNIT / UNIT) + 1;
 
     for (let gy = 0; gy < row_count; gy++) {
       const row = document.createElement('div');
       row.className = 'row';
       for (let gx = 0; gx < col_count; gx++) {
         const cell = document.createElement('div');
-        cell.className = (name_fits && inClearZone(gx, gy)) ? 'cell cell-hidden' : 'cell';
+        cell.className = 'cell';
         row.appendChild(cell);
       }
       grid.appendChild(row);
     }
 
     rows = [...grid.querySelectorAll<HTMLElement>('.row')];
-    const grid_cells = [...grid.querySelectorAll<HTMLElement>('.cell')] as Cell[];
+    cells = [...grid.querySelectorAll<HTMLElement>('.cell')] as Cell[];
 
-    grid_cells.forEach((cell, i) =>
+    cells.forEach((cell, i) =>
       cell.addEventListener('pointerup', (e) => handleCellClick(e, i))
     );
 
-    cells = [...grid_cells, ...name_dom_cells];
     updateCellPositions();
   };
 
@@ -215,8 +148,6 @@ import Layout from '../layouts/Layout.astro';
     const pointer_y = 'pageY' in e ? e.pageY : e.y;
 
     cells.forEach((cell) => {
-      if (cell.classList.contains('cell-hidden')) return;
-
       const diff_x = pointer_x - cell.center_position.x;
       const diff_y = pointer_y - cell.center_position.y;
       const distance = Math.sqrt(diff_x * diff_x + diff_y * diff_y);
@@ -238,16 +169,7 @@ import Layout from '../layouts/Layout.astro';
     }
   };
 
-  await computeNamePositions();
   buildGrid();
-
-  // Clicking on the name layer triggers scatter from grid centre
-  nameLayer.addEventListener('pointerup', () => {
-    const centre = Math.floor(rows.length / 2) * rows[0].children.length +
-                   Math.floor(rows[0].children.length / 2);
-    handleCellClick(new Event('pointerup'), centre);
-  });
-
   window.addEventListener('resize', () => { if (!clicked) buildGrid(); });
   window.addEventListener('pointermove', handlePointerMove);
   document.body.addEventListener('pointerleave', () => handlePointerMove());

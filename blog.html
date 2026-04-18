@@ -22,14 +22,13 @@ page-type: blog
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a href="{% if post.link == 'None' %}{{ post.url }}{% else %}{{ post.link}}{% endif %}">
+                                <a class="card-link-stretched" href="{% if post.link == 'None' %}{{ post.url }}{% else %}{{ post.link}}{% endif %}">
                                     {{ post.title }}
                                 </a>
                             </h5>
-                            <p class="card-text">
-                                {{ post.text }}
-                            </p>
+                            <p class="card-text">{{ post.text }}</p>
                         </div>
+                        <span class="card-arrow" aria-hidden="true">→</span>
                     </div>
                 </div>
                 {% endfor %}

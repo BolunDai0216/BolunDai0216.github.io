@@ -23,12 +23,36 @@
     font-weight: bolder;
 }
 
-.card-title a {
+.card-title {
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: white;
-    text-decoration: none;
     font-size: 24px;
     font-weight: bold;
+}
+
+/* Stretched link: title <a> covers the entire card. */
+.card-link-stretched {
+    color: white;
+    text-decoration: none;
+    font: inherit;
+}
+
+.card-link-stretched::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.card-link-stretched:hover {
+    color: white;
+    text-decoration: none;
+}
+
+/* Inner links (inside card-text) stay clickable above the stretched overlay. */
+.card-text a {
+    position: relative;
+    z-index: 2;
 }
 
 .card-text {
@@ -39,16 +63,36 @@
 }
 
 .card {
+    position: relative;
     background-color: rgba(85, 107, 47, 0.55);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     height: 300px;
-    border: none;
+    border: 1.5px solid transparent;
     box-shadow: 1px 1px 15px 2px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .card:hover {
-    box-shadow: 4px 4px 15px 6px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 4px 6px 20px 6px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.card:hover .card-arrow {
+    color: white;
+    transform: translateX(3px);
+}
+
+.card-arrow {
+    position: absolute;
+    bottom: 14px;
+    right: 16px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 20px;
+    line-height: 1;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .blog-title {
@@ -183,7 +227,7 @@ tbody {
 }
 
 @media (max-width: 767.98px) {
-    .card-title a {
+    .card-title {
         font-size: 19px;
         line-height: 1.3;
     }
@@ -213,6 +257,21 @@ tbody {
     .card {
         height: auto;
         min-height: 0;
+        transition: none;
+    }
+
+    .card:hover {
+        transform: none;
+        box-shadow: 1px 1px 15px 2px rgba(0, 0, 0, 0.2);
+        border-color: transparent;
+    }
+
+    .card-arrow {
+        color: rgba(255, 255, 255, 0.6);
+        position: static;
+        display: block;
+        text-align: right;
+        padding: 0 16px 10px;
     }
 
     /* The card wrapper has inline style="width: 350px" — override with

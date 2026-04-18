@@ -39,8 +39,15 @@
     background-color: rgba(179, 80, 37, 0.55);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: none;
+    border: 1.5px solid transparent;
     box-shadow: 1px 1px 15px 2px rgba(0, 0, 0, 0.2);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.research-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 4px 6px 20px 6px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.25);
 }
 
 .arxiv-link {
@@ -178,6 +185,13 @@
     .research-card {
         margin-left: 0;
         margin-right: 0;
+        transition: none;
+    }
+
+    .research-card:hover {
+        transform: none;
+        box-shadow: 1px 1px 15px 2px rgba(0, 0, 0, 0.2);
+        border-color: transparent;
     }
 
     .research-card > .row > [class*="col-"] {

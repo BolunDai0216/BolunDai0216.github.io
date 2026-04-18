@@ -16,8 +16,7 @@
                         {{ item.name }}
                     </a>
                     {% else %}
-                    <a href="{{ item.link }}" class="nav-link" onmouseover="addUnderline(this)"
-                        onmouseleave="removeUnderline(this)">
+                    <a href="{{ item.link }}" class="nav-link{% if page.url == item.link %} nav-active{% endif %}">
                         {{ item.name }}
                     </a>
                     {% endif %}

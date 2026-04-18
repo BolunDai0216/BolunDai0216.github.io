@@ -68,6 +68,8 @@ body::before {
     font-size: clamp(1.1rem, 2.2vw, 1.7rem);
     font-weight: 700;
     margin: 0 0.35rem;
+    display: flex;
+    align-items: center;
 }
 
 .nav-item-bolun .nav-link {
@@ -75,6 +77,16 @@ body::before {
     padding: 0.35rem 0.6rem;
     border-radius: 6px;
     transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-item-bolun .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+}
+
+.nav-item-bolun .nav-link.nav-active {
+    font-size: 1.35em;
+    font-weight: 800;
 }
 
 /* Hamburger toggler: give it real breathing room + hit target on mobile. */
@@ -144,9 +156,10 @@ body::before {
     }
 
     .nav-item-bolun .nav-link {
-        display: inline-block;
-        padding: 0.55rem 0.1rem;
+        display: block;
+        padding: 0.55rem 0.6rem;
         font-size: 1.35rem;
+        border-radius: 8px;
     }
 
     /* Footer: drop to a single centered column on phones. */

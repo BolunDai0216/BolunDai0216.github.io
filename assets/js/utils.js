@@ -1,78 +1,63 @@
-var colorAnimation = null;
+// Drives the home-page color mood. The dot-wave canvas (background.js) reads
+// --bg-color and re-tints itself, so we only manage the CSS variable here.
+
 var animationColors = ['#b33737', '#3737b3', '#37b337', '#b37337'];
 var colorIndex = 0;
 var isHovering = false;
+var colorAnimation = null;
 
-var slowTransition = 'background-color 3s ease';
-var fastTransition = 'background-color 0.5s ease';
+function setBgColor(color) {
+  document.documentElement.style.setProperty('--bg-color', color);
+}
 
 function startColorAnimation() {
-    if (colorAnimation) return;
-    var body = document.getElementsByTagName('body')[0];
-    if (!body.classList.contains('home-page')) return;
+  if (colorAnimation) return;
+  var body = document.getElementsByTagName('body')[0];
+  if (!body.classList.contains('home-page')) return;
 
-    colorAnimation = setInterval(function() {
-        if (isHovering) return;
-        body.style.transition = slowTransition;
-        colorIndex = (colorIndex + 1) % animationColors.length;
-        body.style.backgroundColor = animationColors[colorIndex];
-    }, 3000);
+  colorAnimation = setInterval(function () {
+    if (isHovering) return;
+    colorIndex = (colorIndex + 1) % animationColors.length;
+    setBgColor(animationColors[colorIndex]);
+  }, 5000); // slower idle cycle; the canvas wave fills in the visual motion
 }
 
 function changeBackgroundColor(color) {
-    isHovering = true;
-    var body = document.getElementsByTagName('body')[0];
-    body.style.transition = fastTransition;
-    body.style.backgroundColor = color;
+  isHovering = true;
+  setBgColor(color);
 }
 
 function resetBackgroundColor() {
-    isHovering = false;
-    var body = document.getElementsByTagName('body')[0];
-    body.style.transition = fastTransition;
+  isHovering = false;
+  setBgColor(animationColors[colorIndex]);
 }
 
-// Start animation when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    var body = document.getElementsByTagName('body')[0];
-    if (body.classList.contains('home-page')) {
-        body.style.transition = slowTransition;
-        body.style.backgroundColor = animationColors[0];
-        startColorAnimation();
-    }
+document.addEventListener('DOMContentLoaded', function () {
+  var body = document.getElementsByTagName('body')[0];
+  if (body.classList.contains('home-page')) {
+    setBgColor(animationColors[0]);
+    startColorAnimation();
+  }
 });
 
-function addUnderline(object) {
-    object.style.textDecoration = "underline";
-}
-
-function removeUnderline(object) {
-    object.style.textDecoration = "none";
-}
+function addUnderline(object) { object.style.textDecoration = 'underline'; }
+function removeUnderline(object) { object.style.textDecoration = 'none'; }
 
 function showCardsByClass(className) {
-    objects = document.getElementsByClassName(className)
-    for (const obj of objects) {
-        obj.style.display = "inline-block";
-    }
+  var objects = document.getElementsByClassName(className);
+  for (var i = 0; i < objects.length; i++) objects[i].style.display = 'inline-block';
 }
 
 function hideCardsByClass(className) {
-    objects = document.getElementsByClassName(className)
-    for (const obj of objects) {
-        obj.style.display = "none";
-    }
+  var objects = document.getElementsByClassName(className);
+  for (var i = 0; i < objects.length; i++) objects[i].style.display = 'none';
 }
 
 function onlyShowCardsByClass(className, classNames) {
-    for (const hiddenClasses of classNames) {
-        hideCardsByClass(hiddenClasses)
-    }
-    showCardsByClass(className)
+  for (var i = 0; i < classNames.length; i++) hideCardsByClass(classNames[i]);
+  showCardsByClass(className);
 }
 
 function showAllCards(classNames) {
-    for (const classes of classNames) {
-        showCardsByClass(classes)
-    }
+  for (var i = 0; i < classNames.length; i++) showCardsByClass(classNames[i]);
 }

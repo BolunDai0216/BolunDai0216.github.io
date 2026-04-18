@@ -44,13 +44,34 @@
 }
 
 .arxiv-link {
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-style: normal;
+    font-family: Avenir, Montserrat, Helvetica;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 6px 14px;
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.arxiv-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: white;
     color: white;
     text-decoration: none;
 }
 
-.arxiv-link:hover {
-    text-decoration: underline;
-    color: white;
+.research-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
 }
 
 .research-block {
@@ -60,18 +81,32 @@
 }
 
 .abstract-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     background: none;
-    border: none;
-    padding: 0;
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    padding: 6px 14px;
     font-family: Avenir, Montserrat, Helvetica;
     color: white;
-    font-size: 16px;
-    font-style: italic;
-    margin-top: 5%;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 1;
+    margin: 0;
     cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-color: white;
+    }
 
     .abstract-arrow {
         display: inline-block;
+        font-size: 10px;
+        line-height: 1;
         transition: transform 0.2s ease;
     }
 
@@ -99,7 +134,7 @@
     }
 
     .abstract-toggle {
-        margin-top: 8px;
+        margin-top: 0;
     }
 }
 

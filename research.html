@@ -11,23 +11,21 @@ page-type: research
                     <h5 class="card-title">{{research.paper_name}}</h5>
                     <h5 class="card-author">{{research.paper_author}}</h5>
                     <h5 class="card-publish">{{research.paper_venue}}</h5>
-                    <h5 class="card-publish">
+                    <div class="research-links">
                         <a href="{{research.paper_link}}" class="arxiv-link">Paper</a>
                         {% if research.video_link != "None" %}
-                        | <a href="{{research.video_link}}" class="arxiv-link">Video</a>
+                        <a href="{{research.video_link}}" class="arxiv-link">Video</a>
                         {% endif %}
                         {% if research.poster_link != "None" %}
-                        | <a href="{{research.poster_link}}" class="arxiv-link">Poster</a>
+                        <a href="{{research.poster_link}}" class="arxiv-link">Poster</a>
                         {% endif %}
-                    </h5>
-                    <div class="d-lg-none">
-                        <button class="abstract-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#abstract-{{forloop.index}}" aria-expanded="false" aria-controls="abstract-{{forloop.index}}">
+                        <button class="abstract-toggle d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#abstract-{{forloop.index}}" aria-expanded="false" aria-controls="abstract-{{forloop.index}}">
                             Abstract <span class="abstract-arrow">▼</span>
                         </button>
-                        <div class="collapse" id="abstract-{{forloop.index}}">
-                            <div class="card-text abstract-mobile">
-                                {{research.content}}
-                            </div>
+                    </div>
+                    <div class="collapse d-lg-none" id="abstract-{{forloop.index}}">
+                        <div class="card-text abstract-mobile">
+                            {{research.content}}
                         </div>
                     </div>
                 </div>

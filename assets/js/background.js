@@ -12,7 +12,7 @@
   'use strict';
 
   var body = document.body;
-  if (!body) return;
+  if (!body || body.classList.contains('blog-post-page')) return;
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

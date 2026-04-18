@@ -33,6 +33,11 @@ body {
     pointer-events: none;
 }
 
+/* Blog post pages: no canvas, solid background. */
+body.blog-post-page {
+    background-color: var(--bg-color);
+}
+
 /* Fallback background in case JS / canvas doesn't load. */
 body::before {
     content: "";

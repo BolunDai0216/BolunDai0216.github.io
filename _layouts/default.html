@@ -60,7 +60,7 @@
 </d-front-matter>
 {% endif %}
 
-<body class="mx-auto{% if page.page-type == 'home' %} home-page{% endif %}" style="width: 96%;">
+<body class="mx-auto{% if page.page-type == 'home' %} home-page{% endif %}{% if page.page-type == 'blog-post' %} blog-post-page{% endif %}" style="width: 96%;">
   <div id="page-container">
     <div id="content-wrap">
       {% include navigation.html %}

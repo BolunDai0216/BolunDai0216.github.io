@@ -182,18 +182,54 @@ tbody {
 
 @media (max-width: 767.98px) {
     .card-title a {
-        font-size: 28px;
+        font-size: 19px;
+        line-height: 1.3;
     }
 
     .card-text {
-        font-size: 18px;
+        font-size: 14px;
+        line-height: 1.45;
     }
 
     .blog-content {
-        font-size: 22px;
+        font-size: 17px;
+        line-height: 1.55;
     }
 
     .blog-date {
-        font-size: 18px;
+        font-size: 14px;
+    }
+
+    .blog-title {
+        font-size: 26px;
+        line-height: 1.25;
+    }
+
+    /* Phones: cards become fluid full-width blocks instead of a fixed 350px
+       column (the inline width:350px would otherwise overflow on 360px
+       phones). Reset card height so titles + text have room to breathe. */
+    .card {
+        height: auto;
+        min-height: 0;
+    }
+
+    /* The card wrapper has inline style="width: 350px" — override with
+       attribute selector so we don't need to touch the template. */
+    [style*="width: 350px"] {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Blog category tabs: readable, tappable, not overwhelming. */
+    .list-group-item {
+        font-size: 17px;
+        margin-right: 0;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .blog-side-item {
+        font-size: 16px;
+        padding-left: 0;
+        margin-right: 0;
     }
 }

@@ -72,3 +72,40 @@ h2 {
     color: #ffffff !important;
     font-size: 125%;
 }
+
+/* ---------- Mobile polish ---------------------------------------------- */
+@media (max-width: 767.98px) {
+    /* Left-rail tabs (Education / Experience / Skills) — readable, tappable. */
+    .list-group-item {
+        font-size: 17px;
+        padding: 0.5rem 0.75rem;
+        margin-right: 0;
+        border-right-width: 2px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .edu-links {
+        font-size: 17px;
+        line-height: 1.3;
+    }
+
+    .edu_years {
+        font-size: 14px;
+        display: block; /* wrap beneath the title instead of crowding it */
+        margin-top: 2px;
+    }
+
+    .edu-major {
+        font-size: 15px;
+        line-height: 1.4;
+        margin-top: 2px;
+    }
+
+    .edu-content {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+}

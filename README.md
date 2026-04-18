@@ -20,3 +20,16 @@ text: # What appears in the card.
 ```
 
 And write the content (if there is any).
+
+## Serving locally
+
+Local only:
+```
+bundle exec jekyll serve
+```
+
+Local network (accessible from phone):
+```
+bundle exec jekyll serve --host 0.0.0.0
+```
+Find your IP with `ipconfig getifaddr en0`, then open `http://<your-ip>:4000` on the other device.

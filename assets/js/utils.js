@@ -44,7 +44,53 @@ document.addEventListener('DOMContentLoaded', function () {
     setBgColor(animationColors[0]);
     startColorAnimation();
   }
+
+  initBlogPostScrollSpy();
 });
+
+// Highlights the TOC link for whichever section is currently in view. Runs on
+// blog-post pages that render a <d-contents> sidebar; no-ops elsewhere.
+function initBlogPostScrollSpy() {
+  var nav = document.querySelector('d-contents nav');
+  if (!nav) return;
+  var links = nav.querySelectorAll('a[href^="#"]');
+  if (!links.length) return;
+
+  var items = [];
+  for (var i = 0; i < links.length; i++) {
+    var id = decodeURIComponent(links[i].getAttribute('href').slice(1));
+    if (!id) continue;
+    var el = document.getElementById(id);
+    if (el) items.push({ link: links[i], el: el });
+  }
+  if (!items.length) return;
+
+  function update() {
+    var offset = 120;
+    var activeIdx = -1;
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].el.getBoundingClientRect().top - offset <= 0) activeIdx = i;
+    }
+    if (activeIdx === -1) activeIdx = 0;
+    for (var j = 0; j < items.length; j++) {
+      items[j].link.classList.toggle('active', j === activeIdx);
+    }
+  }
+
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(function () {
+      update();
+      ticking = false;
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+}
 
 function addUnderline(object) { object.style.textDecoration = 'underline'; }
 function removeUnderline(object) { object.style.textDecoration = 'none'; }

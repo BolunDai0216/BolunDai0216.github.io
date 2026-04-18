@@ -141,30 +141,35 @@
     color: darkolivegreen;
 }
 
+/* Distill's template.v2.js sets `contain: layout style` and
+   `overflow-x: hidden` on d-article, both of which kill `position: sticky`
+   on children. Override so the TOC can actually stick. */
+d-article {
+    contain: none !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+}
+
 d-contents {
     align-self: start;
     grid-column: 1 / 4;
-    grid-row: auto / span 4;
+    grid-row: 1 / span 1000;
     justify-self: end;
-    margin-top: 0em;
-    padding-left: 2em;
-    padding-right: 3em;
-    border-right: 1px solid var(--global-divider-color);
+    position: sticky;
+    top: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    padding: 0.5em 2em 0.5em 1em;
+    border-right: 1px solid rgba(85, 107, 47, 0.35);
     width: calc(max(70%, 300px));
-    margin-right: 0px;
-    margin-top: 0em;
-    display: grid;
-    grid-template-columns:
-        minmax(8px, 1fr) [toc] auto minmax(8px, 1fr) [toc-line] 1px minmax(32px, 2fr);
+    margin-right: 0;
 
     nav {
-        grid-column: toc;
-
         a {
             border-bottom: none !important;
 
             &:hover {
-                border-bottom: 1px solid var(--global-text-color) !important;
+                border-bottom: none !important;
             }
         }
 
@@ -173,22 +178,15 @@ d-contents {
             margin-bottom: 1em;
         }
 
-        div {
-            display: block;
-            outline: none;
-            margin-bottom: 0.8em;
-            color: rgba(0, 0, 0, 0.8);
-            font-weight: bold;
-        }
-
         ul {
-            padding-left: 1em;
+            padding-left: 0.75em;
             margin-top: 0;
             margin-bottom: 6px;
             list-style-type: none;
 
             li {
-                margin-bottom: 0.25em;
+                margin-bottom: 0.15em;
+                font-size: 85%;
             }
         }
     }
@@ -196,30 +194,40 @@ d-contents {
     .figcaption {
         line-height: 1.4em;
     }
-
-    toc-line {
-        border-right: 1px solid var(--global-divider-color);
-        grid-column: toc-line;
-    }
 }
 
 .blog-side-item {
     background-color: transparent;
     font-family: Avenir;
-    color: darkolivegreen;
-    font-size: 175%;
-    border-top: 0;
-    border-left: 0;
-    border-bottom: 0;
-    border-right: 0;
+    font-size: 150%;
     font-weight: normal;
-    margin-right: 10%;
-    padding-left: 10%;
+    margin: 0 0 4px 0;
+    padding: 0;
+    border: 0;
 }
 
-.blog-side-item a:hover {
-    background-color: transparent;
+.blog-side-item > a,
+.blog-side-item li > a {
+    display: block;
+    color: darkolivegreen;
+    padding: 6px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.blog-side-item > a:hover,
+.blog-side-item li > a:hover {
     color: white;
+    background-color: rgba(85, 107, 47, 0.35);
+    text-decoration: none;
+}
+
+.blog-side-item > a.active,
+.blog-side-item li > a.active {
+    color: white;
+    background-color: rgba(85, 107, 47, 0.6);
+    font-weight: 600;
 }
 
 .citation {

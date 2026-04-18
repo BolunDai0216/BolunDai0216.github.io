@@ -16,7 +16,7 @@ toc:
 
 The goal of this blog post is to briefly discuss what the Fourier transform and Fourier series are, show the intuition behind them, and talk about how to obtain them in real life.
 
-# Preliminaries
+## Preliminaries
 
 What Fourier series and Fourier transforms both enable us to do is to represent functions as a sum of cosine and sine functions. We will see that we can treat cosine and sine functions of different frequencies as a basis: the Fourier basis, and by projecting the original function onto this Fourier basis, we can figure out how large a portion a specific sine or cosine wave occupies in the original signal. We will see how we can do this on periodic (Fourier series) and non-periodic signals (Fourier transform).
 
@@ -44,7 +44,7 @@ where $$\overline{g}(x)$$ denotes the conjugate of $$g(x)$$. Recall that the con
 
 $$\Big\langle f(x), g(x)\Big\rangle \approx \sum_{i=1}^{n}{f_i\overline{g}_i\Delta{x}}.$$
 
-# Fourier Series
+## Fourier Series
 
 First, we show the result; for $$f(x)$$ defined on $$[-\pi, \pi]$$, we have:
 
@@ -100,7 +100,7 @@ where
 
 $$c_k = \frac{1}{2\pi}\Big\langle f(x), e^{ikx}\Big\rangle.$$
 
-# Fourier Transform
+## Fourier Transform
 
 So far, we have only dealt with signals that are periodic; for non-periodic signals, we will have to use a new tool: the Fourier transform. Let's first see what happens if we write out the complex Fourier series for signals $$f(x)$$ that are only defined on $$[-L, L]$$; then we will get an $$f(x)$$ using a Fourier series that is $$2L$$-periodic. If $$L\rightarrow\infty$$, then $$f(x)$$ becomes a non-periodic signal, and we will see what happens as it approaches this limit.
 
@@ -153,7 +153,7 @@ f(x) &= \mathcal{F}^{-1}\Big(\widehat{f}(\omega)\Big) =
 \frac{1}{2\pi}\int_{-\infty}^{\infty}\widehat{f}(\omega)e^{i\omega x}d\omega.
 \end{align*}$$
 
-# Discrete Fourier Transform
+## Discrete Fourier Transform
 
 One thing to note is that using the discrete Fourier transform (DFT), you are actually generating a periodic function that is the same as the original on the finite interval where $$f(x)$$ is defined. So a more suitable name may be discrete Fourier series. Another widely used algorithm is the fast Fourier transform (FFT). The relationship between FFT and DFT is: FFT is a way to numerically realize DFT.
 
@@ -187,7 +187,7 @@ f_2\\
 f_n
 \end{bmatrix}$$
 
-# Applications
+## Applications
 
 In this section, we will talk about how we can apply the Fourier transform to solve a variety of problems. These include a way to calculate derivatives that has higher accuracy than simply doing finite differencing, and transforming a convolution into multiplication in the frequency domain.
 
@@ -237,7 +237,7 @@ Thus, we have
 
 $$\mathcal{F}(f(x)*g(x)) = \mathcal{F}(f(x))\mathcal{F}(g(x)) = \widehat{f}(\omega)\widehat{g}(\omega).$$
 
-# Laplace Transform
+## Laplace Transform
 
 One limitation of the Fourier transform is that it is only able to deal with functions that decay to zero as $$x$$ approaches both positive and negative infinity. To deal with functions that do not decay to zero, you would need to utilize the Laplace transform. Essentially, the Laplace transform constructs a new well-behaved function $$F(x)$$ from the original function $$f(x)$$,
 

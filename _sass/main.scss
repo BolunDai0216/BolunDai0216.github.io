@@ -12,18 +12,23 @@ html {
     height: 100%;
     width: 100%;
     background-color: #ffffff;
+    overflow-x: clip;
 }
 
 body {
     min-height: 100%;
     background-color: var(--bg-color);
     transition: background-color 0.6s ease;
+    overflow-x: clip;
 }
 
 /* Home: the canvas draws the base color; keep body transparent so the
-   canvas shows through. The canvas itself is fixed behind everything. */
+   canvas shows through. The canvas itself is fixed behind everything.
+   isolation:isolate forces a stacking context so z-index:-1/-2 layer
+   correctly in Chromium (Safari is forgiving; Chrome is not). */
 body.home-page {
     background-color: transparent;
+    isolation: isolate;
 }
 
 #dot-wave-bg {

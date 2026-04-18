@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Tinos');
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
 
-body {
-    background-color: #e56530;
+:root {
+    --bg-color: #e56530;
 }
 
 .card-title {
@@ -36,7 +36,9 @@ body {
 }
 
 .research-card {
-    background-color: #B35025;
+    background-color: rgba(179, 80, 37, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: none;
     box-shadow: 1px 1px 15px 2px rgba(0, 0, 0, 0.2);
 }

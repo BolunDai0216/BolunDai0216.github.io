@@ -12,7 +12,7 @@
   'use strict';
 
   var body = document.body;
-  if (!body || !body.classList.contains('home-page')) return;
+  if (!body) return;
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

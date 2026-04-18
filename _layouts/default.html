@@ -22,9 +22,7 @@
   {% endif %}
 
   <script src="/assets/js/utils.js?v={{ site.time | date: '%s' }}"></script>
-  {% if page.page-type == "home" %}
   <script defer src="/assets/js/background.js?v={{ site.time | date: '%s' }}"></script>
-  {% endif %}
 
   {% if page.page-type == "blog-post" %}
   <link rel="stylesheet" href="/assets/css/blog.css">

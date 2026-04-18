@@ -11,23 +11,15 @@
 html {
     height: 100%;
     width: 100%;
-    background-color: #ffffff;
+    background-color: var(--bg-color);
     overflow-x: clip;
 }
 
 body {
     min-height: 100%;
-    background-color: var(--bg-color);
-    transition: background-color 0.6s ease;
-    overflow-x: clip;
-}
-
-/* Home: the canvas draws the base color; keep body transparent so the
-   canvas shows through. The canvas itself is fixed behind everything.
-   isolation:isolate forces a stacking context so z-index:-1/-2 layer
-   correctly in Chromium (Safari is forgiving; Chrome is not). */
-body.home-page {
     background-color: transparent;
+    overflow-x: clip;
+    /* Stacking context so z-index:-1/-2 layer correctly in Chromium. */
     isolation: isolate;
 }
 
@@ -42,7 +34,7 @@ body.home-page {
 }
 
 /* Fallback background in case JS / canvas doesn't load. */
-body.home-page::before {
+body::before {
     content: "";
     position: fixed;
     inset: 0;
@@ -169,8 +161,7 @@ body.home-page::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    body,
-    body.home-page::before {
+    body::before {
         transition: none;
     }
 }

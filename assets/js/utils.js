@@ -5,6 +5,7 @@ var animationColors = ['#b33737', '#3737b3', '#37b337', '#b37337'];
 var colorIndex = 0;
 var isHovering = false;
 var colorAnimation = null;
+var pageDefaultColor = null;
 
 function setBgColor(color) {
   document.documentElement.style.setProperty('--bg-color', color);
@@ -12,14 +13,11 @@ function setBgColor(color) {
 
 function startColorAnimation() {
   if (colorAnimation) return;
-  var body = document.getElementsByTagName('body')[0];
-  if (!body.classList.contains('home-page')) return;
-
   colorAnimation = setInterval(function () {
     if (isHovering) return;
     colorIndex = (colorIndex + 1) % animationColors.length;
     setBgColor(animationColors[colorIndex]);
-  }, 5000); // slower idle cycle; the canvas wave fills in the visual motion
+  }, 5000);
 }
 
 function changeBackgroundColor(color) {
@@ -29,10 +27,18 @@ function changeBackgroundColor(color) {
 
 function resetBackgroundColor() {
   isHovering = false;
-  setBgColor(animationColors[colorIndex]);
+  var body = document.getElementsByTagName('body')[0];
+  if (body.classList.contains('home-page')) {
+    setBgColor(animationColors[colorIndex]);
+  } else {
+    setBgColor(pageDefaultColor);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  // Capture the page's default --bg-color before any JS overrides it.
+  pageDefaultColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-color').trim();
+
   var body = document.getElementsByTagName('body')[0];
   if (body.classList.contains('home-page')) {
     setBgColor(animationColors[0]);

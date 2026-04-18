@@ -59,11 +59,19 @@ function hideCardsByClass(className) {
   for (var i = 0; i < objects.length; i++) objects[i].style.display = 'none';
 }
 
+function setActiveSidebarLink(el) {
+  var links = document.querySelectorAll('.blog-sidebar-link');
+  for (var i = 0; i < links.length; i++) links[i].classList.remove('active');
+  if (el) el.classList.add('active');
+}
+
 function onlyShowCardsByClass(className, classNames) {
   for (var i = 0; i < classNames.length; i++) hideCardsByClass(classNames[i]);
   showCardsByClass(className);
+  setActiveSidebarLink(event && event.currentTarget);
 }
 
 function showAllCards(classNames) {
   for (var i = 0; i < classNames.length; i++) showCardsByClass(classNames[i]);
+  setActiveSidebarLink(null);
 }

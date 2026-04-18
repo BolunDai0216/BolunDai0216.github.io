@@ -6,66 +6,65 @@ page-type: cv
 <div class="container cv-block">
     <div class="row">
         <div class="d-none d-xl-block col-xl-2">
-            <div id="side-list" class="list-group sticky-top">
-                <a class="list-group-item" href="#education">Education</a>
-                <a class="list-group-item" href="#pro-research">Research &amp Work Experience</a>
-                <a class="list-group-item" href="#skills">Skills</a>
-                <a class="list-group-item" href="/assets/images/cv/Bolun-Dai-CV.pdf">Download PDF</a>
-            </div>
+            <nav id="side-list" class="cv-sidebar sticky-top">
+                <a class="cv-sidebar-link" href="#education">Education</a>
+                <a class="cv-sidebar-link" href="#pro-research">Experience</a>
+                <a class="cv-sidebar-link" href="#skills">Skills</a>
+                <a class="cv-sidebar-link cv-download-pill" href="/assets/images/cv/Bolun-Dai-CV.pdf">Download PDF</a>
+            </nav>
         </div>
 
         <div class="col-12 col-xl-10">
-            <div class="row">
-                <h2 class="edu-title" id="education">Education</h2>
-                <hr style="height:4px; border-width:0; color:white; background-color:white">
 
+            <div class="cv-section" id="education">
+                <h2 class="cv-section-title">Education</h2>
                 {% for item in site.data.education %}
-                <a class="edu-links col-6 col-lg-9" href="{{ item.school_link }}">{{ item.school_name }}</a>
-                <p class="edu_years col-6 col-lg-3 text-end">{{ item.time_period }}</p>
-                <p class="edu-major">{{ item.degree }}</p>
+                <div class="cv-card">
+                    <div class="cv-card-header">
+                        <a class="cv-institution" href="{{ item.school_link }}">{{ item.school_name }}</a>
+                        <span class="cv-years">{{ item.time_period }}</span>
+                    </div>
+                    <p class="cv-degree">{{ item.degree }}</p>
+                </div>
                 {% endfor %}
-
-                <h2 class="edu-title" id="pro-research">Research &amp Work Experience</h2>
-                <hr style="height:4px; border-width:0; color:white; background-color:white">
-
-                {% for item in site.data.experience %}
-                <a class="edu-links col-6 col-lg-9" href="#">{{item.title}}</a>
-                <p class="edu_years col-6 col-lg-3 text-end">{{item.time}}</p>
-                <p class="edu-major">{{item.place}}</p>
-                <ul>
-                    {% if item.job1 != "None" %}
-                    <li class="edu-content">
-                        {{item.job1}}
-                    </li>
-                    {% endif %}
-
-                    {% if item.job2 != "None" %}
-                    <li class="edu-content">
-                        {{item.job2}}
-                    </li>
-                    {% endif %}
-
-                    {% if item.job3 != "None" %}
-                    <li class="edu-content">
-                        {{item.job3}}
-                    </li>
-                    {% endif %}
-                </ul>
-                {% endfor %}
-
-                <br>
-                <h2 class="edu-title" id="skills">Skills</h2>
-                <hr style="height:4px; border-width:0; color:white; background-color:white">
-
-                <ul>
-                    {% for item in site.data.skills %}
-                    <li class="edu-content">
-                        {{item.name}}: {{item.content}}
-                    </li>
-                    {% endfor %}
-                </ul>
-
             </div>
+
+            <div class="cv-section" id="pro-research">
+                <h2 class="cv-section-title">Research &amp; Work Experience</h2>
+                {% for item in site.data.experience %}
+                <div class="cv-card">
+                    <div class="cv-card-header">
+                        <span class="cv-institution">{{ item.title }}</span>
+                        <span class="cv-years">{{ item.time }}</span>
+                    </div>
+                    <p class="cv-place">{{ item.place }}</p>
+                    <ul class="cv-details">
+                        {% if item.job1 != "None" %}
+                        <li>{{ item.job1 }}</li>
+                        {% endif %}
+                        {% if item.job2 != "None" %}
+                        <li>{{ item.job2 }}</li>
+                        {% endif %}
+                        {% if item.job3 != "None" %}
+                        <li>{{ item.job3 }}</li>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="cv-section" id="skills">
+                <h2 class="cv-section-title">Skills</h2>
+                <div class="cv-card">
+                    {% for item in site.data.skills %}
+                    <div class="cv-skill-row{% unless forloop.last %} cv-skill-divider{% endunless %}">
+                        <span class="cv-skill-label">{{ item.name }}</span>
+                        <span class="cv-skill-content">{{ item.content }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

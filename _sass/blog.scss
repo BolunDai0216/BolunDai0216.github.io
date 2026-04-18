@@ -4,23 +4,44 @@
     --bg-color: #b3b149;
 }
 
-.list-group-item {
-    background-color: transparent;
-    font-family: Avenir, Montserrat;
-    color: darkolivegreen;
-    font-size: 200%;
-    border-top: 0;
-    border-left: 0;
-    border-bottom: 0;
-    border-right: 0;
-    font-weight: bold;
-    margin-right: 10%;
+.blog-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 1rem;
 }
 
-.list-group a:hover {
-    background-color: transparent;
+.blog-sidebar-heading {
+    font-family: Avenir, Montserrat, Helvetica, sans-serif;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0 12px 6px;
+    margin-bottom: 2px;
+}
+
+.blog-sidebar-link {
+    font-family: Avenir, Montserrat, Helvetica, sans-serif;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 25px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.blog-sidebar-link:hover {
     color: white;
-    font-weight: bolder;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.blog-sidebar-link.active {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
 .card-title {
@@ -90,7 +111,7 @@
     bottom: 14px;
     right: 16px;
     color: rgba(255, 255, 255, 0.4);
-    font-size: 20px;
+    font-size: 25px;
     line-height: 1;
     transition: transform 0.2s ease, color 0.2s ease;
 }
@@ -279,13 +300,6 @@ tbody {
     [style*="width: 350px"] {
         width: 100% !important;
         max-width: 100% !important;
-    }
-
-    /* Blog category tabs: readable, tappable, not overwhelming. */
-    .list-group-item {
-        font-size: 17px;
-        margin-right: 0;
-        padding: 0.5rem 0.75rem;
     }
 
     .blog-side-item {

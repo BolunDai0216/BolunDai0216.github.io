@@ -7,7 +7,7 @@ link: None
 text: As topic.
 --- 
 
-This blog post proves a crucial statement in the gradient descent convergence analysis: from the assumption $$f$$ is convex, twice differentiable function and $$\nabla{f}$$ is Lipschitz continuous with constant $$L>0$$ we have
+This blog post proves a crucial statement in the gradient descent convergence analysis: from the assumption that $$f$$ is a convex, twice differentiable function and $$\nabla{f}$$ is Lipschitz continuous with constant $$L>0$$, we have
 
 $$f(y) \leq f(x) + \nabla{f}(x)^T(y - x) + \frac{L}{2}\|y-x\|_2^2.$$
 
@@ -17,15 +17,15 @@ Here we list four statements:
 - (3) $$\nabla^2{f}(x)\preceq LI$$ 
 - (4) $$f(y) \leq f(x) + \nabla{f}(x)^T(y - x) + \frac{L}{2}\|y-x\|_2^2$$ 
 
-The outline of the proof is $$\mathrm{i}\rightarrow \mathrm{iii} \rightarrow \mathrm{iv}$$ but the proof of $$\mathrm{i}\rightarrow \mathrm{ii}$$ is also given.
+The outline of the proof is $$\mathrm{i}\rightarrow \mathrm{iii} \rightarrow \mathrm{iv}$$, but the proof of $$\mathrm{i}\rightarrow \mathrm{ii}$$ is also given.
 
 ## i &rarr; ii
 
-From $$\nabla{f}$$ is Lipschitz continuous with constant $$L>0$$ we know $$\|\nabla{f}(x) - \nabla{f}(y)\|_2\leq L\|x-y\|_2$$. From the Cauchy-Schwartz inequality we have
+From the fact that $$\nabla{f}$$ is Lipschitz continuous with constant $$L>0$$, we know $$\|\nabla{f}(x) - \nabla{f}(y)\|_2\leq L\|x-y\|_2$$. From the Cauchy-Schwartz inequality, we have
 
 $$|\langle u, v\rangle| \leq \|u\|_2\|v\|_2.$$
 
-Setting $$u = \nabla{f}(x) - \nabla{f}(y)$$ and $$v = x - y$$ we have
+Setting $$u = \nabla{f}(x) - \nabla{f}(y)$$ and $$v = x - y$$, we have
 
 $$\begin{align*}
 |(\nabla{f}(x) - \nabla{f}(y))^T(x - y)| &\leq \|\nabla{f}(x) - \nabla{f}(y)\|_2\|x - y\|_2\\
@@ -34,16 +34,16 @@ $$\begin{align*}
 \end{align*}$$
 
 Since we have the absolute value of $$(\nabla{f}(x) - \nabla{f}(y))^T(x - y)$$ less than or equal to
-$$L\|x-y\|_2^2$$, we definetely have
+$$L\|x-y\|_2^2$$, we definitely have
 
-$$(\nabla{f}(x)-\nabla{f}(x))^T(x-y)\leq L\|x-y\|_2^2.$$
+$$(\nabla{f}(x)-\nabla{f}(y))^T(x-y)\leq L\|x-y\|_2^2.$$
 
 ## i &rarr; iii
 
-From the mean value theorem we can have
+From the mean value theorem, we can have
 
 $$\frac{\nabla f(x + \Delta{x}) - \nabla f(x)}{\Delta{x}} = \nabla^2f(x + t\Delta{x}),\ t\in[0, 1].$$
-If we multiply both sides with $$\Delta{x}$$ and take the norm on both sides gives us
+If we multiply both sides by $$\Delta{x}$$ and take the norm on both sides, this gives us
 
 $$\begin{align*}
 \|\nabla^2f(x + t\Delta{x})\Delta{x}\| &= \|\nabla f(x + \Delta{x}) - \nabla f(x)\|\\
@@ -53,26 +53,26 @@ $$\begin{align*}
 \end{align*}$$
 
 Since $$f$$ is a convex function, we know its Hessian is positive semidefinite. Thus,
-$$\|\nabla^2f(x)\|$$ represents the spectral norm, which is equal to its largest eigenvalue. Thus we
+$$\|\nabla^2f(x)\|$$ represents the spectral norm, which is equal to its largest eigenvalue. Thus, we
 have $$\nabla^2{f}(x)\preceq LI$$. See definition 7 and fact 8 of <a href="/assets/images/convex_opt/NotesMatrices.pdf">this note</a>.
 
 ### iii &rarr; iv
 
-From the second-order Taylor series we have
+From the second-order Taylor series, we have
 
 $$f(y) = f(x) + \nabla f(x)^T(y - x) + \frac{1}{2}(y - x)^T\nabla^2{f}(x)(y - x).$$
 
-From $$\nabla^2{f}(x)\preceq LI$$ we have
+From $$\nabla^2{f}(x)\preceq LI$$, we have
 
 $$\frac{1}{2}(y - x)^T\nabla^2{f}(x)(y - x) \leq \frac{1}{2}(y - x)^TLI(y - x) = \frac{L}{2}\|y-x\|_2^2.$$
 
-Thus we have
+Thus, we have
 
 $$f(y) \leq f(x) + \nabla{f}(x)^T(y - x) + \frac{L}{2}\|y-x\|_2^2.$$
 
 ## i &rarr; iv
 
-Prof.Joan Bruna's mentioned in his class a way to prove iv from i which I did not think of before, thus I will include it here. If we have $$F(t) = f\big(y + t(x-y)\big)$$, then using the fundamental theorem of calculus
+Prof. Joan Bruna mentioned in his class a way to prove iv from i that I did not think of before, so I will include it here. If we have $$F(t) = f\big(y + t(x-y)\big)$$, then using the fundamental theorem of calculus
 
 $$F(b) - F(a) = \int_{b}^{a}{f(t)dt},\ \mathrm{if\ }F^\prime(t) = f(t),$$
 
@@ -83,7 +83,7 @@ F(b) - F(a) &= \int_{b}^{a}{F^\prime(t)dt}\\
 &= \int_{b}^{a}{(x-y)\nabla{f}\big(y + t(x-y)\big)dt}.
 \end{align}$$
 
-By setting $$a = 1$$ and $$b = 0$$ we have
+By setting $$a = 1$$ and $$b = 0$$, we have
 
 $$F(b) - F(a) = f(x) - f(y) = \int_{0}^{1}{(x-y)\nabla{f}\big(y + t(x-y)\big)dt},$$
 
@@ -91,7 +91,7 @@ which can be written as
 
 $$f(x) - f(y) = \int_{0}^{1}{\Big\langle\nabla{f}\big(y + t(x-y)\big), (x-y)\Big\rangle dt}.$$
 
-Also we need to note that for a constant $$s$$ or function $$s(x)$$ with no $$t$$ in the input, we have $$F(x) = s(x)t$$ and $$dF(x)/dt = s(x)$$. Thus, using the fundamental theorem of calculus we have
+Also, we need to note that for a constant $$s$$ or function $$s(x)$$ with no $$t$$ in the input, we have $$F(x) = s(x)t$$ and $$dF(x)/dt = s(x)$$. Thus, using the fundamental theorem of calculus, we have
 
 $$s(x) = \int_{0}^{1}s(x)dt = s(x)t\Big|_0^1 = s(x) - 0.$$
 
@@ -111,7 +111,7 @@ x-y\Big\rangle\Bigg|dt}\\
 &= \frac{L}{2}\|x-y\|^2.
 \end{align}$$
 
-Then we finally have
+Then, we finally have
 
 $$f(x) \leq f(y) + \langle\nabla f(y), x-y\rangle + \frac{L}{2}\|x-y\|^2,\ \forall x, y.$$
 

@@ -4,14 +4,14 @@ title: Gradient Descent Convergence Analysis
 description: By Bolun Dai | Feb 2nd 2021
 class: convex-opt
 link: None
-text: Some notes on gradient descent covergence analysis, along with its proof.
+text: Some notes on gradient descent convergence analysis, along with its proof.
 --- 
 
-This blog post will dive into the convergence analysis of gradient descent. The gradient descent algorithm solves problem in the form of
+This blog post will dive into the convergence analysis of gradient descent. The gradient descent algorithm solves problems in the form of
 
 $$\min_{x}\ \ f(x).$$
 
-Assume that $$f$$ is convex and differentiable, with $$\mathrm{dom}(f) = \mathbb{R}^n$$. Additionally we assume the gradient of $$f$$, denoted as $$\nabla{f}$$ is Lipschitz continuous with constant $$L>0$$
+Assume that $$f$$ is convex and differentiable, with $$\mathrm{dom}(f) = \mathbb{R}^n$$. Additionally, we assume the gradient of $$f$$, denoted as $$\nabla{f}$$, is Lipschitz continuous with constant $$L>0$$
 
 $$\|\nabla{f}(x) - \nabla{f}(y)\|_2\leq L\|x - y\|_2.$$
 
@@ -19,17 +19,17 @@ Under a fixed step size $$t\leq1/L$$ we can have
 
 $$f(x^{(k)}) - f(x^*) \leq \frac{\|x^{(0)} - x^*\|_2^2}{2tk},$$
 
-where $$x^{(k)}$$ is the estimation of the solution at the $$k$$-th iteration and $$x^*$$ is the true solution the problem. Using the big O notation we can say that gradient descent, under the above assumptions, has a convergence rate of $$O(1/k)$$. In other words, it needs $$O(1/\epsilon)$$ iterations to achieve $$f(x^{(k)}) - f(x^*) \leq \epsilon$$. We will prove this below.
+where $$x^{(k)}$$ is the estimate of the solution at the $$k$$-th iteration and $$x^*$$ is the true solution to the problem. Using big O notation, we can say that gradient descent, under the above assumptions, has a convergence rate of $$O(1/k)$$. In other words, it needs $$O(1/\epsilon)$$ iterations to achieve $$f(x^{(k)}) - f(x^*) \leq \epsilon$$. We will prove this below.
 
-We first need to acknowledge from $$\nabla{f}$$ being Lipschitz continuous with constant $$L>0$$ we can prove, for all $$x$$ and $$y$$ we have
+We first need to acknowledge that from $$\nabla{f}$$ being Lipschitz continuous with constant $$L>0$$, we can prove that for all $$x$$ and $$y$$, we have
 
 $$f(y) \leq f(x) + \nabla{f}(x)^T(y - x) + \frac{L}{2}\|y-x\|_2^2,$$
 
-the proof is given in <a href="/2021/02/10/part_of_grad_desc_proof.html">another post</a>, here I will use it as a fact. At each gradient descent iteration we perform the update
+the proof is given in <a href="/2021/02/10/part_of_grad_desc_proof.html">another post</a>; here I will use it as a fact. At each gradient descent iteration, we perform the update
 
 $$x^+ = x - t\nabla{f}(x).$$
 
-Using the above inequality we can have
+Using the above inequality, we can have
 
 $$\begin{align*}
 f(x^+) &\leq f(x) + \nabla{f}(x)^T(x^+ - x) + \frac{L}{2}\|x^+-x\|_2^2\\
@@ -38,7 +38,7 @@ f(x^+) &\leq f(x) + \nabla{f}(x)^T(x^+ - x) + \frac{L}{2}\|x^+-x\|_2^2\\
 &= f(x) -(1-\frac{Lt}{2})t\|\nabla{f}(x)\|_2^2.
 \end{align*}$$
 
-Since we have $$t\leq1/L$$ then we have
+Since we have $$t\leq1/L$$, we then have
 
 $$\begin{align*}
 t &\leq \frac{1}{L}\\
@@ -49,20 +49,20 @@ t &\leq \frac{1}{L}\\
 -(1-\frac{Lt}{2}) &\leq -\frac{1}{2}.
 \end{align*}$$
 
-Thus we have
+Thus, we have
 
 $$\begin{align*}
 f(x^+) &\leq f(x) -(1-\frac{Lt}{2})t\|\nabla{f}(x)\|_2^2\\
 &\leq f(x) -\frac{t}{2}\|\nabla{f}(x)\|_2^2.
 \end{align*}$$
 
-This says that when not at the solution it always have $$f(x^+) \leq f(x)$$, which is the equavalent of saying the solution estimation is monotonicly approaching the minimum value.
+This says that when not at the solution, we always have $$f(x^+) \leq f(x)$$, which is equivalent to saying that the solution estimate is monotonically approaching the minimum value.
 
-Applying the first order convexity condition at $$x$$ gives us
+Applying the first-order convexity condition at $$x$$ gives us
 
 $$f(y) \geq f(x) + \nabla{f}(x)^T(y - x),\ \ \forall y.$$
 
-Substituting $$y$$ with the true solution $$x^*$$ we have
+Substituting $$y$$ with the true solution $$x^*$$, we have
 
 $$\begin{align*}
 f(x^*) &\geq f(x) + \nabla{f}(x)^T(x^* - x)\\
@@ -70,7 +70,7 @@ f(x^*) - \nabla{f}(x)^T(x^* - x) &\geq f(x)\\
 f(x^*) +\nabla{f}(x)^T(x - x^*) &\geq f(x).
 \end{align*}$$
 
-From above we know $$f(x^+) \leq f(x) -\frac{t}{2}\|\nabla{f}(x)\|_2^2$$, using the above inequality
+From above, we know $$f(x^+) \leq f(x) -\frac{t}{2}\|\nabla{f}(x)\|_2^2$$. Using the above inequality
 gives us
 
 $$\begin{align*}
@@ -79,7 +79,7 @@ f(x^+) &\leq f(x) -\frac{t}{2}\|\nabla{f}(x)\|_2^2\\
 f(x^+) - f(x^*) &\leq \nabla{f}(x)^T(x - x^*) - \frac{t}{2}\|\nabla{f}(x)\|_2^2.
 \end{align*}$$
 
-Now we show a result that seems irrelavent but crucial step
+Now we show a seemingly irrelevant but crucial result
 
 $$\begin{align*}
 \frac{1}{2t}\Big[\|x - x^*\|_2^2 - \|x^+ - x^*\|_2^2\Big] &= \frac{1}{2t}\Big[\|x - x^*\|_2^2 -
@@ -92,7 +92,7 @@ $$\begin{align*}
 &= \nabla{f}(x)^T(x - x^*) - \frac{t}{2}\|\nabla{f}(x)\|_2^2.
 \end{align*}$$
 
-Thus we have
+Thus, we have
 
 $$\begin{align*}
 f(x^+) - f(x^*) &\leq \nabla{f}(x)^T(x - x^*) - \frac{t}{2}\|\nabla{f}(x)\|_2^2\\
@@ -103,7 +103,7 @@ For the $$i$$-th iteration, we have
 
 $$f(x^{(i)}) - f(x^*) \leq \frac{1}{2t}\Big[\|x^{(i-1)} - x^*\|_2^2 - \|x^{(i)} - x^*\|_2^2\Big].$$
 
-Then we have
+Then, we have
 
 $$\begin{align*}
 f(x^{(i)}) - f(x^*) + f(x^{(i-1)}) - f(x^*) &\leq \frac{1}{2t}\Big[\|x^{(i-1)} - x^*\|_2^2 -
@@ -113,7 +113,7 @@ x^*\|_2^2\Big]\\
 \|x^{(i)} - x^*\|_2^2\Big].
 \end{align*}$$
 
-Therefore we can conclude
+Therefore, we can conclude
 
 $$\begin{align*}
 \sum_{i=1}^{k}\Big[f(x^{(i)}) - f(x^*)\Big] &\leq \frac{1}{2t}\Big[\|x^{(0)} - x^*\|_2^2 -
@@ -121,7 +121,7 @@ $$\begin{align*}
 &\leq \frac{1}{2t}\|x^{(0)} - x^*\|_2^2.
 \end{align*}$$
 
-Recall when not at the solution we always have $$f(x^+) \leq f(x)$$. This says
+Recall that when not at the solution, we always have $$f(x^+) \leq f(x)$$. This says
 
 $$f(x^{1}) \geq f(x^{2}) \geq \cdots \geq f(x^{k}),$$
 
@@ -129,7 +129,7 @@ which can be written as
 
 $$f(x^{1}) - f(x^*) \geq f(x^{2}) - f(x^*) \geq \cdots \geq f(x^{k}) - f(x^*).$$
 
-Thus we have
+Thus, we have
 
 $$\begin{align*}
 f(x^{k}) - (x^*) &\leq \frac{1}{k}\sum_{i=1}^{k}\Big[f(x^{(i)}) - f(x^*)\Big]\\

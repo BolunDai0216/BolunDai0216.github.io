@@ -7,7 +7,7 @@ link: None
 text: A list of operations that preserves convexity on both convex sets and functions.
 --- 
 
-First we summarize the operations that preserves convexity for convex sets, which means for a convex set $$C$$ after performing an operation the result is still a convex set. A convex set $$C$$ is defined as for $$x, y\in C$$ we have $$tx + (1-t)y\in C$$ for all $$0\leq t\leq1$$.
+First, we summarize the operations that preserve convexity for convex sets, which means that for a convex set $$C$$, after performing an operation, the result is still a convex set. A convex set $$C$$ is defined such that for $$x, y\in C$$, we have $$tx + (1-t)y\in C$$ for all $$0\leq t\leq1$$.
 
 | Operation               | Detailed Description                                                          |
 |:------------------------|:------------------------------------------------------------------------------|
@@ -16,7 +16,7 @@ First we summarize the operations that preserves convexity for convex sets, whic
 | Affine Images           | $$\mathcal{D} = \{f(x): x\in C\}$$, where $$C$$ is a convex set               |
 | Affine Preimages        | $$C = \{x: f(x)\in \mathcal{D}\}$$, where $$\mathcal{D}$$ is a convex set     |
 
-Then we summarize the operations that preserve convexity for convex functions. A convex function $$f:\mathbb{R}^n\rightarrow\mathbb{R}$$ needs to satisfy two criterias: the domain of $$f$$, $$\mathrm{dom}(f)\subseteq\mathbb{R}^n$$ needs to be convex; for $$x, y\in\mathrm{dom}(f)$$ we have $$f(tx + (1-t)y)\leq tf(x) + (1-t)f(y), \forall 0\leq t\leq 1$$.
+Then we summarize the operations that preserve convexity for convex functions. A convex function $$f:\mathbb{R}^n\rightarrow\mathbb{R}$$ needs to satisfy two criteria: the domain of $$f$$, $$\mathrm{dom}(f)\subseteq\mathbb{R}^n$$, needs to be convex; and for $$x, y\in\mathrm{dom}(f)$$, we have $$f(tx + (1-t)y)\leq tf(x) + (1-t)f(y), \forall 0\leq t\leq 1$$.
 
 | Operation                      | Detailed Description                                                                                                                                 |
 |:-------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -28,15 +28,15 @@ Then we summarize the operations that preserve convexity for convex functions. A
 
 For a convex function it satisfies two conditions.
 
-The **first-order condition** states that for a differentiable function $$f(\cdot)$$, it is convex only is $$\mathrm{dom}(f)\subseteq\mathbb{R}^n$$ is a convex set and
+The **first-order condition** states that a differentiable function $$f(\cdot)$$ is convex only if $$\mathrm{dom}(f)\subseteq\mathbb{R}^n$$ is a convex set and
 
 $$f(y)\geq f(x) + \nabla f^T(x)(y - x)$$
 
 for all $$x, y\in\mathrm{dom}(f)$$.
 
-The **second-order condition** states that for a two time differentiable function $$f(\cdot)$$, it is convex only is $$\mathrm{dom}(f)\subseteq\mathbb{R}^n$$ is a convex set and $$\nabla^2 f(x)\succeq0$$ for all $$x\in\mathrm{dom}(f)$$.
+The **second-order condition** states that a twice differentiable function $$f(\cdot)$$ is convex only if $$\mathrm{dom}(f)\subseteq\mathbb{R}^n$$ is a convex set and $$\nabla^2 f(x)\succeq0$$ for all $$x\in\mathrm{dom}(f)$$.
 
-We will use the second-order condition to find what kinds of functions preserves convexity under a general composition. The general composition can be denoted as $$f = h\circ g$$ or $$f(x) = h(g(x))$$. To simplify the problem we can let $$f:\mathbb{R}\rightarrow\mathbb{R}$$, then we have
+We will use the second-order condition to find what kinds of functions preserve convexity under a general composition. The general composition can be denoted as $$f = h\circ g$$ or $$f(x) = h(g(x))$$. To simplify the problem we can let $$f:\mathbb{R}\rightarrow\mathbb{R}$$, then we have
 
 $$\begin{align*}
 f^{\prime\prime}(x) &= [h^\prime(g(x))g^\prime(x)]^\prime\\

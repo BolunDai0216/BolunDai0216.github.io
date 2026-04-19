@@ -12,7 +12,12 @@ page-type: research
                     <h5 class="card-author">{{research.paper_author}}</h5>
                     <h5 class="card-publish">{{research.paper_venue}}</h5>
                     <div class="research-links">
+                        {% if research.paper_link != "None" %}
                         <a href="{{research.paper_link}}" class="arxiv-link">Paper</a>
+                        {% endif %}
+                        {% if research.website_link != "None" %}
+                        <a href="{{research.website_link}}" class="arxiv-link">Website</a>
+                        {% endif %}
                         {% if research.video_link != "None" %}
                         <a href="{{research.video_link}}" class="arxiv-link">Video</a>
                         {% endif %}

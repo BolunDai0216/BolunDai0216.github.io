@@ -1,7 +1,7 @@
 ---
 paper_name: Safety-Critical Dynamic Motion Generation for Manipulators Using Differentiable Distance Fields in Configuration Space
 paper_author: Xuemin Chi, Jihao Huang, Yiming Li, Bolun Dai, Zhitao Liu, Sylvain Calinon
-paper_venue: International Conference on Robotics and Automation, 2026
+paper_venue: IEEE International Conference on Robotics and Automation, 2026
 paper_link: None
 video_link: None
 poster_link: None

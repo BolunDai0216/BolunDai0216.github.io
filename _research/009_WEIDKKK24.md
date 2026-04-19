@@ -1,7 +1,7 @@
 ---
 paper_name: DiffOcclusion - Differentiable Optimization Based Control Barrier Functions for Occlusion-Free Visual Servoing
 paper_author: Shiqing Wei, Bolun Dai, Rooholla Khorrambakht, Prashanth Krishnamurthy, Farshad Khorrami
-paper_venue: IEEE Robotics and Automation Letters
+paper_venue: IEEE Robotics and Automation Letters, 2024
 paper_link: "https://ieeexplore.ieee.org/document/10430369"
 video_link: None
 poster_link: None

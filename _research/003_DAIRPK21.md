@@ -1,7 +1,7 @@
 ---
 paper_name: Learning Locomotion Controllers for Walking Using Deep FBSDE
 paper_author: Bolun Dai, Virinchi Roy Surabhi, Prashanth Krishnamurthy, Farshad Khorrami
-paper_venue: Preprint 2021
+paper_venue: Preprint, 2021
 paper_link: "https://arxiv.org/abs/2107.07931"
 video_link: None
 poster_link: None

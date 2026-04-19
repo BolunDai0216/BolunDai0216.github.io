@@ -1,7 +1,7 @@
 ---
 paper_name: State Constrained Stochastic Optimal Control Using LSTM's
 paper_author: Bolun Dai, Prashanth Krishnamurthy, Andrew Papanicolaou, Farshad Khorrami
-paper_venue: American Control Conference (ACC) 2021
+paper_venue: American Control Conference, 2021
 paper_link: "https://arxiv.org/abs/2104.02135"
 video_link: "https://www.youtube.com/watch?v=QYoX6aG3oIk"
 poster_link: "assets/research/ACC 2021 Poster.pdf"

@@ -1,7 +1,7 @@
 ---
 paper_name: Data-Efficient Control Barrier Function Refinement
 paper_author: Bolun Dai, Heming Huang, Prashanth Krishnamurthy, Farshad Khorrami
-paper_venue: American Control Conference (ACC) 2023
+paper_venue: American Control Conference, 2023
 paper_link: "https://arxiv.org/abs/2303.05973"
 video_link: None
 poster_link: None

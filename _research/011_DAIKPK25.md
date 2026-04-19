@@ -2,7 +2,7 @@
 paper_name: Differentiable Optimization Based Time-Varying Control Barrier Functions for Dynamic Obstacle Avoidance
 paper_author: Bolun Dai, Rooholla Khorrambakht, Prashanth Krishnamurthy, Farshad Khorrami
 paper_venue: Robotics and Autonomous Systems, 2025
-paper_link: "https://arxiv.org/pdf/2309.17226"
+paper_link: "https://arxiv.org/abs/2309.17226"
 video_link: "https://youtu.be/iMmWIgvqgTU"
 poster_link: None
 website_link: None

@@ -2,7 +2,7 @@
 paper_name: Sailing Through Point Clouds - Safe Navigation Using Point Cloud Based Control Barrier Functions
 paper_author: Bolun Dai, Rooholla Khorrambakht, Prashanth Krishnamurthy, Farshad Khorrami
 paper_venue: IEEE Robotics and Automation Letters, 2024
-paper_link: "https://arxiv.org/pdf/2403.18206"
+paper_link: "https://arxiv.org/abs/2403.18206"
 video_link: "https://youtu.be/lDmayeYcu28"
 poster_link: None
 website_link: None

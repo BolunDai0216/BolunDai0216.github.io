@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat');
 
 :root {
-    --bg-color: #b3b149;
+    --bg-color: #0e6873;
 }
 
 .blog-sidebar {
@@ -78,14 +78,14 @@
 
 .card-text {
     font-family: Avenir, Montserrat, Helvetica;
-    color: #b3b149;
+    color: #fde4b0;
     font-weight: 500;
     font-size: 16px;
 }
 
 .card {
     position: relative;
-    background-color: rgba(85, 107, 47, 0.55);
+    background-color: rgba(7, 48, 54, 0.55);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     height: 300px;
@@ -118,7 +118,7 @@
 
 .blog-title {
     font-family: Avenir, Montserrat, Helvetica, Georgia;
-    color: darkolivegreen;
+    color: #ffffff;
     font-weight: bolder;
 }
 
@@ -138,7 +138,7 @@
     font-family: Avenir, Montserrat, Helvetica;
     font-weight: bold;
     font-size: 16px;
-    color: darkolivegreen;
+    color: rgba(255, 255, 255, 0.75);
 }
 
 /* Distill's template.v2.js sets `contain: layout style` and
@@ -160,7 +160,7 @@ d-contents {
     max-height: calc(100vh - 4rem);
     overflow-y: auto;
     padding: 0.5em 2em 0.5em 1em;
-    border-right: 1px solid rgba(85, 107, 47, 0.35);
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
     width: calc(max(70%, 300px));
     margin-right: 0;
 
@@ -209,7 +209,7 @@ d-contents {
 .blog-side-item > a,
 .blog-side-item li > a {
     display: block;
-    color: darkolivegreen;
+    color: rgba(255, 255, 255, 0.75);
     padding: 6px 12px;
     border-radius: 8px;
     text-decoration: none;
@@ -219,14 +219,14 @@ d-contents {
 .blog-side-item > a:hover,
 .blog-side-item li > a:hover {
     color: white;
-    background-color: rgba(85, 107, 47, 0.35);
+    background-color: rgba(255, 255, 255, 0.12);
     text-decoration: none;
 }
 
 .blog-side-item > a.active,
 .blog-side-item li > a.active {
     color: white;
-    background-color: rgba(85, 107, 47, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
     font-weight: 600;
 }
 

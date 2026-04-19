@@ -1,9 +1,6 @@
-// Dot-wave background for the home page.
-// A single Gaussian "band" of highlighted dots travels diagonally from the
-// lower-left to the upper-right; once it clears the far edge it wraps back
-// to just before the near edge, so only one band is visible at a time.
-// The dots themselves sit on a fixed symmetric grid — only alpha + color
-// pulse as the band passes through.
+// Dot background for the home page.
+// Dots sit on a fixed symmetric grid; a Gaussian halo centered on the cursor
+// brightens dots near the pointer and fades with distance.
 //
 // Also drives the page background color: reads --bg-color from :root and
 // lerps toward it each frame so hover transitions feel smooth regardless
@@ -14,8 +11,6 @@
   var body = document.body;
   if (!body || body.classList.contains('blog-post-page')) return;
 
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   // Canvas element — injected once per page.
   var canvas = document.createElement('canvas');
   canvas.id = 'dot-wave-bg';
@@ -24,29 +19,6 @@
 
   var ctx = canvas.getContext('2d');
   var dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-  // ---- Traveling band ------------------------------------------------------
-  // Direction vector: +x, -y (screen y grows downward, so -y is up).
-  var DIR_X = 1 / Math.SQRT2;
-  var DIR_Y = -1 / Math.SQRT2;
-  var BAND_WIDTH = 120;        // Gaussian sigma (px along u)
-  var BAND_SPEED = 0.35;       // px per ms
-  var TWO_SIGMA2 = 2 * BAND_WIDTH * BAND_WIDTH;
-
-  // Range of u = x*DIR_X + y*DIR_Y across the viewport — recomputed on resize.
-  var uMin = 0, uMax = 0, uTravel = 0;
-  function computeURange() {
-    var u00 = 0;
-    var u10 = W * DIR_X;
-    var u01 = H * DIR_Y;
-    var u11 = W * DIR_X + H * DIR_Y;
-    uMin = Math.min(u00, u10, u01, u11);
-    uMax = Math.max(u00, u10, u01, u11);
-    // Small pad → short gap between the band leaving and re-entering.
-    var pad = 1.5 * BAND_WIDTH;
-    uMin -= pad; uMax += pad;
-    uTravel = uMax - uMin;
-  }
 
   // ---- Color (live reactive) ----------------------------------------------
   var cur = [179, 55, 55], target = [179, 55, 55];
@@ -77,13 +49,20 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
   resize();
-  computeURange();
-  window.addEventListener('resize', function () { resize(); computeURange(); }, { passive: true });
+  window.addEventListener('resize', resize, { passive: true });
+
+  // ---- Cursor highlight ----------------------------------------------------
+  // Far-offscreen sentinel so the cursor Gaussian is effectively zero until
+  // the pointer first moves. Touch devices never fire mousemove → no glow.
+  var cursorX = -1e6, cursorY = -1e6;
+  var CURSOR_SIGMA = 110;
+  var CURSOR_TWO_SIGMA2 = 2 * CURSOR_SIGMA * CURSOR_SIGMA;
+  window.addEventListener('mousemove', function (e) {
+    cursorX = e.clientX; cursorY = e.clientY;
+  }, { passive: true });
 
   // ---- Render loop ---------------------------------------------------------
-  var start = performance.now();
-
-  function frame(now) {
+  function frame() {
     // Lerp color toward target (~0.5s feel at 60fps).
     cur[0] += (target[0] - cur[0]) * 0.08;
     cur[1] += (target[1] - cur[1]) * 0.08;
@@ -100,8 +79,6 @@
     var lightB = b + (255 - b) * 0.65;
     var darkR = r * 0.72, darkG = g * 0.72, darkB = b * 0.72;
 
-    var t = reduce ? 0 : (now - start);
-
     // Dense symmetric grid centered on viewport — covers whole page.
     var spacing = W < 640 ? 18 : W < 1100 ? 22 : 24;
     var baseRadius = W < 640 ? 1.7 : 2.0;
@@ -113,9 +90,6 @@
     var halfDiag = Math.sqrt(W * W + H * H) / 2;
     var vigStart = halfDiag * 0.75;
     var vigEnd = halfDiag * 1.05;
-
-    // Current band-center position along u (wraps once off-screen).
-    var u0 = uMin + ((t * BAND_SPEED) % uTravel);
 
     for (var j = -nY; j <= nY; j++) {
       for (var i = -nX; i <= nX; i++) {
@@ -131,10 +105,10 @@
         m = m * m * (3 - 2 * m);
         if (m <= 0.005) continue;
 
-        // Gaussian pulse along the direction axis.
-        var u = px * DIR_X + py * DIR_Y;
-        var du = u - u0;
-        var pulse = Math.exp(-(du * du) / TWO_SIGMA2); // 0..1, peak at band center
+        // Cursor-centered Gaussian halo: peaks at the pointer, fades with distance.
+        var dxc = px - cursorX, dyc = py - cursorY;
+        var pulse = Math.exp(-(dxc * dxc + dyc * dyc) / CURSOR_TWO_SIGMA2);
+
         var alpha = (0.06 + pulse * 0.9) * m;
 
         var cr = darkR + (lightR - darkR) * pulse;

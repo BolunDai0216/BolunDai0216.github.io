@@ -1,7 +1,7 @@
 // Drives the home-page color mood. The dot-wave canvas (background.js) reads
 // --bg-color and re-tints itself, so we only manage the CSS variable here.
 
-var animationColors = ['#b33737', '#3737b3', '#37b337', '#b37337'];
+var animationColors = ['#c0440e', '#61413c', '#0e6873', '#1a2c30'];
 var colorIndex = 0;
 var isHovering = false;
 var colorAnimation = null;

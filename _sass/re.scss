@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
 
 :root {
-    --bg-color: #e56530;
+    --bg-color: #1a2c30;
 }
 
 .card-title {
@@ -31,12 +31,12 @@
 
 .card-text {
     font-family: Roboto, Avenir, Helvetica;
-    color: #fdcda5;
+    color: #fde4b0;
     font-weight: 400;
 }
 
 .research-card {
-    background-color: rgba(179, 80, 37, 0.55);
+    background-color: rgba(14, 104, 115, 0.45);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1.5px solid transparent;

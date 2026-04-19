@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat');
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "fonts";
 
 :root {
     --bg-color: #61413c;
@@ -19,7 +18,7 @@
 }
 
 .cv-sidebar-link {
-    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: $font-sans;
     color: rgba(255, 255, 255, 0.65);
     font-size: 25px;
     font-weight: 600;
@@ -57,7 +56,7 @@
 }
 
 .cv-section-title {
-    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: $font-sans;
     color: white;
     font-weight: 700;
     font-size: 22px;
@@ -96,7 +95,7 @@
 }
 
 .cv-institution {
-    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: $font-sans;
     color: white;
     font-size: 22px;
     font-weight: 700;
@@ -111,7 +110,7 @@ a.cv-institution:hover {
 }
 
 .cv-years {
-    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: $font-sans;
     color: rgba(255, 255, 255, 0.75);
     font-size: 17px;
     font-weight: 500;
@@ -121,7 +120,7 @@ a.cv-institution:hover {
 /* ---- Card body text ---------------------------------------------------- */
 .cv-degree,
 .cv-place {
-    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: $font-sans;
     color: #fde4b0;
     font-size: 18px;
     font-style: italic;
@@ -129,7 +128,7 @@ a.cv-institution:hover {
 }
 
 .cv-details {
-    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: $font-sans;
     color: #fde4b0;
     font-size: 18px;
     line-height: 1.55;
@@ -155,7 +154,7 @@ a.cv-institution:hover {
 }
 
 .cv-skill-label {
-    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: $font-sans;
     color: white;
     font-size: 18px;
     font-weight: 700;
@@ -164,7 +163,7 @@ a.cv-institution:hover {
 }
 
 .cv-skill-content {
-    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: $font-sans;
     color: #fde4b0;
     font-size: 18px;
     line-height: 1.5;

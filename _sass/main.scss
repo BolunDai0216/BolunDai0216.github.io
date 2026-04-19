@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+@import "fonts";
 
 :root {
     --bg-color: #c0440e;
@@ -54,7 +54,7 @@ body::before {
 }
 
 .header-brand {
-    font-family: Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: $font-nav;
     font-size: clamp(1.75rem, 4.5vw, 3rem);
     color: #ffffff;
     font-weight: 700;
@@ -63,7 +63,7 @@ body::before {
 }
 
 .nav-item-bolun {
-    font-family: Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: $font-nav;
     color: #ffffff !important;
     font-size: clamp(1.1rem, 2.2vw, 1.7rem);
     font-weight: 700;
@@ -103,7 +103,7 @@ body::before {
 .footer-p {
     color: #ffffff;
     font-weight: 700;
-    font-family: Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: $font-nav;
 }
 
 .foot-icon {

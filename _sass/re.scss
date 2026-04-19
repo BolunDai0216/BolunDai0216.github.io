@@ -1,28 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat');
 @import url('https://fonts.googleapis.com/css2?family=Tinos');
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
     --bg-color: #1a2c30;
 }
 
 .card-title {
-    font-family: Georgia, 'Times New Roman', Times, serif, Helvetica;
+    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
     color: white;
     text-decoration: none;
     font-size: 24px;
-    font-weight: bold;
+    font-weight: 600;
+    letter-spacing: -0.015em;
 }
 
 .card-author {
-    font-family: Avenir, Montserrat, Helvetica;
+    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
     color: white;
     margin-top: 15%;
     font-size: 16px;
 }
 
 .card-publish {
-    font-family: Avenir, Montserrat, Helvetica;
+    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
     color: white;
     font-size: 16px;
     margin-top: 5%;
@@ -30,7 +32,7 @@
 }
 
 .card-text {
-    font-family: Roboto, Avenir, Helvetica;
+    font-family: 'Space Grotesk', Roboto, Avenir, Helvetica, sans-serif;
     color: #fde4b0;
     font-weight: 400;
 }
@@ -56,7 +58,7 @@
     color: white;
     text-decoration: none;
     font-style: normal;
-    font-family: Avenir, Montserrat, Helvetica;
+    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: 600;
     line-height: 1;
@@ -95,7 +97,7 @@
     border: 1.5px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     padding: 6px 14px;
-    font-family: Avenir, Montserrat, Helvetica;
+    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
     color: white;
     font-size: 14px;
     font-weight: 600;

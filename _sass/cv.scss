@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
     --bg-color: #61413c;
@@ -18,10 +19,11 @@
 }
 
 .cv-sidebar-link {
-    font-family: Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
     color: rgba(255, 255, 255, 0.65);
     font-size: 25px;
     font-weight: 600;
+    letter-spacing: -0.015em;
     text-decoration: none;
     padding: 8px 10px;
     border-radius: 8px;
@@ -55,11 +57,11 @@
 }
 
 .cv-section-title {
-    font-family: Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
     color: white;
     font-weight: 700;
     font-size: 22px;
-    letter-spacing: 0.02em;
+    letter-spacing: -0.01em;
     padding-bottom: 10px;
     border-bottom: 2px solid rgba(255, 255, 255, 0.3);
     margin-bottom: 1rem;
@@ -94,10 +96,11 @@
 }
 
 .cv-institution {
-    font-family: Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
     color: white;
     font-size: 22px;
     font-weight: 700;
+    letter-spacing: -0.015em;
     text-decoration: none;
     line-height: 1.3;
 }
@@ -108,7 +111,7 @@ a.cv-institution:hover {
 }
 
 .cv-years {
-    font-family: Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
     color: rgba(255, 255, 255, 0.75);
     font-size: 17px;
     font-weight: 500;
@@ -118,7 +121,7 @@ a.cv-institution:hover {
 /* ---- Card body text ---------------------------------------------------- */
 .cv-degree,
 .cv-place {
-    font-family: Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
     color: #fde4b0;
     font-size: 18px;
     font-style: italic;
@@ -126,7 +129,7 @@ a.cv-institution:hover {
 }
 
 .cv-details {
-    font-family: Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
     color: #fde4b0;
     font-size: 18px;
     line-height: 1.55;
@@ -152,15 +155,16 @@ a.cv-institution:hover {
 }
 
 .cv-skill-label {
-    font-family: Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
     color: white;
     font-size: 18px;
     font-weight: 700;
+    letter-spacing: -0.01em;
     white-space: nowrap;
 }
 
 .cv-skill-content {
-    font-family: Avenir, Montserrat, Helvetica, sans-serif;
+    font-family: 'Space Grotesk', Avenir, Montserrat, Helvetica, sans-serif;
     color: #fde4b0;
     font-size: 18px;
     line-height: 1.5;

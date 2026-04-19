@@ -6,11 +6,19 @@ page-type: research
     <div class="row mx-5 mt-5">
         {% for research in site.research reversed %}
         <div class="card mb-3 research-card" style="max-width: 100%;">
-            <div class="row align-items-start">
-                <div class="col-lg-4" style="padding: 20px 20px 20px 20px;">
+            <div class="row align-items-stretch">
+                <div class="col-lg-4 research-left" style="padding: 20px 20px 20px 20px;">
                     <h5 class="card-title">{{research.paper_name}}</h5>
                     <h5 class="card-author">{{research.paper_author}}</h5>
                     <h5 class="card-publish">{{research.paper_venue}}</h5>
+                    <button class="abstract-toggle d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#abstract-{{forloop.index}}" aria-expanded="false" aria-controls="abstract-{{forloop.index}}">
+                        Abstract <span class="abstract-arrow">▼</span>
+                    </button>
+                    <div class="collapse d-lg-none" id="abstract-{{forloop.index}}">
+                        <div class="card-text abstract-mobile">
+                            {{research.content}}
+                        </div>
+                    </div>
                     <div class="research-links">
                         {% if research.paper_link != "None" %}
                         <a href="{{research.paper_link}}" class="arxiv-link">Paper</a>
@@ -24,19 +32,11 @@ page-type: research
                         {% if research.poster_link != "None" %}
                         <a href="{{research.poster_link}}" class="arxiv-link">Poster</a>
                         {% endif %}
-                        <button class="abstract-toggle d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#abstract-{{forloop.index}}" aria-expanded="false" aria-controls="abstract-{{forloop.index}}">
-                            Abstract <span class="abstract-arrow">▼</span>
-                        </button>
-                    </div>
-                    <div class="collapse d-lg-none" id="abstract-{{forloop.index}}">
-                        <div class="card-text abstract-mobile">
-                            {{research.content}}
-                        </div>
                     </div>
                 </div>
 
-                <div class="col-md-8 d-none d-lg-block" style="margin-top: 10px;">
-                    <div class="card-body card-text">
+                <div class="col-md-8 d-none d-lg-block">
+                    <div class="card-body card-text research-abstract">
                         {{research.content}}
                     </div>
                 </div>

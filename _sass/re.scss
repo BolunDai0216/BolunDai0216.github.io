@@ -11,12 +11,13 @@
     font-size: 24px;
     font-weight: 600;
     letter-spacing: -0.015em;
+    margin-top: 0;
 }
 
 .card-author {
     font-family: $font-sans;
     color: white;
-    margin-top: 15%;
+    margin-top: 8px;
     font-size: 16px;
 }
 
@@ -24,7 +25,7 @@
     font-family: $font-sans;
     color: white;
     font-size: 16px;
-    margin-top: 5%;
+    margin-top: 6px;
     font-style: italic;
 }
 
@@ -80,6 +81,30 @@
     margin-top: 12px;
 }
 
+@media (min-width: 992px) {
+    .research-left {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .research-left > .research-links {
+        margin-top: auto;
+        padding-top: 12px;
+    }
+
+    .research-card .research-abstract {
+        padding: 20px;
+    }
+
+    .research-card .research-abstract > *:first-child {
+        margin-top: 0;
+    }
+
+    .research-card .research-abstract > *:last-child {
+        margin-bottom: 0;
+    }
+}
+
 .research-block {
     margin-top: 0;
     padding-left: 5%;
@@ -131,16 +156,8 @@
 }
 
 @media (max-width: 991.98px) {
-    .card-author {
-        margin-top: 12px;
-    }
-
-    .card-publish {
-        margin-top: 6px;
-    }
-
     .abstract-toggle {
-        margin-top: 0;
+        margin-top: 12px;
     }
 }
 

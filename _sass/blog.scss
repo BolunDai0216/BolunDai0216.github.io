@@ -245,10 +245,12 @@ d-contents {
     font-weight: 600;
 }
 
-.citation {
-    color: beige;
-    font-family: $font-nav;
+.blog-content .citation,
+d-article .citation {
+    color: rgb(23, 51, 56);
+    font-family: $font-sans;
     font-size: 80%;
+    font-weight: 600;
 }
 
 d-cite {

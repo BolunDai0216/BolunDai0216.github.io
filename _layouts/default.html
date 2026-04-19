@@ -42,7 +42,7 @@
   <script defer src="/assets/js/background.js?v={{ site.time | date: '%s' }}"></script>
 
   {% if page.page-type == "blog-post" %}
-  <link rel="stylesheet" href="/assets/css/blog.css">
+  <link rel="stylesheet" href="/assets/css/blog.css?v={{ site.time | date: '%s' }}">
   <script src="https://distill.pub/template.v2.js"></script>
   <script defer type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

@@ -126,6 +126,34 @@ body::before {
     margin-top: 2.5rem;
 }
 
+/* ---------- Home page: fit exactly one viewport ------------------------- */
+body.home-page,
+body.home-page #page-container {
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    overflow: hidden;
+}
+
+body.home-page #page-container {
+    display: flex;
+    flex-direction: column;
+}
+
+body.home-page #content-wrap {
+    flex: 1 1 auto;
+    min-height: 0;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body.home-page #footer {
+    position: static;
+    margin-top: 0;
+    flex: 0 0 auto;
+}
+
 /* ---------- Mobile polish ---------------------------------------------- */
 @media (max-width: 767.98px) {
     body {
@@ -186,20 +214,32 @@ body::before {
 
 /* ---------- Home page intro text ---------------------------------------- */
 .home-intro {
-    min-height: calc(100vh - 10rem);
+    flex: 1 1 auto;
+    min-height: 0;
     display: flex;
     align-items: center;
     /* Left padding matches the "Bolun Dai" brand: navbar's mx-2 (0.5rem)
        + container-fluid inner padding (0.75rem) = 1.25rem. The body gutter
        is already applied via body's width: 96%. */
-    padding: 2rem 1.25rem;
+    padding: 1.5rem 1.25rem;
     color: #ffffff;
     font-family: $font-nav;
+    overflow: hidden;
 }
 
 .home-intro p {
-    font-size: clamp(1rem, 2vw, 1.35rem);
+    font-size: 1.25rem;
     max-width: 42rem;
     line-height: 1.6;
     margin: 0;
+}
+
+@media (max-width: 767.98px) {
+    .home-intro {
+        padding: 1rem 1.25rem;
+    }
+
+    .home-intro p {
+        line-height: 1.5;
+    }
 }

@@ -183,3 +183,23 @@ body::before {
         transition: none;
     }
 }
+
+/* ---------- Home page intro text ---------------------------------------- */
+.home-intro {
+    min-height: calc(100vh - 10rem);
+    display: flex;
+    align-items: center;
+    /* Left padding matches the "Bolun Dai" brand: navbar's mx-2 (0.5rem)
+       + container-fluid inner padding (0.75rem) = 1.25rem. The body gutter
+       is already applied via body's width: 96%. */
+    padding: 2rem 1.25rem;
+    color: #ffffff;
+    font-family: $font-nav;
+}
+
+.home-intro p {
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    max-width: 42rem;
+    line-height: 1.6;
+    margin: 0;
+}

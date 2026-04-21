@@ -208,29 +208,31 @@ body.home-page #footer {
     flex: 1 1 auto;
     min-height: 0;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     /* Left padding matches the "Bolun Dai" brand: navbar's mx-2 (0.5rem)
        + container-fluid inner padding (0.75rem) = 1.25rem. The body gutter
        is already applied via body's width: 96%. */
-    padding: 1.5rem 1.25rem;
+    padding: 1.5rem 1.25rem 8rem;
     color: #ffffff;
     font-family: $font-nav;
     overflow: hidden;
 }
 
 .home-intro p {
-    font-size: 1.25rem;
-    max-width: 42rem;
+    font-size: 1.5rem;
+    max-width: 45rem;
     line-height: 1.6;
     margin: 0;
 }
 
 @media (max-width: 767.98px) {
     .home-intro {
+        align-items: center;
         padding: 1rem 1.25rem;
     }
 
     .home-intro p {
+        font-size: 1.25rem;
         line-height: 1.5;
     }
 }

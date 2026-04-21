@@ -1,6 +1,9 @@
 collections:
   research:
 
+include:
+  - _pages
+
 defaults:
   - scope:
       path: ""
@@ -11,6 +14,10 @@ defaults:
       path: ""
     values:
       layout: "default"
+  - scope:
+      path: "_pages"
+    values:
+      permalink: /pages/:basename:output_ext
 
 plugins:
   - jekyll-feed

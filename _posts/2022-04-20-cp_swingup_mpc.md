@@ -4,7 +4,7 @@ title: Cart-pole Swing-up Task Using MPC
 description: By Bolun Dai | Apr 20th 2022
 class: control-theory
 link: None
-text: This blog shows how to perform the cart-pole swing up task using model predictive control (MPC).
+text: This blog shows how to perform the cart-pole swing-up task using model predictive control (MPC).
 bibliography: 2022-04-20-cp_swingup_mpc.bib
 toc: 
     - name: Introduction

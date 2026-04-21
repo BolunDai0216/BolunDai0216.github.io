@@ -4,7 +4,7 @@ title: How to get egocentric global maps in HouseExpo
 description: By Bolun Dai | Jan 4th 2021
 class: random
 link: None
-text: Getting egocentric global maps in <cite>HouseExpo</cite>
+text: Getting egocentric global maps in <cite>HouseExpo</cite>.
 layout: blog_post
 bibliography: 2021-01-04-houseexpo.bib
 --- 

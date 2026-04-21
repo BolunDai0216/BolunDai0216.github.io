@@ -4,7 +4,7 @@ title: Operations that preserve convexity
 description: By Bolun Dai | Jan 14th 2021
 class: convex-opt
 link: None
-text: A list of operations that preserves convexity on both convex sets and functions.
+text: A list of operations that preserve convexity on both convex sets and functions.
 --- 
 
 First, we summarize the operations that preserve convexity for convex sets, which means that for a convex set $$C$$, after performing an operation, the result is still a convex set. A convex set $$C$$ is defined such that for $$x, y\in C$$, we have $$tx + (1-t)y\in C$$ for all $$0\leq t\leq1$$.

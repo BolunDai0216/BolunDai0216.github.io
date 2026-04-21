@@ -126,6 +126,13 @@ body::before {
     margin-top: 2.5rem;
 }
 
+/* Aligns icons' right edge with the last nav item (me-5 + nav-item margin). */
+@media (min-width: 768px) {
+    #footer .footer-icons {
+        padding-right: 6rem;
+    }
+}
+
 /* ---------- Home page: fit exactly one viewport ------------------------- */
 body.home-page,
 body.home-page #page-container {
@@ -190,8 +197,24 @@ body.home-page #footer {
         border-radius: 8px;
     }
 
-    /* Footer on mobile: keep copyright and icons on the same row —
-       copyright left-aligns with the brand, icons right-align with the toggler. */
+    /* Footer on mobile: span the full body width (with the body's 1rem
+       gutter as the edge space), copyright left, icons right on the same row. */
+    #footer > .container-fluid {
+        margin: 0 !important;
+        padding: 0;
+    }
+    #footer .row {
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+    #footer .col-6 {
+        flex: 0 0 auto;
+        max-width: none;
+        width: auto;
+    }
+    #footer .footer-p.col-6 {
+        margin-right: auto;
+    }
     #footer .foot-icon, #footer a {
         padding: 0 0.25rem !important;
     }
@@ -234,5 +257,11 @@ body.home-page #footer {
     .home-intro p {
         font-size: 1.25rem;
         line-height: 1.5;
+    }
+}
+
+@media (max-height: 600px) {
+    body.home-page .home-intro {
+        display: none;
     }
 }

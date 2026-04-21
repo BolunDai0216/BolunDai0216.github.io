@@ -190,24 +190,10 @@ body.home-page #footer {
         border-radius: 8px;
     }
 
-    /* Footer: drop to a single centered column on phones. */
-    #footer .row {
-        margin: 0 1rem !important;
-    }
-    .footer-p.col-6,
-    #footer .col-6 {
-        flex: 0 0 100%;
-        max-width: 100%;
-        text-align: center !important;
-        margin-bottom: 0.25rem;
-    }
-    #footer .footer-p.col-6 {
-        order: 2;
-        margin-top: 0.25rem;
-        margin-bottom: 0;
-    }
+    /* Footer on mobile: keep copyright and icons on the same row —
+       copyright left-aligns with the brand, icons right-align with the toggler. */
     #footer .foot-icon, #footer a {
-        padding: 0 0.4rem !important;
+        padding: 0 0.25rem !important;
     }
 }
 

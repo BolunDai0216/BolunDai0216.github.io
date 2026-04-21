@@ -201,6 +201,11 @@ body.home-page #footer {
         text-align: center !important;
         margin-bottom: 0.25rem;
     }
+    #footer .footer-p.col-6 {
+        order: 2;
+        margin-top: 0.25rem;
+        margin-bottom: 0;
+    }
     #footer .foot-icon, #footer a {
         padding: 0 0.4rem !important;
     }

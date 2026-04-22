@@ -4,6 +4,17 @@ Repo for my personal website where I save my notes and showcase my work.
 
 Coded up from scratch. Used Jekyll, Bootstrap and MathJax to make my life easier.
 
+## Setup
+
+Install [mise](https://mise.jdx.dev/), then from the repo root:
+
+```
+mise install
+bundle install
+```
+
+This installs Ruby, `just`, and `bundler` (via the mise postinstall hook), then the Jekyll gems.
+
 ## How add a blog post
 
 Create a new markdown file in the folder `_posts` with the naming format `YYYY-MM-DD-blog_post_name.md`. Then add the front matter
@@ -23,13 +34,13 @@ And write the content (if there is any).
 
 ## Serving locally
 
-Local only:
+Serve on the local network (accessible from phone):
 ```
-bundle exec jekyll serve
+just serve
 ```
 
-Local network (accessible from phone):
+Find your IP:
 ```
-bundle exec jekyll serve --host 0.0.0.0
+just find-local-ip
 ```
-Find your IP with `ipconfig getifaddr en0`, then open `http://<your-ip>:4000` on the other device.
+Then open `http://<your-ip>:4000` on the other device.

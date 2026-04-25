@@ -4,7 +4,6 @@
   if (!document.body.classList.contains('home-page')) return;
 
   var intro = document.getElementById('home-intro');
-  var hint  = document.getElementById('scroll-hint');
   if (!intro) return;
 
   var progress = 0;
@@ -38,10 +37,8 @@
 
     if (progress > 0.02) {
       intro.classList.add('revealed');
-      if (hint) hint.classList.add('hidden');
     } else {
       intro.classList.remove('revealed');
-      if (hint) hint.classList.remove('hidden');
     }
   }
 

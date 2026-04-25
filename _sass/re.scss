@@ -151,6 +151,42 @@
     padding-bottom: 8px;
 }
 
+.author-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* ── TUNE: gap between the text and the caret.
+       Bump padding-left and/or margin-left to push the caret right. ── */
+    padding: 0 2px 0 0;
+    margin-left: 0;
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    line-height: 1;
+    vertical-align: middle;
+    /* ── TUNE: nudge the caret up/down relative to the text line.
+       More negative = higher; positive = lower. ─────────────────── */
+    transform: translateY(-1.5px);
+
+    .author-arrow {
+        display: inline-block;
+        transition: transform 0.2s ease;
+    }
+
+    &[aria-expanded="true"] .author-arrow {
+        transform: rotate(180deg);
+    }
+}
+
+.author-full {
+    font-family: $font-sans;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 8px;
+}
+
 .research-block .row.mt-5 {
     margin-top: 0 !important;
 }

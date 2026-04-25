@@ -41,6 +41,10 @@
   <script src="/assets/js/utils.js?v={{ site.time | date: '%s' }}"></script>
   <script defer src="/assets/js/background.js?v={{ site.time | date: '%s' }}"></script>
 
+  {% if page.page-type == "home" %}
+  <script defer src="/assets/js/home-scroll.js?v={{ site.time | date: '%s' }}"></script>
+  {% endif %}
+
   {% if page.page-type == "blog-post" %}
   <link rel="stylesheet" href="/assets/css/blog.css?v={{ site.time | date: '%s' }}">
   <script src="https://distill.pub/template.v2.js"></script>

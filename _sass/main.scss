@@ -140,6 +140,9 @@ body.home-page #page-container {
     min-height: 100dvh;
     max-height: 100dvh;
     overflow: hidden;
+    /* Stop iOS pull-to-refresh / rubber-band from swallowing swipe deltas. */
+    touch-action: none;
+    overscroll-behavior: none;
 }
 
 body.home-page #page-container {
@@ -227,6 +230,7 @@ body.home-page #footer {
 }
 
 /* ---------- Home page intro text ---------------------------------------- */
+/* Starts invisible; home-scroll.js drives opacity/transform on scroll. */
 .home-intro {
     flex: 1 1 auto;
     min-height: 0;
@@ -239,6 +243,14 @@ body.home-page #footer {
     color: #ffffff;
     font-family: $font-nav;
     overflow: hidden;
+
+    opacity: 0;
+    transform: translateY(2.5rem);
+    pointer-events: none;
+}
+
+.home-intro.revealed {
+    pointer-events: auto;
 }
 
 .home-intro p {
@@ -262,6 +274,58 @@ body.home-page #footer {
 
 @media (max-height: 600px) {
     body.home-page .home-intro {
+        display: none;
+    }
+}
+
+/* ---------- Scroll hint ------------------------------------------------- */
+#scroll-hint {
+    position: fixed;
+    bottom: 5.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.75rem;
+    font-family: $font-nav;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#scroll-hint.hidden {
+    opacity: 0;
+}
+
+.scroll-hint-arrow {
+    width: 20px;
+    height: 20px;
+    border-right: 2px solid rgba(255, 255, 255, 0.5);
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+    transform: rotate(-45deg);
+    animation: arrowBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes arrowBounce {
+    0%, 100% { transform: rotate(-45deg) translate(0, 0); opacity: 0.4; }
+    50%      { transform: rotate(-45deg) translate(4px, -4px); opacity: 1; }
+}
+
+@media (max-width: 767.98px) {
+    #scroll-hint {
+        bottom: 4.5rem;
+    }
+}
+
+@media (max-height: 600px) {
+    #scroll-hint {
         display: none;
     }
 }

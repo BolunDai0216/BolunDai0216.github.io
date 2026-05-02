@@ -227,6 +227,9 @@ body.home-page #footer {
     body::before {
         transition: none;
     }
+    .typed-caret {
+        display: none;
+    }
 }
 
 /* ---------- Home page intro text ---------------------------------------- */
@@ -276,5 +279,19 @@ body.home-page #footer {
     body.home-page .home-intro {
         display: none;
     }
+}
+/* ---------- Typewriter caret (auto-injected next to .typed-text) ------- */
+.typed-caret {
+    display: inline-block;
+    width: 0.3em;
+    height: 1.1em;
+    margin-left: 0.05em;
+    vertical-align: -0.18em;
+    background: currentColor;
+    animation: typed-caret-blink 1s steps(2, start) infinite;
+}
+
+@keyframes typed-caret-blink {
+    to { opacity: 0; }
 }
 
